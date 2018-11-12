@@ -1,0 +1,508 @@
+<div class="row well-report heading-margin ">
+
+    <div class="col-md-12">
+        <h3 class="heading position-padding">Loss Details</h3>
+    </div>
+
+</div>
+
+<div class="position-padding" *ngIf="reportDetail!=undefined">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well-report well-border">
+                <div class="row">
+                    <div class="col-md-4 well-col">
+                        <h6 class="extra-padding-top">Year of Loss</h6>
+                        <h3>{{reportDetail.year}}</h3>
+                    </div>
+
+                    <div class="col-md-4 well-col">
+                        <h6 class="extra-padding-top">Area</h6>
+                        <h3>{{reportDetail.area}}</h3>
+                    </div>
+
+                    <div class="col-md-4 well-col">
+                        <h6 class="extra-padding-top">Category 1</h6>
+                        <h3>{{reportDetail.category1}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-xs-12 col-margin">
+            <div class="well-report">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well-report-headers">
+                            <h5>Date / Location</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">Date of Loss</h6>
+
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 no-padding-right">
+                                    <!-- <h6>{{reportDetail.dateOfLoss | date: 'dd-MMM-yyyy'}}</h6> -->
+                                    <h6>{{dateOfLossString}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">Area</h6>
+                                </div>
+
+                                <div class="col-md-9 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.area}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">Country</h6>
+                                </div>
+
+                                <div class="col-md-9 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.country}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">Location</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.location}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">GOM Area</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.gomArea}}</h6>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">US Location Code</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.locationCode}}</h6>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">On / Offshore</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.onOffshore}}</h6>
+                                </div>
+                            </div>
+                            <div class="row hidden-md-down hidden-row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">None</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>NA</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-xs-12 col-margin postion-class">
+            <div class="well-report">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well-report-headers">
+                            <h5>Loss Details</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Category 1</h6>
+
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6">
+                                    <h6>{{reportDetail.category1}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Category 2</h6>
+                                </div>
+
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.category2}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Category 3</h6>
+                                </div>
+
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.category3}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Event</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.event}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 ">
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Loss Type</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.lossType}}</h6>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6">
+                                    <h6 class="no-bold-text">Up/Down/Power</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.upDownStream}}</h6>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Cause</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6">
+                                    <h6>{{reportDetail.cause}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">CAR/OP</h6>
+                                </div>
+                                <div class="col-md-9 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.caR_OP}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-xs-12 col-md-6 col-margin">
+            <div class="well-report">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well-report-headers">
+                            <h5>Claim US$</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="col-md-10">
+
+                            <div class="row">
+                                <div class="col-md-5 col-xs-5 col-sm-6">
+                                    <h6 class="no-bold-text"></h6>
+                                </div>
+                                <div class="col-md-7 col-xs-7 col-sm-6 no-padding">
+                                    <div class="col-md-6 col-xs-6 no-padding">
+                                        <h6 class="no-bold-text ">Actual</h6>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 no-padding-right">
+                                        <h6 class="no-bold-text">Indexed</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5 col-xs-5 col-sm-6">
+                                    <h6 class="no-bold-text">PD</h6>
+                                </div>
+                                <div class="col-md-7 col-xs-7 col-sm-6 no-padding">
+                                    <div class="col-md-6 col-xs-6 no-padding">
+                                        <h6>{{(reportDetail.pdLiabClaim | round) == 0 ? '' : (reportDetail.pdLiabClaim | round
+                                            | number:0)}}</h6>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 no-padding-right">
+                                        <h6>{{(reportDetail.indexedPDLiabClaim | round) == 0 ? '' : (reportDetail.indexedPDLiabClaim
+                                            | round | number:0)}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-xs-5 col-sm-6">
+                                    <h6 class="no-bold-text">OEE</h6>
+                                </div>
+                                <div class="col-md-7 col-xs-7 col-sm-6 no-padding">
+                                    <div class="col-md-6 col-xs-6 no-padding">
+                                        <h6>{{(reportDetail.oeeClaim | round) == 0 ? '' : (reportDetail.oeeClaim | round | number:0)}}</h6>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 no-padding-right">
+                                        <h6>{{(reportDetail.indexedOEEClaim | round) == 0 ? '' : (reportDetail.indexedOEEClaim
+                                            | round | number:0)}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 col-xs-5 col-sm-6">
+                                    <h6 class="no-bold-text">BI</h6>
+                                </div>
+                                <div class="col-md-7 col-xs-7 col-sm-6 no-padding">
+                                    <div class="col-md-6 col-xs-6 no-padding">
+                                        <h6>{{(reportDetail.biClaim | round) == 0 ? '' : (reportDetail.biClaim | round | number:0)}}</h6>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 no-padding-right">
+                                        <h6></h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5 col-xs-5 col-sm-6">
+                                    <h6 class="no-bold-text">Total</h6>
+                                </div>
+                                <div class="col-md-7 col-xs-7 col-sm-6 no-padding">
+                                    <div class="col-md-6 col-xs-6 no-padding">
+                                        <h6>{{(reportDetail.totalClaim | round) == 0 ? '' : (reportDetail.totalClaim | round
+                                            | number:0)}}</h6>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 no-padding-right">
+                                        <h6>{{(reportDetail.indexedTotalClaim | round) == 0 ? '' : (reportDetail.indexedTotalClaim
+                                            | round | number:0)}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-md-6 col-margin postion-class">
+            <div class="well-report">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well-report-headers">
+                            <h5>Well Details</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6">
+                                    <h6 class="no-bold-text">Rating Area</h6>
+
+                                </div>
+                                <div class="col-md-6 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.ratingArea}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Well Type</h6>
+                                </div>
+
+                                <div class="col-md-6 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.wellType}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Drilling Status</h6>
+                                </div>
+
+                                <div class="col-md-6 col-xs-7 col-sm-6">
+                                    <h6>{{reportDetail.drillingStatus}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">UGBO</h6>
+                                </div>
+                                <div class="col-md-6 col-xs-7 col-sm-6 ">
+                                    <h6>{{reportDetail.ugbo}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Depth at Loss(feet)</h6>
+                                </div>
+                                <div class="col-md-6 col-xs-7 col-sm-6 ">
+                                    <!--<h6>{{reportDetail.depthAtLoss}}</h6>-->
+                                    <h6>{{(reportDetail.depthAtLoss | round) == 0 ? '' : (reportDetail.depthAtLoss | round |
+                                        number:0)}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Proj. Total Depth</h6>
+                                </div>
+                                <div class="col-md-6 col-xs-7 col-sm-6 ">
+                                    <!--<h6>{{reportDetail.ptd}}</h6>-->
+                                    <h6>{{(reportDetail.ptd | round) == 0 ? '' : (reportDetail.ptd | round | number:0)}}</h6>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 ">
+                                    <h6 class="no-bold-text">Depth Category</h6>
+                                </div>
+                                <div class="col-md-6 col-xs-7 col-sm-6 ">
+                                    <h6>
+                                        {{reportDetail.depthCategoryRange}}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-margin">
+
+            <div class="well-report">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well-report-headers">
+                            <h5>Actual Cost Categories</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">PD Claim</h6>
+
+                                </div>
+                                <div class="col-md-6 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.actualPDLiabCategory}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">OEE Claim</h6>
+                                </div>
+
+                                <div class="col-md-6 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.actualOEECategory}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">Total Claim</h6>
+                                </div>
+
+                                <div class="col-md-6 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.actualTotalCategory}}</h6>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 col-md-6 col-margin postion-class">
+
+            <div class="well-report">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well-report-headers">
+                            <h5>Indexed Cost Categories</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">PD Claim</h6>
+
+                                </div>
+                                <div class="col-md-6 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.indexedPDLiabCategory}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">OEE Claim</h6>
+                                </div>
+
+                                <div class="col-md-6 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.indexedOEECategory}}</h6>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-xs-5 col-sm-6 no-padding-right">
+                                    <h6 class="no-bold-text">Total Claim</h6>
+                                </div>
+
+                                <div class="col-md-6 col-xs-7 col-sm-6 no-padding-right">
+                                    <h6>{{reportDetail.indexedTotalCategory}}</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <p class="pull-right date-css">Produced: {{ currentDate | date: 'dd-MMM-yyy'}}</p>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <button class="btn btn-secondary pull-left hidden-md-down col-margin" (click)="goToReport()"> Back To Report </button>
+            <button class="btn btn-secondary btn-block pull-left hidden-md-up col-margin" (click)="goToReport()"> Back To Report </button>
+        </div>
+    </div>
+</div>

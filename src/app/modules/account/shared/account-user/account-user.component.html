@@ -1,0 +1,93 @@
+<!-- User Maintenance Routing-->
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="p-top-bottom">
+            <div *ngIf="notificationMessage.successMessage">
+                <div>
+                    <div class="alert alert-success alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.successMessage=''">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <span class="alert-text hidden-sm-down">{{notificationMessage.successMessage}}</span>
+                        <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.successMessage}}</span>
+                    </div>
+                </div>
+            </div>
+            <!-- WTW Software Gray background -->
+            <div class="card card-tabs bg-softwaregray-1">
+                <div class="card-header" *ngIf='!isNewSubscription'>
+                    <ul class="nav nav-tabs card-header-tabs float-xs-left">
+                        <li class="nav-item">
+                            <a id="1" class="nav-link" routerLink="list" routerLinkActive="active">Existing Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="2" class="nav-link" routerLink="new" routerLinkActive="active">Add New Users</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-header" *ngIf='isNewSubscription'>
+                    <ul class="nav nav-tabs card-header-tabs float-xs-left">
+                        <!-- *ngIf="isNewSubscription" -->
+                        <li class="nav-item">
+                            <a id="2" class="nav-link" routerLink="new" routerLinkActive="active">Add New Users</a>
+                        </li>
+                        <li class="nav-item" *ngIf='showExistingUsersTab'>
+                            <a id="1" class="nav-link" routerLink="list" routerLinkActive="active">Existing Users</a>
+                        </li>
+                    </ul>
+                </div>
+               
+                <div class="card-block">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" style="margin-top:20px;">
+    <hr>
+
+</div>
+<div class="hidden-md-up">
+    <div>
+        <button type="button" [hidden]='!showActivateAccountBtn' class="btn btn-primary btn-block" (click)='createAccount()' name="addSubButton">Activate Client Subscription</button>
+        <button type="button" class="btn btn-secondary btn-block" (click)='onBack()' name="backButton">Back</button>
+        <button type="button" [disabled]="!isAnyModification " [hidden]="isNewSubscription" (click)='updateAccount()' class="btn btn-primary btn-block p-top-bottom" name="saveSubButton">Save Client Subscription </button>
+        <button type="button" [disabled]="isEnableUserAccess " [hidden]="isNewSubscription"  (click)='validateUsers()' class="btn btn-secondary btn-block p-top-bottom" name="validateButton">Validate User Access</button>
+    </div>
+</div>
+<div class="hidden-sm-down">
+    <div>
+        <button type="button" class="btn btn-secondary float-xs-left" (click)='onBack()' name="backButton">Back</button>
+        
+        <button type="button" [hidden]='!showActivateAccountBtn' (click)='createAccount()' class="btn btn-primary float-xs-right" name="addSubButton">Activate Client Subscription</button>
+        <button type="button" [disabled]="!isAnyModification" [hidden]="isNewSubscription" (click)='updateAccount()' class="btn btn-primary float-xs-right" name="saveSubButton">Save Client Subscription</button>
+        <button type="button"[disabled]="isEnableUserAccess" [hidden]="isNewSubscription" (click)='validateUsers()' class="btn btn-secondary float-xs-right btn-margin-right" name="validateButton">Validate User Access</button>
+    </div>
+</div>
+
+<button id="loadModelBtn" type="button" hidden="true" data-toggle="modal" data-target=".success-sub" data-backdrop="static"
+    data-keyboard="false"></button>
+
+
+<div id='subActive' class="modal fade success-sub" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arialabel="Close" (click)='navigateToHomePage()'>
+                    <span ariahidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Subscription Message</h4>
+            </div>
+            <div class="modal-body">
+                {{subscriptionMessage}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary hidden-sm-down" data-dismiss="modal" (click)='navigateToHomePage()' name="EndButton">Ok</button>
+                <button type="button" class="btn btn-primary btn-block hidden-md-up" data-dismiss="modal" (click)='navigateToHomePage()'
+                    name="EndButton">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>

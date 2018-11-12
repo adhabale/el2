@@ -1,0 +1,115 @@
+<div class="modal fade user-search-result" id='subscriptionSearchModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button (click)="onClose()" type="button" class="close" data-dismiss="modal" arialabel="Close">
+          <span ariahidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Add Subscription</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="form-group">
+                    <input type="text" class="form-control input-width" name="searchText" #searchTextControl="ngModel" autofocus autocomplete="off" [(ngModel)]="searchParams.searchText" placeholder="Search Subscription" onkeydown = "if (event.keyCode == 13) document.getElementById('searchBtn').click()"
+                    />
+                    <!-- <small class="form-control-feedback" style="color:red" *ngIf="searchTextControl.touched && (searchParams.searchText==null || searchParams.searchText==undefined || searchParams.searchText.trim()=='')">
+                            Enter valid text
+                    </small>                 -->
+                  </div>
+              </div>
+              <div class="col-md-5">
+                
+                <button type="button" class="btn btn-secondary hidden-sm-down btn-margin-left pull-right" (click)='onReset()'>Reset</button>
+                
+                <button id="searchBtn" type="button" [disabled]='searchParams.searchText == null || searchParams.searchText == undefined || searchParams.searchText.trim().length == 0'
+                  class="btn btn-primary hidden-sm-down btn-margin-right pull-right" (click)='onSearch()'>
+                  Search
+                </button>
+                <button id="searchBtn" type="button" [disabled]='searchParams.searchText == null || searchParams.searchText == undefined || searchParams.searchText.trim().length == 0'
+                  class="btn btn-primary hidden-md-up btn-block" (click)='onSearch()'>Search</button>
+                <button type="button" class="btn btn-secondary hidden-md-up btn-block" (click)='onReset()'>Reset</button>
+              </div>
+              <div class='col-md-12' *ngIf="notificationMessage.errorMessage">
+                  <div>
+                      <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.errorMessage=''">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                          <span class="alert-text hidden-sm-down">{{notificationMessage.errorMessage}}</span>
+                          <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.errorMessage}}</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-12 p-top-bottom" *ngIf='subscriptionList!=null && subscriptionList.length>0'>
+                <div class="table-responsive addSubTableHeight table-container">
+                  <table id='addSubTable' class="table">
+                    <thead>
+                      <th class='header-add-sub'>Subscription Name</th>
+                    </thead>
+                    <tbody>
+                      <!-- <tr *ngFor="let subscription of subscriptionList" (click)="onSelect(subscription)" [class.active]="subscription == selectedSubscription">
+                        <td class="pointer ex1">
+                          {{subscription.displayName}}
+                          <div *ngFor="let associatedParty of subscription.associatedParties" class="pad-top">
+                            <ul class="pointer ex1 ul-mod">{{associatedParty.name}}</ul>
+                          </div>
+                        </td>
+                      </tr> -->
+                      <!-- <tr *ngFor="let sub of addSubscriptionList; let i = index" (click)="setAddSubClickedRow(i)" [class.active]="i == selectedRow">
+                          <td class="pointer ex1">{{sub.Name}}
+                              
+                                  <ol class="pointer ex1 ul-mod" >
+                                      <li *ngFor="let s of sub.Types">&#x2022; {{s}}&nbsp;</li>
+                                  </ol>
+                              
+                          </td>
+                      </tr> -->
+                      <tr *ngFor="let subscription of subscriptionList" (click)="onSelect(subscription)"  [class.active]="subscription == selectedSubscription">
+                          <td class="pointer ex1">{{subscription.displayName}}
+                              
+                                  <ol class="pointer ex1 ul-mod" >
+                                      <li *ngFor="let associatedParty of subscription.associatedParties">&#x2022; {{associatedParty.name}}&nbsp;</li>
+                                  </ol>
+                              
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class='col-md-12 p-top-bottom' *ngIf='showNoRecordsFoundMessage'>
+                <p class='text-xs-center'>No results found, try changing your search.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" [disabled]='selectedSubscription == null || selectedSubscription == undefined' class="btn btn-primary btn-block hidden-md-up"
+          (click)="onContinue()" name="continueButton">
+          Continue
+        </button>
+
+        <button type="button" class="btn btn-secondary btn-block hidden-md-up" data-dismiss="modal" (click)="onClose()" name="cancelButton">Cancel</button>
+
+        <button type="button" id="cancelBtn" class="btn btn-secondary hidden-sm-down margin-set-right" data-dismiss="modal" (click)="onClose()"
+          name="cancelButton">Cancel</button>
+
+        <button type="button" [disabled]='selectedSubscription == null || selectedSubscription == undefined' class="btn btn-primary hidden-sm-down margin-set-left"
+          (click)="onContinue()" name="continueButton">
+          Continue
+        </button>
+        <button  id='closeSubscriptionSearchModal' type="button" hidden='true' 
+          data-dismiss="modal" name="continueButton">
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

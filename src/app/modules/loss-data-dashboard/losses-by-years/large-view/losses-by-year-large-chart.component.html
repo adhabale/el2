@@ -1,0 +1,142 @@
+<div class="hidden-sm-down">
+    <div class="row custom-margin">
+        <div class="table-responsivetable-container">
+            <table class="table">
+                <tr>
+                    <td style="width: 50px;padding-right: 0px;">
+                        <label class="label-filter">From&nbsp;</label>
+                    </td>
+                    <td>
+                        <select class="form-control" name='fromYear' [(ngModel)]='chartFilter.fromYear' (change)="onYearChangeFrom(chartFilter.fromYear)">
+                            <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="chartFilter.fromYear > chartFilter.toYear">{{year}}</option>
+                        </select>
+                    </td>
+                    <td style="width: 30px;padding-right: 0px;">
+                        <label class="label-filter">To&nbsp;</label>
+                    </td>
+                    <td>
+                        <select class="form-control" name='toYear' [(ngModel)]='chartFilter.toYear' (change)="onYearChangeTo(chartFilter.toYear)">
+                            <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="year < chartFilter.fromYear">{{year}}</option>
+                        </select>
+                    </td>
+                    <td style="width: 100px">
+                        <label class="label-filter">Up/Down/Power&nbsp;</label>
+                    </td>
+                    <td style="width: 220px">
+                        <multi-select-auto-completer [items]="chartLookup.upDownPowerStream" [selectedItems]="selectedItems" (onItemSelect)="onUpDownItemSelect($event)"
+                            (onItemRemove)="onUpDownItemRemove($event)">
+                        </multi-select-auto-completer>
+                    </td>
+                    <td style="width: 10px">
+                        <label class="label-filter">Area&nbsp;</label>
+                    </td>
+                    <td style="width: 220px">
+                        <multi-select-auto-completer [items]="chartLookup.areas" [selectedItems]="selectedItems" (onItemSelect)="onAreaItemSelect($event)"
+                            (onItemRemove)="onAreaItemRemove($event)"></multi-select-auto-completer>
+                    </td>
+                    <td style="width: 120px">
+                        <label class="label-filter">Show Split By:&nbsp;</label>
+                    </td>
+                    <td rowspan="2">
+                        <input type="radio" id="radio2" checked  (click)="categoryChange(2)" name="optradio" />
+                        <label for="radio2" >Up/Down/Power</label>
+                        <br>
+                        <input type="radio" id="radio1"  (click)="categoryChange(1)" name="optradio" />
+                        <label for="radio1" >Area</label>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary float-xs-right" (click)="exportGraph()">Export</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="stacked-column-chart">
+            <ng-template [ngIf]="chartData">
+                <stacked-column-chart [chartData]="chartData"></stacked-column-chart>
+            </ng-template>
+        </div>
+        <div class="col-md-12">
+            <label class="label-filter">
+                Selected Criteria : Year from {{fromYearPrev}} to {{toYearPrev}}; Up/Down/Power = {{upDownPowerValue}} ; Area = {{areasSelected}};
+                Show Split By = {{showSplitBy}}
+            </label>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="false" class="hidden-md-up">
+    <div class="col-sm-12 col-xs-12">
+        <hr>
+        <h5>Loss Values by Year</h5>
+    </div>
+    <div>
+
+        <div class="col-sm-6 col-xs-6">
+            <label class="label-filter">From&nbsp;</label>
+            <div class="" role="group">
+                <select class="form-control" name='fromYear' [(ngModel)]='chartFilter.fromYear' (change)="onYearChangeFrom(chartFilter.fromYear)">
+                    <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="chartFilter.fromYear > chartFilter.toYear">{{year}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xs-6">
+            <label class="label-filter">To&nbsp;</label>
+            <div class="" role="group">
+                <select class="form-control" name='toYear' [(ngModel)]='chartFilter.toYear' (change)="onYearChangeTo(chartFilter.toYear)">
+                    <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="year < chartFilter.fromYear">{{year}}</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div class="col-sm-12 col-xs-12 margin-top">
+                <label class="label-filter">Up/Down/Power&nbsp;</label>
+            </div>
+            <div class="col-sm-12 col-xs-12">
+                <multi-select-auto-completer  [items]="chartLookup.upDownPowerStream" (onItemSelect)="onUpDownItemSelect($event)" (onItemRemove)="onUpDownItemRemove($event)"></multi-select-auto-completer>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-sm-12 col-xs-12 margin-top">
+                <label class="label-filter">Area&nbsp;</label>
+            </div>
+            <div class="col-sm-12 col-xs-12">
+                <multi-select-auto-completer  [items]="chartLookup.areas" (onItemSelect)="onAreaItemSelect($event)" (onItemRemove)="onAreaItemRemove($event)"></multi-select-auto-completer>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 col-xs-12 margin-top">
+            <label class="label-filter">Show Split By:&nbsp;</label>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+            <input type="radio" id="radio22" [attr.value]="2" (click)="categoryChange(2)" name="optradio1" />
+
+            <label for="radio22" >Up/Down/Power</label>
+        </div>
+
+        <div class="col-sm-12 col-xs-12">
+            
+            <input type="radio" id="radio11" [attr.value]="1" (click)="categoryChange(1)" name="optradio1" />
+
+            <label for="radio11" >Area</label>
+        </div>
+
+        <div id="stacked-column-chart-mob margin-top">
+            <ng-template [ngIf]="chartData">
+                <stacked-column-chart [chartData]="chartData"></stacked-column-chart>
+            </ng-template>
+        </div>
+        <div class="col-md-12">
+            <label class="label-filter">
+                Selected Criteria : Year from {{fromYearPrev}} to {{toYearPrev}}; Up/Down/Power = {{upDownPowerValue}} ; Area = {{areasSelected}};
+                Show Split By = {{showSplitBy}}
+            </label>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+            <button class="btn btn-primary btn-mob-width" (click)="exportGraph()">Export</button>
+        </div>
+    </div>
+</div>

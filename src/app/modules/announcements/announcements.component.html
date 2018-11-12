@@ -1,0 +1,130 @@
+<div class="divClass row bg-software-gray-1 indexing-header">
+  <div class="col-md-12 col-sm-12">
+    <div class="p-1 hidden-sm-down">
+      <h2 class="display-1 left-pad">
+        Announcements</h2>
+    </div>
+    <div class="p-1 hidden-md-up">
+      <h2 class="display-3 left-pad">
+        Announcements</h2>
+    </div>
+  </div>
+</div>
+<div class="row divClassNew hidden-sm-down">
+  <div class="col-md-4">
+    <h4 class='display-3 announcement-top-margin'>Published Announcements</h4>
+  </div>
+  <div class="col-md-8">
+    <button class="btn btn-primary float-xs-right btn-top-margin btn-mob-width" (click)="openCreateAnnouncementModal()">New Announcement</button>
+  </div>
+</div>
+<div class="row divClassNew hidden-md-up">
+  <div class="col-sm-12">
+    <button class="btn btn-primary float-xs-right btn-top-margin btn-mob-width" (click)="openCreateAnnouncementModal()">New Announcement</button>
+  </div>
+</div>
+<div class="row divClassNew hidden-md-up">
+  <div class="col-sm-12">
+    <h4 class='display-3 announcement-bottom-margin'>Published Announcements</h4>
+  </div>
+</div>
+
+<div *ngIf="notificationMessage.successMessage!=undefined">
+  <div class="divClassNew">
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span class="alert-text hidden-sm-down">{{notificationMessage.successMessage}}</span>
+      <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.successMessage}}</span>
+    </div>
+  </div>
+</div>
+<div *ngIf="notificationMessage.errorMessage">
+  <div class="divClassNew">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.errorMessage=''">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span class="alert-text hidden-sm-down">{{notificationMessage.errorMessage}}</span>
+      <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.errorMessage}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="divClassNew">
+  <div class="announcement-border-docs">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="table-responsive table-striped">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th width="18%" class="pointer" (click)="sortTitle()">
+                <span><span class="bold-text">Title</span>
+                  
+                  <span class="caret" *ngIf="!titleFlag"></span>
+                  <span class="caret caret-reversed" *ngIf="titleFlag"></span>
+                  <!-- <img  alt="" class="img-responsive" height="15" width="15" src="./assets/images/ico_arrow_up_01.svg"> -->
+                  <!-- <img *ngIf="!titleFlag" alt="" class="img-responsive" height="15" width="15" src="./assets/images/ico_arrow_down_01.svg"> -->
+                </span>
+                  
+                </th>
+                <th width="50%"><span class="bold-text">Description</span></th>
+                
+
+                <!-- <th width="12%" class="pointer">
+                  Valid From Date
+                  <i class="fa" [ngClass]="{'fa-sort': column != 'date', 
+                  'fa-sort-asc': (column == 'date' && !isDesc), 
+                  'fa-sort-desc': (column == 'date' && isDesc) }" aria-hidden="true"> </i>
+                </th> -->
+                <th width="18%" class="pointer" (click)="sortByDate()">
+                  <span class="bold-text">Valid Until Date</span>
+                  <span class="caret" *ngIf="!dateFlag"></span>
+                  <span class="caret caret-reversed" *ngIf="dateFlag"></span>
+                </th>
+                <th width="8%"></th>
+                <th width="8%"></th>
+              </tr>
+  
+  <tr *ngFor="let announcement of announcements">
+                <td>
+                  <a class="a-link" (click)="onEdit(announcement)">{{announcement.title}}</a>
+                </td>
+                <td [innerHTML]="announcement.body"></td>                
+                <!-- <td>{{announcement.fromDate | date: 'dd-MMM-yyy'}}</td> -->
+                <td [ngClass]="{'valid-until-date' : checkPreviousDate(this.announcement.expiryDate)==true}">{{announcement.expiryDate | date: 'dd-MMM-yyy'}}</td>
+                <td>
+                  <a (click)="onEdit(announcement)">
+                    <img class='img-responsive' height="25px" src="./assets/images/icons8-edit.svg" alt="Edit">
+                  </a>
+                </td>
+                <td>
+                  <a (click)="onDelete(announcement)">
+                    <img class='img-responsive' height="25px" src="./assets/images/icons8-trash.svg" alt="Delete">
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-12 col-sm-12 btn-invisible">
+  <button type="button" id='createAnnouncementModalBtn' class="btn btn-primary" data-toggle="modal" data-target="#createAnnouncementModal"
+    data-backdrop="static" data-keyboard="false"></button>
+  <button type="button" id='editAnnouncementModalBtn' class="btn btn-primary" data-toggle="modal" data-target="#editAnnouncementModal"
+    data-backdrop="static" data-keyboard="false"></button>
+</div>
+<div class="col-md-12 col-sm-12" style="display:none;">
+  <button type="button" id='deleteButton' class="btn btn-primary" data-toggle="modal" data-target="#showConfirmationModal">Open Generate Modal</button>
+</div>
+<create-edit-announcement [announcement]="announcement" [headerText]="headerText"(onCloseEvent)='onClose()' (onSaveEvent)='onSuccess($event)' (onErrorEvent)='onError($event)'></create-edit-announcement>
+<confirmation-modal [confirmationModal]='confirmationModal'  (onYesEvent)='onDeleteAnnouncement()'></confirmation-modal>
+
+<div class="divClass col-md-12 col-sm-12">
+   <pager *ngIf="announcements?.length>9" [allItems]="announcements"></pager>
+</div>

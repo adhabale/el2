@@ -1,0 +1,146 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12 hidden-sm-down">
+      <div class="row">
+        <div class="col-md-12">
+          <p style="font-size:12px;">
+            <span>For multiple values, select the first value then hold the control key down while selecting additional values</span>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label class="label-bold" for="ratingareaSelected">Rating Area</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.ratingAreas" [selectedItems]="searchCriteria.selectedSearchCriteria.ratingAreas"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.ratingAreas=$event"></multi-select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label class="label-bold" for="welltype">Well Type</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.wellTypes" [selectedItems]="searchCriteria.selectedSearchCriteria.wellTypes"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.wellTypes=$event"></multi-select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label class="label-bold" for="drillingstatus">Drilling Status</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.drillingStatues" [selectedItems]="searchCriteria.selectedSearchCriteria.drillingStatues"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.drillingStatues=$event"></multi-select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label class="label-bold" for="ugbo" data-toggle="tooltip" data-placement="right" title="Underground Blowout">UGBO</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.ugbo" [selectedItems]="searchCriteria.selectedSearchCriteria.ugbo"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.ugbo=$event"></multi-select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label class="label-bold" for="depth">Depth Category</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.depthCategories" [selectedItems]="searchCriteria.selectedSearchCriteria.depthCategories"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.depthCategories=$event"></multi-select>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <div class="form-group">
+            <label class="label-bold" for="PTD" data-toggle="tooltip" data-placement="right" title="Projected Total Depth">PTD</label>
+          </div>
+          <div class="form-group">
+            <label class="label-bold" for="min">Min</label>
+            <input [(ngModel)]="searchCriteria.selectedSearchCriteria.ptd.min" (focusout)="searchCriteria.selectedSearchCriteria.ptd.min = formatInput(searchCriteria.selectedSearchCriteria.ptd.min)" type="text" class="form-control" id="ptdMin"  allowDecimalNumber  >
+          </div>
+
+          <div class="form-group">
+            <br>
+          </div>
+
+          <div class="form-group">
+            <label class="label-bold" for="max">Max</label>
+            <input [(ngModel)]="searchCriteria.selectedSearchCriteria.ptd.max" (focusout)="searchCriteria.selectedSearchCriteria.ptd.max = formatInput(searchCriteria.selectedSearchCriteria.ptd.max)" type="text" class="form-control" id="ptdMax"   allowDecimalNumber  >
+          </div>
+
+          <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.ptd.min,searchCriteria.selectedSearchCriteria.ptd.max)">
+            Maximum PTD can not be Less than Minimum PTD
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="hidden-md-up">
+      <div class="row">
+        <div class="col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="label-bold" for="ratingareaSelected">Rating Area</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.ratingAreas" [selectedItems]="searchCriteria.selectedSearchCriteria.ratingAreas"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.ratingAreas=$event"></multi-select>
+          </div>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="label-bold" for="welltype">Well Type</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.wellTypes" [selectedItems]="searchCriteria.selectedSearchCriteria.wellTypes"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.wellTypes=$event"></multi-select>
+          </div>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="label-bold" for="drillingstatus">Drilling Status</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.drillingStatues" [selectedItems]="searchCriteria.selectedSearchCriteria.drillingStatues"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.drillingStatues=$event"></multi-select>
+          </div>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="label-bold" for="ugbo" data-toggle="tooltip" data-placement="right" title="Underground Blowout">UGBO</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.ugbo" [selectedItems]="searchCriteria.selectedSearchCriteria.ugbo"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.ugbo=$event"></multi-select>
+          </div>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="label-bold" for="depth">Depth Category</label>
+            <multi-select [availableItems]="searchCriteria.masterSearchData.depthCategories" [selectedItems]="searchCriteria.selectedSearchCriteria.depthCategories"
+              (updateSelectedItems)="searchCriteria.selectedSearchCriteria.depthCategories=$event"></multi-select>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="label-bold" for="PTD" data-toggle="tooltip" data-placement="right" title="Projected Total Depth">PTD</label>
+          </div>
+          <div class="form-group">
+            <label class="label-bold" for="min">Min</label>
+            <input [(ngModel)]="searchCriteria.selectedSearchCriteria.ptd.min"  type="text" class="form-control" id="ptdMin"  allowDecimalNumber  >
+          </div>
+          <div class="form-group">
+            <label class="label-bold" for="max">Max</label>
+            <input [(ngModel)]="searchCriteria.selectedSearchCriteria.ptd.max" type="text" class="form-control" id="ptdMax"  allowDecimalNumber  >
+          </div>
+
+          <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.ptd.min,searchCriteria.selectedSearchCriteria.ptd.max)">
+            Maximum PTD can not be Less than Minimum PTD
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 hidden-sm-down">
+        <div class="padding-button-footer">
+          <button type="button" id="btnBackwell" class="btn btn-secondary pull-left" (click)='onBack()' data-toggle="tab" href="#claim">Back</button>
+          <button type="button" id="btnContinuewell" class="btn btn-primary pull-right" (click)='onContinue()' data-toggle="tab" href="#costCategory"
+            [disabled]="onValidate(searchCriteria.selectedSearchCriteria.ptd.min,searchCriteria.selectedSearchCriteria.ptd.max) ">Continue</button>
+        </div>
+      </div>
+      <div class="col-sm-12 col-xs-12 hidden-md-up">
+        <div class="padding-button-footer">
+          <button type="button" id="btnContinuewell" class="btn btn-primary btn-mob" (click)='onContinueMob()' [disabled]="onValidate(searchCriteria.selectedSearchCriteria.ptd.min,searchCriteria.selectedSearchCriteria.ptd.max)">Continue</button>
+          <button type="button" id="btnBack" class="btn btn-secondary btn-mob-top" (click)='onBackMob()'>Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

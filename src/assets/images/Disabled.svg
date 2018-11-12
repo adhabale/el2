@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="76px" height="38px" viewBox="0 0 76 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Atoms / Form Controls / Custom / Switcher / Off / Disabled</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Form-Controls---Custom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-54.000000, -2503.000000)">
+        <g id="Atoms-/-Form-Controls-/-Custom-/-Switcher-/-Off-/-Disabled" transform="translate(54.000000, 2503.000000)">
+            <g>
+                <rect id="Background" fill="#D8D8D8" x="0" y="0" width="76" height="38"></rect>
+                <rect id="Switch" fill="#ECEDEE" x="3.8" y="3.8" width="30.3949323" height="30.4"></rect>
+                <text id="Label" font-family="NHaasGroteskTXStd-65Md, Neue Haas Grotesk Text Std" font-size="14" font-weight="500" letter-spacing="-0.39199999" fill="#FFFFFF">
+                    <tspan x="43.0666667" y="24">No</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

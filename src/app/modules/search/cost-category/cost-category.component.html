@@ -1,0 +1,149 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12 hidden-sm-down">
+      <p style="font-size:12px;">
+        <span>For multiple values, select the first value then hold the control key down while selecting additional values</span>
+      </p>
+    </div>
+    <div class="col-md-12 hidden-sm-down">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='10%'></th>
+              <th width='30%' data-toggle="tooltip" data-placement="top" title="Physical Damage Claims">PD Claim</th>
+              <th width='30%' data-toggle="tooltip" data-placement="top" title="Operators Extra Expense Claims">OEE Claim</th>
+              <th width='30%'>Total Claim</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <th>Actual</th>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.actualPDLiabCategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.actualPDLiabCategory=$event"></multi-select>
+              </td>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.actualOEECategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.actualOEECategory=$event"></multi-select>
+              </td>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.actualTotalCategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.actualTotalCategory=$event"></multi-select>
+              </td>
+            </tr>
+
+            <tr>
+              <th>Indexed</th>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.indexedPDLiabCategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.indexedPDLiabCategory=$event"></multi-select>
+              </td>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.indexedOEECategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.indexedOEECategory=$event"></multi-select>
+              </td>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.indexedTotalCategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.indexedTotalCategory=$event"></multi-select>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row hidden-md-up">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='10%'></th>
+              <th width='90%' data-toggle="tooltip" data-placement="top" title="Physical Damage Claims">PD Claim</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Actual</th>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.actualPDLiabCategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.actualPDLiabCategory=$event"></multi-select>
+              </td>
+            </tr>
+            <tr>
+              <th>Indexed</th>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.indexedOEECategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.indexedOEECategory=$event"></multi-select>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='10%'></th>
+              <th width='90%' data-toggle="tooltip" data-placement="top" title="Operators Extra Expense Claims">OEE Claim</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Actual</th>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.actualOEECategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.actualOEECategory=$event"></multi-select>
+              </td>
+            </tr>
+            <tr>
+              <th>Indexed</th>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.indexedOEECategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.indexedOEECategory=$event"></multi-select>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='10%'></th>
+              <th width='90%'>Total Claim</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Actual</th>
+              <td>
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.actualTotalCategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.actualTotalCategory=$event"></multi-select>
+              </td>
+            </tr>
+            <tr>
+              <th>Indexed</th>
+              <td>
+
+                <multi-select [availableItems]="searchCriteria.masterSearchData.lossAmountRanges" [selectedItems]="searchCriteria.selectedSearchCriteria.indexedTotalCategory"
+                  (updateSelectedItems)="searchCriteria.selectedSearchCriteria.indexedTotalCategory=$event"></multi-select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row hidden-sm-down">
+      <div class="col-md-12">
+        <div class="padding-button-footer">
+          <button type="button" id="btnBack" class="btn btn-secondary pull-left" (click)='onBack()' data-toggle="tab" href="#wellDetails">Back</button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden-md-up">
+      <div class="padding-button-footer">
+        <button type="button" id="btnBack" class="btn btn-secondary btn-mob-top" (click)='onBackMob()'>Back</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="hidden-sm-down">
+    <div class="input-field">
+      <input id="txtSearch" autocomplete="off" name="txtSearch" type="text" #search='ngModel' class="validate autocompleteList filter-input-box form-control" [(ngModel)]="selectedItem.key" (keyup)="onSearch()" (click)="showFilteredList=!showFilteredList" required>
+    </div>
+    <div *ngIf="showValidationMessage" class="alert alert-danger">
+      City is required.
+    </div> 
+    <div class="suggestions" *ngIf="filteredList !=null && filteredList.length > 0  && showFilteredList">
+      <ul class="none">
+        <li *ngFor="let item of filteredList" class='autocompleteList' (click)="onSelect(item)">
+          {{item.name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="hidden-md-up">
+    <div class="input-field">
+      <input id="txtSearch" autocomplete="off" name="txtSearch" type="text" #search='ngModel' class="validate autocompleteList filter-input-box form-control" [(ngModel)]="selectedItem.key" (keyup)="onSearch()" (click)="showFilteredList=!showFilteredList" required>
+    </div>
+     <div *ngIf="showValidationMessage" class="alert alert-danger">
+      City is required.
+    </div>
+
+    <div class="suggestions-mbl" *ngIf="filteredList !=null && filteredList.length > 0 && showFilteredList">
+      <ul class="none">
+        <li *ngFor="let item of filteredList" class='autocompleteList' (click)="onSelect(item)">
+          {{item.name}}
+        </li>
+      </ul>
+    </div>
+  </div>

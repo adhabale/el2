@@ -1,0 +1,114 @@
+<div *ngIf="this.allItems!=null && this.allItems!=undefined && this.allItems.length>0" class="pagination-margin">
+    <nav aria-label="...">
+        <ul class="pagination" *ngIf="totalPages<=10">
+
+            <li class="page-item" [ngClass]="{disabled:currentPageIndex === 1}" (click)="setPage(1)">
+                <a class="page-link" aria-label="First">
+                    <span ariahidden="true">&laquo; First</span>
+                </a>
+            </li>
+
+            <li class="page-item" [ngClass]="{disabled:currentPageIndex === 1}" (click)="setPage(currentPageIndex-1)">
+                <a class="page-link" aria-label="Previous">
+                    <span ariahidden="true">&laquo; Previous</span>
+                </a>
+            </li>
+
+            <li class="page-item" *ngFor="let pageIndex of pageRange" (click)="setPage(pageIndex)" [ngClass]="{'active':pageIndex===currentPageIndex}">
+                <a class="page-link">{{pageIndex}}
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+
+            <li class="page-item" [ngClass]="{disabled:currentPageIndex === totalPages}" (click)="setPage(currentPageIndex+1)">
+                <a class="page-link" aria-label="Next">
+                    <span ariahidden="true">Next &raquo;</span>
+                </a>
+            </li>
+
+            <li class="page-item" [ngClass]="{disabled:currentPageIndex === totalPages}" (click)="setPage(totalPages)">
+                <a class="page-link" aria-label="Last">
+                    <span ariahidden="true">Last &raquo;</span>
+                </a>
+            </li>
+
+        </ul>
+
+        <!--PAges more than 10 start-->
+        <div class="col-md-12" *ngIf="totalPages>10">
+            <ul>
+                <li class="page-item" [ngClass]="{disabled:currentPageIndex === 1}" (click)="setPage(1)">
+                    <a class="page-link" aria-label="First">
+                        <span ariahidden="true">&laquo; First</span>
+                    </a>
+                </li>
+
+                <li class="page-item" [ngClass]="{disabled:currentPageIndex === 1}" (click)="setPage(currentPageIndex-1)">
+                    <a class="page-link" aria-label="Previous">
+                        <span ariahidden="true">&laquo; Previous</span>
+                    </a>
+                </li>
+                <li class="page-item" (click)="setPage(1)" [ngClass]="{'active':1===currentPageIndex}">
+                    <a class="page-link">1
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="page-item" (click)="setPage(2)" [ngClass]="{'active':2===currentPageIndex}">
+                    <a class="page-link">2
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="page-item" (click)="setPage(3)" [ngClass]="{'active':3===currentPageIndex}">
+                    <a class="page-link">3
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <select class="form-control custom-width custom-select1" [ngClass]="{'active':selectedIndex===currentPageIndex}"  [(ngModel)]='selectedIndex' (change)="setPage(selectedIndex)">
+                        <option *ngFor='let pageIndex of pageRangeForLargeData;let i=index' [value]="pageIndex" >{{pageIndex}}</option>
+                    </select>
+                </li>
+
+
+                <li class="page-item" (click)="setPage(middle+1)" [ngClass]="{'active':(middle+1)===currentPageIndex}">
+                    <a class="page-link">{{middle+1}}
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="page-item" (click)="setPage(middle+2)" [ngClass]="{'active':(middle+2)===currentPageIndex}">
+                    <a class="page-link">{{middle+2}}
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="page-item" (click)="setPage(middle+3)" [ngClass]="{'active':(middle+3)===currentPageIndex}">
+                    <a class="page-link">{{middle+3}}
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="page-item" [ngClass]="{disabled:currentPageIndex === totalPages}" (click)="setPage(currentPageIndex+1)">
+                    <a class="page-link" aria-label="Next">
+                        <span ariahidden="true">Next &raquo;</span>
+                    </a>
+                </li>
+
+                <li class="page-item" [ngClass]="{disabled:currentPageIndex === totalPages}" (click)="setPage(totalPages)">
+                    <a class="page-link" aria-label="Last">
+                        <span ariahidden="true">Last &raquo;</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <!--pages more than 10 end-->
+              <!-- <div class="col-md-1  custom-width" *ngIf="totalPages>10">
+            Page&nbsp;
+            <select class="form-control" [(ngModel)]='currentPageIndex' (change)="setPage(currentPageIndex)">
+                <option *ngFor='let pageIndex of pageRange' [value]="pageIndex">{{pageIndex}}</option>
+            </select>
+            &nbsp;of&nbsp; {{totalPages}}
+        </div> -->
+
+    </nav>
+</div>

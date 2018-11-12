@@ -1,0 +1,47 @@
+.container {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 120px;
+}
+
+
+.k-overlay{
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.modal{
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    display: block;
+    width:500px;;
+    height:500px;
+    overflow:auto;
+    opacity: 1;
+}
+
+
+.overlay{
+    z-index:1050;
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width:100%;
+    height:100%;
+    z-index: 9999;
+    background-color:rgba(0,0,0,0.4);
+}

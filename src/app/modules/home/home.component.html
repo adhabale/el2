@@ -1,0 +1,63 @@
+<div class="divClass row bg-software-gray-1 indexing-header">
+    <div class="col-md-12 col-sm-12">
+        <div class="p-1 hidden-sm-down">
+            <h2 class="display-1 left-pad">
+                Welcome to the Energy Losses Database</h2>
+        </div>
+        <div class="p-1 hidden-md-up">
+            <h2 class="display-3 left-pad">
+                Welcome to the Energy Losses Database</h2>
+        </div>
+    </div>
+</div>
+<div class="divClassNew col-md-12 col-sm-12">
+    <h4 class='display-3 home-top-margin'>Latest Announcements</h4>
+    <div class="home-card-announcement card-inverse">
+        <div class="card-body" *ngFor="let announcement of announcements; let last=last;" >
+                <b class="card-text" [innerHTML]="announcement.title">
+                </b>
+            <p class="card-text" [innerHTML]="announcement.body">
+            </p>
+            <hr *ngIf="last==false">
+            
+        </div>
+        
+        <div class="home-card-no-announcement card-inverse" *ngIf="announcements?.length==0">
+        <div class="card-body" >
+            <p class="card-text">There are currently no active announcements.</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="divClassNew col-md-12 col-sm-12">
+    <div class="home-border-docs">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h4 class='display-3 home-top-margin'>Reference Documents</h4>
+                <div class="table-responsive table-striped">
+                    <table class="table-sm table-width">
+                        <tbody>
+                            <tr *ngFor="let document of documents; let i=index">
+                                <td>
+                                    <a href="javascript:void(0);" (click)="downloadDocument(document)">{{document.title}} </a>
+                                    <a><img class="img-responsive pull-right" src="./assets/images/icons8-download.svg" alt="" (click)="downloadDocument(document)"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>        
+    </div>  
+
+    <div class="">
+		<p class="custom-margin"><span class="reminder-text">Reminder:</span> By continuing to access this application, you have agreed to the 'Terms of Use', a copy of which is available from the 'Reference Documents'</p>
+        <h4 class=' display-3 home-top-margin'>Contact Us</h4>
+        <div class="home-card-announcement-contact">
+            <div class="card-body">
+                <span>For technical queries, please contact <a  [href]="'mailto:'+serviceDeskUrl" (click)="logContactUs(true)" >WTW Servicedesk.</a></span><br>
+                <span>For queries regarding the content of the Energy Losses application, please contact <a [href]="'mailto:'+contactsUsUrl" (click)="logContactUs(false)">Energy Losses SME. </a></span>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,189 @@
+.margin-set-left {
+    margin-left: 6px;
+}
+
+.margin-set-right {
+    margin-right: 6px;
+}
+
+.margin-set {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.margin-top{
+    margin-top: 20px;
+}
+.margin-left-p{
+    margin-left: 12px;
+}
+.divClass-margin{
+    margin-left: 20px;
+}
+.not-allowed {
+    cursor: not-allowed!important;
+}
+.btn-group button.btn {
+    background-color: white;
+    color: #585858;
+}
+.margin-top-moveUp{
+    margin-top: 90px;
+}
+.moveUp-btn-width{
+    width:121px
+}
+.margin-top-moveDown{
+    margin-top: 20px;
+}
+.btn-group>.btn:first-child {
+    margin-left: 25px;
+}
+.addButton-cls{
+    margin-top: 50px;
+    margin-left: 50px
+}
+.removeButton-cls{
+    margin-top: 140px;
+    margin-left: -40px
+}
+
+.btn-shift-dropdown{
+    margin-left: 40px;
+}
+.table thead th {
+    border-bottom: 0px solid #eceeef;
+}
+
+.table th,
+.table td {
+    border-top: 0px solid #eceeef;
+}
+/* CSS Mobile */
+.p-1-mob{
+    padding: 1rem 0rem;
+}
+/* End */
+.success-mob{
+    margin-left: -20px
+}
+.btn-mob-width{
+    width: 100%;
+    margin-bottom:20px;
+}
+.btn-mob-width-half{
+    width: 50%;
+    margin-bottom:20px;
+}
+.shift-mob-add{
+    margin-top: 0%;
+    margin-right: 20%;
+    margin-left: 50%;
+}
+.shift-mob-remove{
+    margin-top: 0%;
+    /* margin-bottom: 10%; */
+    margin-left: -35%;
+}
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    label {
+        font-size: 16px
+    }
+    .btn-group>.btn:first-child {
+        margin-left: -10px;
+    }
+    .btn-group button.btn {
+        margin-left: -10px;
+    }
+    .btn-shift-dropdown {
+        margin-left: 0px;
+    }
+    .btn-margins{
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width: 375px) and (min-width: 320px) {
+    .shift-mob-remove{
+        margin-top: 0%;
+        margin-left: -50%;
+    }
+}
+@media screen and (max-width: 425px) and (min-width:375px) {
+    .shift-mob-remove{
+        margin-top: 0%;
+        margin-left: -45%;
+    }
+}
+@media screen and (max-width: 575px) and (min-width: 425px) {
+    .shift-mob-remove{
+        margin-top: 0%;
+        margin-left: -40%;
+    }
+}
+
+.margin-reselect-btn {
+    margin:30px
+}
+
+.dropdown-item.highlightHover {
+    display: block;
+    width: 100%;
+    padding: 3px 2rem;
+    clear: both;
+    font-weight: normal;
+    color: #000;
+    text-align: inherit;
+    white-space: nowrap;
+    background: none;
+    border: 0;
+  }
+  
+  .dropdown-item.highlightHover:focus,
+  .dropdown-item.highlightHover:hover {
+      color: #fff;
+      text-decoration: none;
+      background-color: #444;
+  }
+
+  .export-btn
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.extend-left-pad {
+padding-left:45px;
+}
+
+.no-padding-right {
+padding-right:0px;
+}
+.no-padding-left {
+padding-left:0px;
+}
+
+.label-filter
+{
+padding-top: 8%;
+font-size: 20px;
+font-weight: 500;
+}
+
+.accordion .card-header {
+    border-bottom-width: 0px!important;
+    background-color:#fff!important;
+    color: #585858;
+}
+
+
+.caret-inverse{
+    margin-left: 12px;
+    border: solid #009ed1;
+    border-width: 0 2.3px 2.3px 0;
+    display: inline-block;
+    padding: 0rem 0.3rem 0.3rem 0rem;
+    background-position: 60.5% 57%;
+    transform: rotate(-135deg);
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    -webkit-transform: rotate(-135deg);
+  }

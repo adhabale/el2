@@ -1,0 +1,12 @@
+.custom-margin{
+    margin-top:30px;
+    margin-bottom: 50px;
+    }
+    .btn-mob-width{
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .table td {
+        border-top: 0px solid #eceeef;
+    }

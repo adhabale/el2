@@ -1,0 +1,359 @@
+<app-loader></app-loader>
+
+<!-- Masshead Desktop -->
+<!-- <nav class="navbar navbar-light navbar-sticky-top bg-software-gray-1 hidden-sm-down">
+    <a class="navbar-brand" href="#">
+        <img src="./assets/images/oneplaceHeader.PNG" class="d-inline-block align-top" alt="WTW" width="100%">
+         </a>
+</nav>
+Masshead Mobile
+<nav class="navbar navbar-light navbar-sticky-top  bg-software-gray-1 mobile-nav hidden-md-up ">
+    <a class="navbar-brand" href="#">
+        <img src="./assets/images/oneplaceHeader-mob.PNG" class="d-inline-block align-top" alt="WTW" width="100%">
+    </a>
+</nav> -->
+
+<span *ngIf="!isCustomReportPage" appInactivity (inactivityCallback)="handleUserInactivity()"></span>
+
+<div class="container-fluid">
+    <div class="row display-flex">
+        <!-- Mobile Navigation -->
+        <div class="col-md-12 col-sm-12 hidden-md-up" *ngIf='!isSessionOff'>
+            <div class="row">
+                <div id="btn-menu" class="navbar-dark">
+                    <button id="menu-btn" (click)="menuMobileToggle()" class="navbar-toggler closedtime" type="button" data-toggle="collapse"
+                        data-target="#exCollapsingNavbar" aria-controls="exCollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="nav-mobile-text hidden-md-up">Menu</span>
+                    </button>
+                </div>
+                <div class="col-md-12 col-sm-12 pp-2">
+                    <div class="collapse nav-mobile-collapse mobile-nav" id="exCollapsingNavbar">
+                        <div class="bg-white pp-1">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="nav-item li-pad">
+                                    <a class="nav-link li-a-mobile-padding" routerLink="home" routerLinkActive="active">
+                                        <span>Home</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item li-pad">
+                                    <a class="nav-link li-a-mobile-padding" routerLink="search" routerLinkActive="active">
+                                        <span>Search</span>
+                                    </a>
+                                </li>
+
+
+                                <li class="nav-item li-pad">
+                                    <a class="nav-link li-a-mobile-padding" routerLink="reports/overall-losses" routerLinkActive="active">
+                                        <span>Overall Losses</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item li-pad">
+                                    <a class="nav-link li-a-mobile-padding" routerLink="reports/oee-losses" routerLinkActive="active">
+                                        <span>OEE Losses</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item li-pad">
+                                    <a class="nav-link li-a-mobile-padding" routerLink="loss-data-dashboard" routerLinkActive="active">
+                                        <span>Visual Analytics</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item li-pad">
+                                    <a class="nav-link li-a-mobile-padding" routerLink="reports/custom" routerLinkActive="active">
+                                        <span>Custom Reports</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item li-pad" *ngIf='isSMELoggedIn || isSubscriberLoggedIn'>
+                                    <a class="nav-link li-a-mobile-padding" routerLink="loss-data-submission/loss-data-submission-history" routerLinkActive="active">
+                                        <span>Loss Data Submission</span>
+                                    </a>
+                                </li>
+                                <!-- <li class="nav-item li-pad" *ngIf='!isSubscriberLoggedIn'>
+                                    <a class="nav-link li-a-mobile-padding" routerLink="batch-job" routerLinkActive="active">
+                                        <span>Batch Job Upload</span>
+                                    </a>
+                                </li> -->
+
+                                <li class="nav-item li-pad" *ngIf='isSMELoggedIn'>
+                                    <a class="nav-link  appdrop dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
+                                        SME Data Management
+                                        <span class="caret"></span>
+                                    </a>
+                                </li>
+                                <ul class="no-padding">
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="eldm" routerLinkActive="active">
+                                            <span>EL Data Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="validate-loss-data-submission/validation-list" routerLinkActive="active">
+                                            <span>Validate Loss Data Submission</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="eldm-param-value" routerLinkActive="active">
+                                            <span>Parameter Value Management</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="announcements" routerLinkActive="active">
+                                            <span>Announcements</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="terms-of-use" routerLinkActive="active">
+                                            <span>Terms Of Use</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="reference-document" routerLinkActive="active">
+                                            <span>Reference Document</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <li class="nav-item li-pad" *ngIf='isAdminLoggedIn || isSMELoggedIn'>
+                                    <a class="nav-link  appdrop dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Admin
+                                        <span class="caret"></span>
+                                    </a>
+                                </li>
+                                <ul class="no-padding">
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="subscription-dashboard" routerLinkActive="active">
+                                            <span>Subscription Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="accounts" routerLinkActive="active">
+                                            <span>Subscription</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="activity-log" routerLinkActive="active">
+                                            <span>Activity Log</span>
+                                        </a>
+                                    </li>
+
+
+                                    <!--
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="doc-access" routerLinkActive="active">
+                                            <span>Parameter Maintenance</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="doc-folder" routerLinkActive="active">
+                                            <span>Validate User Access</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link  dropdown-text-mobile" routerLink="terms-of-use" routerLinkActive="active">
+                                            <span>Add/Remove Document</span>
+                                        </a>
+                                    </li> -->
+                                    <!-- <li class="nav-item">
+      <a class="nav-link  dropdown-text-mobile" routerLink="batch-job" routerLinkActive="active">
+          <span>Batch Job Upload</span>
+      </a>
+  </li> -->
+                                </ul>
+                                <li>
+                                    <hr>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Desktop -->
+        <div class="col-md-1 col-sm-2 hidden-sm-down app-navbar-padding" *ngIf='!isSessionOff'>
+            <div class="row">
+                <div class="nav-w-submenu-container">
+                    <ul class="nav nav-vertical nav-vertical-dark nav-pills nav-stacked sidenav-priority">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="home" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/home.svg" alt="">
+                                <span>Home</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="search" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/search.svg" alt="">
+                                <span>Search</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="reports/overall-losses" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/overall-losses.svg" alt="">
+                                <span>Overall Losses</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="reports/oee-losses" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/oee-losses.svg" alt="">
+                                <span>OEE Losses</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="loss-data-dashboard" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/Loss Data Dashboard.png" alt="">
+                                <span>Visual Analytics</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="reports/custom" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/report.svg" alt="">
+                                <span>Custom Reports</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" *ngIf='isSMELoggedIn || isSubscriberLoggedIn'>
+                            <a class="nav-link" routerLink="loss-data-submission/" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/Loss Data Submission-01.png" alt="">
+                                <span>Loss Data Submission</span>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" routerLink="eldm" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/report.svg" alt="">
+                                <span>EL Data Management</span>
+                            </a>
+                        </li> -->
+                        <!-- <li class="nav-item" *ngIf='!isSubscriberLoggedIn'>
+                            <a class="nav-link" routerLink="batch-job" routerLinkActive="active">
+                                <img class="dark-nav-img" src="./assets/images/icons8-add_database.svg" alt="">
+                                <span>Batch Job Upload</span>
+                            </a>
+                        </li> -->
+                        <li id="smeElem" #smeElem class="nav-item admin-nav" [ngClass]="activateSME?'activatedSME':''" data-for="sme-submenu " *ngIf='isSMELoggedIn'>
+                            <a class="nav-link">
+                                <img class="dark-nav-img" src="./assets/images/Fill 20.svg" alt="">
+                                <span>SME Data Management</span>
+                            </a>
+                        </li>
+                        <!--  -->
+
+                        <li id="adminElem" #adminElem class="nav-item admin-nav" [ngClass]="activateAdmin?'activatedAdmin':''" data-for="admin-submenu"
+                            *ngIf='isAdminLoggedIn || isSMELoggedIn'>
+                            <a class="nav-link">
+                                <img class="dark-nav-img" src="./assets/images/admin.svg" alt="">
+                                <span>Admin</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+
+
+                    <ul id="activeSme" #activeSme class="nav-vertical-dark nav-vertical-submenu nav-vertical-submenu-sme sme-submenu">
+                        <li class="clickable-li" routerLink="eldm">
+                            <a>
+                                <span>EL Data Management</span>
+                            </a>
+                        </li>
+                        <li class="clickable-li" routerLink="validate-loss-data-submission/validation-list">
+                            <a>
+                                <span>Validate Loss Data Submission</span>
+                            </a>
+                        </li>
+                        <li class="clickable-li" routerLink="eldm-param-value">
+                            <a>
+                                <span>Parameter Value Management</span>
+                            </a>
+                        </li>
+                        <li class="clickable-li" routerLink="update-index-file">
+                            <a>
+                                <span>Index File Maintenance</span>
+                            </a>
+                        </li>
+
+                        <li class="clickable-li" routerLink="announcements">
+                            <a>
+                                <span>Announcements</span>
+                            </a>
+                        </li>
+                        <li class="clickable-li" routerLink="terms-of-use">
+                            <a>
+                                <span>Terms Of Use</span>
+                            </a>
+                        </li>
+
+                        <li class="clickable-li" routerLink="reference-document">
+                            <a>
+                                <span>Reference Document</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul id="activeAdmin" #activeAdmin class="nav-vertical-dark nav-vertical-submenu nav-vertical-submenu-admin admin-submenu">
+                        <!-- <li>
+                            <a routerLink="disclaimers" routerLinkActive="active">
+                                <span>Subscription Dashboard</span>
+                            </a>
+                        </li> -->
+                        <li class="clickable-li" routerLink="subscription-dashboard">
+                            <a>
+                                <span>Subscription Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="clickable-li" routerLink="accounts">
+                            <a>
+                                <span>Subscription</span>
+                            </a>
+                        </li>
+                        <li class="clickable-li" routerLink="activity-log">
+                            <a>
+                                <span>Activity Log</span>
+                            </a>
+                        </li>
+
+
+                        <!--
+                           
+                        <li>
+                            <a routerLink="doc-access" routerLinkActive="active">
+                                <span>Parameter Maintenance</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="doc-folder" routerLinkActive="active">
+                                <span>Validate User Access</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="doc-folder" routerLinkActive="active">
+                                <span>Add/Remove Document</span>
+                            </a>
+                        </li> -->
+                        <!-- <li>
+                            <a routerLink="batch-job" routerLinkActive="active">
+                                <span>Batch Job Upload</span>
+                            </a>
+                        </li> -->
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11 col-sm-12">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <router-outlet></router-outlet>
+                    <div *ngIf='!isSessionOff'>
+                        <app-terms #termsOfUse></app-terms>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<app-footer></app-footer>
+<app-logout></app-logout>

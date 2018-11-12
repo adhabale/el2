@@ -1,0 +1,102 @@
+<div class="modal fade user-search-result" id='createAnnouncementModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button (click)="onClose()" id="closeBtn" type="button" class="close" data-dismiss="modal" arialabel="Close">
+          <span ariahidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">{{headerText}} Announcement</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="announcement!=undefined">
+            <div class="row">
+              <form name='announcementInfo' #announcementInfoForm="ngForm" novalidate>
+                  <div class="col-md-3">Title
+                      <span style='color:red;'>*</span></div>
+                  <div class="col-md-9 margin-10">  
+                     <input (ngModelChange)="onChangeText($event)" type="text"  class="form-control" name='title' #title="ngModel" autocomplete="off" [(ngModel)]='announcement.title' required/>
+                      
+                    <div *ngIf="isTitleInvalid" class="alert alert-danger alert-margin">
+                        Title is required.
+                    </div>
+                    <div *ngIf="charLimitTitle" class="alert alert-danger alert-margin">
+                        Max 75 characters allowed
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      Description
+                      <span style='color:red;'>*</span>
+                  </div>
+                  <div class="col-md-9 margin-10">
+                      <textarea (ngModelChange)="onChangeBody($event)" rows="4" name="body" #body="ngModel" class="form-control" [(ngModel)]='announcement.body' required></textarea>
+                      <div *ngIf="charLimitBody" class="alert alert-danger alert-margin">
+                        Max 400 characters are allowed
+                    </div> 
+
+                    <div *ngIf="isBodyInvalid" class="alert alert-danger alert-margin">
+                        Body is required.
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      Valid From
+                      <span style='color:red;'>*</span>
+                  </div>
+
+                  <div class="col-md-9 margin-10">
+                      <datepicker datepickerId="startDate" name="startDate" isRequired='true' [selectedDate]="announcement.fromDate | date: 'dd-MMM-yyy'" (dateChange)="setStartDate($event)"
+                      (dateFormatValidation)='checkStartDateFormat($event)'></datepicker>
+                      <div *ngIf="isStartDateInvalid " class="alert alert-danger alert-margin">
+                          Valid From Date is invalid.
+                       </div>
+                       <div *ngIf="checkPreviousDate(announcement.fromDate)" class="alert alert-danger alert-margin">
+                          You can not select past date.
+                       </div>
+                  </div>
+
+
+                  <div class="col-md-3">
+                      Valid Until
+                      <span style='color:red;'>*</span>
+                  </div>
+
+                  <div class="col-md-9 margin-10">
+                      <datepicker datepickerId="endDate" name="endDate" isRequired='true' [selectedDate]="announcement.expiryDate | date: 'dd-MMM-yyy'" (dateChange)="setEndDate($event)"
+                      (dateFormatValidation)='checkEndDateFormat($event)'></datepicker>
+                      <div *ngIf="isEndDateInvalid" class="alert alert-danger alert-margin">
+                          Valid Until Date is invalid.
+                       </div>
+                      <div *ngIf="checkDateValidation()" class="alert alert-danger">
+                          Valid From Date must be before Valid To Date.
+                           </div>
+                           <div *ngIf="checkDateDifference(announcement.fromDate,announcement.expiryDate)" class="alert alert-danger">
+                              Valid Until date can be selected max 1 year higher from the Valid From date.                                   </div>
+                               <div *ngIf="checkPreviousDate(announcement.expiryDate)" class="alert alert-danger alert-margin">
+                                You can not select past date.
+                             </div>
+                  </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+  
+        <button type="button"  class="btn btn-primary btn-block hidden-md-up" [disabled]="checkValidation()" (click)="onSave()"  name="continueButton">
+          Save
+        </button>
+        <button type="button" class="btn btn-secondary btn-block btn-mob-margin hidden-md-up" data-dismiss="modal" (click)="onClose()"
+          name="cancelButton">Cancel</button>
+        <button type="button" id="cancelBtn" class="btn btn-secondary hidden-sm-down margin-set-right" data-dismiss="modal" (click)="onClose()"
+          name="cancelButton">Cancel</button>
+        <button type="button" class="btn btn-primary hidden-sm-down margin-set-left" [disabled]="checkValidation()" (click)="onSave()"
+          name="continueButton">
+          Save
+        </button>
+        <button id='closeAccountSearchModal' type="button" hidden='true' data-dismiss="modal" name="continueButton">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

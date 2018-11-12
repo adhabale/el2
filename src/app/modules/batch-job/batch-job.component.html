@@ -1,0 +1,54 @@
+<div class="row well">
+
+    <div class="col-md-12">
+        <h2 class="display-1">File Upload</h2>
+    </div>
+
+</div>
+
+<div class="row top-padding">
+
+    <div class="col-md-12">
+        <div class="col=md-12">
+
+                <div *ngIf="notificationMessage.errorMessage">
+                        <div>
+                            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.errorMessage=''">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <span class="alert-text hidden-sm-down">{{notificationMessage.errorMessage}}</span>
+                                <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.errorMessage}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="notificationMessage.successMessage">
+                            <div>
+                                <div class="alert alert-success alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.successMessage=''">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <span class="alert-text hidden-sm-down">{{notificationMessage.successMessage}}</span>
+                                    <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.successMessage}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <input class="form-control" type="file" id="inputFile" (change)="fileUpload($event)">
+
+        </div>
+
+        <div class="col-md-6">
+
+            <button class="btn btn-primary upload-btn" (click)="uploadBatchFile()">Upload</button>
+
+        </div>
+
+    </div>
+
+</div>

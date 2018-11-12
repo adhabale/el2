@@ -1,0 +1,26 @@
+.suggestions{
+    background-color:#f4f4f4;
+    position:absolute;
+    z-index: 3;
+    width:53%;
+    height: 200px;
+    overflow-y: scroll;
+}
+.none li{
+   list-style-type: none;
+   white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+.none{
+    padding-left: 5px!important;
+}
+.suggestions-mbl{
+    background-color:#f4f4f4;
+    position:absolute;
+    z-index: 3;
+    width:50%;
+    height: 200px;
+    overflow-y: scroll;
+}

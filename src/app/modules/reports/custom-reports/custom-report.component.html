@@ -1,0 +1,330 @@
+<div *ngIf='!isReportGenerated'>
+  <div class="hidden-sm-down">
+    <div class="divClass row bg-software-gray-1 indexing-header">
+      <div class="col-md-12 col-sm-12">
+        <div class="p-1">
+          <h2 class="display-1 left-pad">
+            Custom Download Report </h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 margin-top">
+      <div class="row">
+        <div class="col-md-2 extend-left-pad no-padding-right">
+          <label class="label-filter">Saved Reports &nbsp;</label>
+        </div>
+
+        <div class="col-md-2 no-padding-left">
+          <div class="">
+            <select class="form-control" name='reportType' [(ngModel)]='selectedReport' (ngModelChange)="getSelectedReport($event)">
+              <option class="dropdown-item highlightHover" *ngFor="let report of savedReports" [ngValue]="report">{{report.reportName}}</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-secondary" [disabled]='selectedReport.reportName==null || selectedReport.reportName == undefined' (click)='openConfirmationModal("delete")'>Delete</button>
+        <button class="btn btn-primary float-xs-right margin-set-left" (click)='openConfirmationModal("generate")'>Generate</button>
+        <button class="btn btn-secondary float-xs-right margin-set" (click)="onUpdate('update')">Save</button>
+        <button class="btn btn-secondary float-xs-right margin-set-right" (click)="onReset()">Reset</button>
+      </div>
+      <div *ngIf="isSaved" class="margin-top">
+        <div class="alert alert-success alert-dismissible fade in divClass-margin" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isSaved=!isSaved">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <span class="alert-text">Report saved successfully.</span>
+        </div>
+      </div>
+      <div *ngIf="isDeleted" class="margin-top">
+        <div class="alert alert-success alert-dismissible fade in divClass-margin" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isDeleted=!isDeleted">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <span class="alert-text">Report Deleted successfully.</span>
+        </div>
+      </div>
+      <div *ngIf="isError" class="margin-top">
+        <div class="alert alert-danger alert-dismissible fade in divClass-margin" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isError=!isError">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <span class="alert-text">Please select at least 3 fields to display.</span>
+        </div>
+      </div>
+      <div *ngIf="isSaveError" class="margin-top">
+        <div class="alert alert-danger alert-dismissible fade in divClass-margin" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isSaveError=!isSaveError">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <span class="alert-text alert-text-mb">Please alter selected fields to create new report.</span>
+        </div>
+      </div>
+      <!-- Add/Remove Div-->
+      <div class="col-md-12 margin-top">
+        <div class="margin-left-p">
+          <p style="font-size:12px;">
+            <span>Choose up to 12 fields to include in the Custom Report.</span>
+            <br>
+            <span> For multiple values, select the first value then hold the shift or control key down while selecting additional values.</span>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="availableFields">Available Fields</label>
+            <select multiple class="form-control" [(ngModel)]="selectedSourceReportParameters" size='10'>
+              <option *ngFor="let report of sourceReportParameters" [ngValue]="report">{{report.displayName}}</option>
+            </select>
+          </div>
+        </div>
+        <div>
+        </div>
+        <div class="col-md-2">
+          <a *ngIf="(selectedSourceReportParameters.length + targetReportParameters.length)<13 && selectedSourceReportParameters.length >0">
+            <img src="./assets/images/ico_arrow_right_01.svg" width="40" height="30" class="d-inline-block" name="addReportsNameButton"
+              class="addButton-cls" (click)="onAdd()"> </a>
+          <a *ngIf="selectedSourceReportParameters.length==0 ">
+            <img src="./assets/images/ico_arrow_right_off_01.svg" width="40" height="30" class="d-inline-block" name="addReportsNameButton"
+              class="addButton-cls"> </a>
+          <a *ngIf="(selectedSourceReportParameters.length + targetReportParameters.length)>12" class="not-allowed">
+            <img src="./assets/images/ico_arrow_right_off_01.svg" width="40" height="30" class="d-inline-block" name="addReportsNameButton"
+              class="addButton-cls" data-toggle="tooltip" data-placement="top" title="You can add upto 12 reporting fields in one custom Report"> </a>
+          <a *ngIf="selectedTargetReportParameters.length>0">
+            <img src="./assets/images/ico_arrow_left_01.svg" width="40" height="30" class="d-inline-block" name="removeReportsNameButton"
+              class="removeButton-cls" (click)="onRemove()"> </a>
+          <a *ngIf="targetReportParameters.length==0 || selectedTargetReportParameters.length==0" class="not-allowed">
+            <img src="./assets/images/ico_arrow_left_off_01.svg" width="40" height="30" class="d-inline-block" name="removeReportsNameButton"
+              class="removeButton-cls"> </a>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group" *ngIf='targetReportParameters'>
+            <label for="selectedFields">Selected Fields ({{targetReportParameters.length}})</label>
+            <select multiple class="form-control" [(ngModel)]="selectedTargetReportParameters" size='10'>
+              <option *ngFor="let report of targetReportParameters" [ngValue]="report">{{report.displayName}} </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div>
+            <button type="button" [disabled]='(selectedTargetReportParameters) && selectedTargetReportParameters.length==0' class="btn btn-secondary margin-top-moveUp moveUp-btn-width"
+              (click)="onMoveUp()">Move Up</button>
+          </div>
+          <div>
+            <button type="button" [disabled]='(selectedTargetReportParameters) && selectedTargetReportParameters.length==0' class="btn btn-secondary margin-top-moveDown moveUp-btn-width"
+              (click)="onMoveDown()">Move Down</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Div for buttons -->
+  <div class="hidden-md-up">
+    <div class="divClass row bg-software-gray-1 indexing-header">
+      <div class="col-md-12 col-sm-12">
+        <div class="p-1-mob hidden-md-up">
+          <h2 class="display-3 left-pad">
+            Custom Download Report</h2>
+        </div>
+      </div>
+    </div>
+    <div class='row margin-top'>
+      <div class="col-md-12">
+        <label class="label-filter">Saved Reports &nbsp;</label>
+      </div>
+
+      <div class="col-md-12 ">
+        <select class="form-control" name='reportType' [(ngModel)]='selectedReport' (ngModelChange)="getSelectedReport($event)">
+          <option class="dropdown-item highlightHover" *ngFor="let report of savedReports" [ngValue]="report">{{report.reportName}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row margin-top">
+      <div class="col-md-12">
+          <button class="btn btn-block btn-secondary" [disabled]='selectedReport.reportName==null || selectedReport.reportName == undefined' (click)='openConfirmationModal("delete")'>Delete</button>
+      </div>
+    </div>
+    <div *ngIf="isSaved" class="success-mob margin-top">
+      <div class="alert alert-success alert-dismissible fade in divClass-margin" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isSaved=!isSaved">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <span class="alert-text alert-text-mb">Report saved successfully.</span>
+      </div>
+    </div>
+    <div *ngIf="isDeleted" class="margin-top">
+      <div class="alert alert-success alert-dismissible fade in divClass-margin" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isDeleted=!isDeleted">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <span class="alert-text alert-text-mb">Report Deleted successfully.</span>
+      </div>
+    </div>
+    <div *ngIf="isError" class="margin-top">
+      <div class="alert alert-danger alert-dismissible fade in divClass-margin" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isError=!isError">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <span class="alert-text alert-text-mb">Please select atleast 3 fields to display.</span>
+      </div>
+    </div>
+    <div *ngIf="isSaveError" class="margin-top">
+      <div class="alert alert-danger alert-dismissible fade in divClass-margin" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="isSaveError=!isSaveError">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <span class="alert-text alert-text-mb">Please alter selected fields to create new report.</span>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-secondary btn-mob-width margin-top" (click)="onReset()">Reset</button>
+    </div>
+    <div>
+      <button class="btn btn-secondary btn-mob-width" (click)="onUpdate('update')">Save</button>
+    </div>
+    <div>
+      <p style="font-size:14px;">
+        <span>Choose up to 12 fields to include in the Custom Report.</span>
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label for="availableFields">Available Fields</label>
+      <select multiple class="form-control" [(ngModel)]="selectedSourceReportParameters" size='10'>
+        <option *ngFor="let report of sourceReportParameters" [ngValue]="report">{{report.displayName}}</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <a *ngIf="(selectedSourceReportParameters.length + targetReportParameters.length)<13 && selectedSourceReportParameters.length >0">
+        <img src="./assets/images/ico_arrow_down_01.svg" width="40" height="30" class="d-inline-block" name="addReportsNameButton"
+          class="addButton-cls shift-mob-add" (click)="onAdd()"> </a>
+      <a *ngIf="selectedSourceReportParameters.length==0">
+        <img src="./assets/images/ico_arrow_down_off_01.svg" width="40" height="30" class="d-inline-block" name="addReportsNameButton"
+          class="addButton-cls shift-mob-add"> </a>
+      <a *ngIf="(selectedSourceReportParameters.length + targetReportParameters.length)>12" class="not-allowed">
+        <img src="./assets/images/ico_arrow_down_off_01.svg" width="40" height="30" class="d-inline-block" name="addReportsNameButton"
+          class="addButton-cls shift-mob-add" data-toggle="tooltip" data-placement="top" title="You can add upto 12 reporting fields in one custom Report"> </a>
+      <a *ngIf="selectedTargetReportParameters.length>0">
+        <img src="./assets/images/ico_arrow_up_01.svg" width="40" height="30" class="d-inline-block" name="removeReportsNameButton"
+          class="removeButton-cls shift-mob-remove" (click)="onRemove()"> </a>
+      <a *ngIf="targetReportParameters.length==0 || selectedTargetReportParameters.length==0" class="not-allowed">
+        <img src="./assets/images/ico_arrow_up_off_01.svg" width="40" height="30" class="d-inline-block" name="removeReportsNameButton"
+          class="removeButton-cls shift-mob-remove"> </a>
+    </div>
+    <div class="form-group" *ngIf='targetReportParameters'>
+      <label for="selectedFields">Selected Fields ({{targetReportParameters.length}})</label>
+      <select multiple class="form-control" [(ngModel)]="selectedTargetReportParameters" size='10' id="b">
+        <option *ngFor="let report of targetReportParameters" [ngValue]="report">{{report.displayName}}  </option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-xs-6">
+        <button type="button" [disabled]='(selectedTargetReportParameters) && selectedTargetReportParameters.length==0' class="btn btn-secondary btn-mob-width"
+          (click)='onMoveUp()'>Move Up</button>
+      </div>
+      <div class="col-sm-6 col-xs-6">
+        <button type="button" [disabled]='(selectedTargetReportParameters) && selectedTargetReportParameters.length==0' class="btn btn-secondary btn-mob-width"
+          (click)='onMoveDown()'>Move Down</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-mob-width" (click)='openConfirmationModal("generate")'>Generate</button>
+
+  </div>
+  <!-- Mobile Div End -->
+
+  <!--Hidden Button For SearchModal-->
+  <div class="col-md-12 col-sm-12" style="display:none;">
+    <button type="button" id='reportSearchModalBtn' class="btn btn-primary" data-toggle="modal" data-target="#showConfirmationModal">Open Generate Modal</button>
+  </div>
+
+  <!--Hidden Button For SaveModal-->
+  <div class="col-md-12 col-sm-12" style="display:none;">
+    <button type="button" id='saveCriteriaModalBtn' class="btn btn-primary" data-toggle="modal" data-target="#showSaveCriteriaModal">Open Save Criteria Modal</button>
+  </div>
+
+  <!-- Save Report Modal -->
+  <save-report [reports]='savedReports' [reportParameters]='targetReportParameters' (onSuccessEvent)="onSave($event)"></save-report>
+
+  <!-- Delete Confirmation -->
+  <div *ngIf='confirmationModal && (confirmationModal.headerMessage == "Delete Report")'>
+    <confirmation-modal [confirmationModal]='confirmationModal' (onYesEvent)='onDelete()'></confirmation-modal>
+  </div>
+
+  <!-- Generate Report Confirmation -->
+  <div *ngIf='confirmationModal && (confirmationModal.headerMessage == "Save Report")'>
+    <confirmation-modal [confirmationModal]='confirmationModal' (onYesEvent)='onUpdate("generate")' (onNoEvent)='generateReport()'></confirmation-modal>
+  </div>
+</div>
+
+<!-- Genereated Report View -->
+<div *ngIf='isReportGenerated'>
+  <div class="divClass row bg-software-gray-1 indexing-header">
+    <div class="col-md-12 col-sm-12">
+      <div class="p-1">
+        <h2 class="display-1 hidden-sm-down left-pad">
+          Custom Download Report</h2>
+        <h2 class="display-1 hidden-md-up left-pad">
+          Custom Download Report</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 col-sm-12">
+      <div class="col-md-3 hidden-sm-down">
+        <button class='btn btn-primary pull-xs-left margin-reselect-btn' (click)='onReselect()'>Reselect Custom Report Fields</button>
+      </div>
+      <div class="margin-top hidden-md-up">
+        <button class='btn btn-primary btn-block' (click)='onReselect()'>Reselect Custom Report Fields</button>
+      </div>
+      <div class="col-md-2 pull-xs-left margin-reselect-btn">
+        <div  id="summary"  class="accordion"  role="tablist"  ariamultiselectable="true">
+          <div  class="">
+            <a  id="summaryHeading"  class="card-header collapsed"  role="tab"  data-toggle="collapse"  data-parent="#summary"  href="#summaryCollapse"
+              aria-expanded="false"  aria-controls="summaryCollapse" (click)="caretToggle()">
+              Summary
+              <span [ngClass]="isCaretToggle?'caret':'caret-inverse'" ></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <search-summary></search-summary>
+  </div>
+
+  <div class='hidden-sm-down'>
+    <div class="row">
+      <div class="col-md-12">
+        <button data-toggle="modal" data-target="#exportReportModal" class="btn btn-primary export-btn pull-right">Export</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden-md-up">
+    <div class="row">
+      <div class="col-md-12 margin-top">
+        <button data-toggle="modal" data-target="#exportReportModal" class="btn btn-primary btn-block">Export</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <report-viewer [sourceItems]="reportItems" [selectedReport]="selectedReportConfiguration" [customReportName]='selectedReport.reportName' reportType="Custom"></report-viewer>
+  </div>
+  <div class="hidden-sm-down">
+    <div class="col-md-12 col-sm-12">
+      <div class="col-md-12">
+        <p>Please note that the entries in this database have been obtained from a variety of sources. Willis Limited does not
+          accept any reponsiblity for the accuracy or completeness of the information contained herein.</p>
+        <span class="pull-right">Produced: {{ currentDate | date: 'dd-MMM-yyy'}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="hidden-md-up">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <p>Please note that the entries in this database have been obtained from a variety of sources. Willis Limited does not
+          accept any reponsiblity for the accuracy or completeness of the information contained herein.</p>
+        <span class="pull-right">Produced: {{ currentDate | date: 'dd-MMM-yyy'}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+<select class="form-control" tabindex="{{tabIn}}" multiple [compareWith]="compareFn" [(ngModel)]="selectedItems" (change)="onItemSelect()">
+    <option *ngFor="let item of availableItems" [disabled]="isDisabled(item)" [value]="item" [selected]="isSelected(item)">{{item.displayName}}</option>
+</select>

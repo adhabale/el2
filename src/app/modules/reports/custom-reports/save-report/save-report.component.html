@@ -1,0 +1,45 @@
+<div class="col-md-12 margin-top">
+  <div class="modal fade search-modal" id='showSaveCriteriaModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button id='closeSaveModalBtn' type="button" class="close" data-dismiss="modal" (click)='onClose()' arialabel="Close">
+            <span ariahidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Save Report</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="row">
+                <div class="col-md-12 p-top-bottom">
+                  <div class="table-responsive addSubTableHeight table-container">
+                    <label>Report Name</label>
+                    <div class="form-group">
+                      <input type="text" #name="ngModel" autocomplete="off" [(ngModel)]="saveReport.reportName" class="form-control input-width"
+                        name="criteriaName" placeholder="Report Name" (input)='checkInputValidation()' required>
+                    </div>
+                    <div *ngIf="isReportNameInvalid" class="alert alert-danger">
+                      Report Name is required.
+                    </div>
+                    <div *ngIf="isReportNameDuplicate && !isReportNameInvalid" class="alert alert-danger">
+                      The report name already exists, please choose another name.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary margin-set-left" style="margin-right:6px" data-dismiss="modal" name="cancelButton"
+            (click)='onClose()'>Cancel</button>
+          <button type="button" [disabled]="isReportNameDuplicate" class="btn btn-primary margin-set-right" style="margin-right:6px"
+            name="saveButton" (click)="onSave()">Save</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

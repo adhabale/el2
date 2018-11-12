@@ -1,0 +1,25 @@
+/*Pagination CSS */
+.page-link {
+    cursor: pointer;
+}
+
+.page-link:hover {
+    color: black;
+    background-color: white;
+}
+.custom-width{
+    width:80px ;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+.pagination-margin{
+    margin-top: 10px;
+}

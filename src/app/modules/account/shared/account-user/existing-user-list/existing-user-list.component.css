@@ -1,0 +1,130 @@
+/* Modal CSS*/
+.modal-label{
+    font-size: 14px;
+    font-weight: 400 !important; 
+}
+.modal-form-margin-top  label{
+    font-size: 12px;
+    font-weight: 400 !important; 
+}
+.modal-data{
+    font-size: 14px;
+    font-weight: 600;
+}
+/* */
+.margin-top {
+    margin-top: 20px;
+}
+
+.padding-top-bottom {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.table th {
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+a.expandLink {
+    color: #00455b;
+    /*text-decoration: underline;*/
+    cursor: pointer;
+}
+
+a.expandLink:hover {
+    color: #00455b;
+    /*text-decoration: underline;*/
+    cursor: pointer;
+}
+
+.hiddenRow {
+    padding: 0 !important;
+}
+
+.table.acc-open th,
+.table.acc-open td {
+    border-top: 0px solid #eceeef;
+}
+
+.table.acc th,
+.table.acc td {
+    vertical-align: middle;
+}
+
+.modal-form-margin-top {
+    margin-top: 15px;
+}
+
+.modal-form-margin-top label {
+    font-size: 12px;
+}
+
+.btn-desktop-margin {
+    margin-top: 31px;
+    margin-right: 15px;
+}
+
+.table.table-modal th,
+.table.table-modal td {
+    border-top: 0px solid #eceeef;
+}
+
+.padding-modal {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.margin-set-left {
+    margin-left: 6px;
+}
+
+.margin-set-right {
+    margin-right: 6px;
+}
+
+.margin-set {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.addBtn {
+    margin-right: 8.5%;
+    margin-top: 20px;
+}
+
+.alert-text.alert-text-mb {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-right: 0.5rem;
+}
+.caret-inverse{
+    transform: rotate(180deg);
+}
+
+.addSubTableHeight {
+    height: 350px;
+}
+
+.btn-margin-left {
+    margin-left: 6px;
+}
+
+.btn-margin-right {
+    margin-right: 6px;
+}
+
+.btn-desktop-margin {
+    margin-top: 31px;
+    margin-right: 15px;
+}
+/*Angular-switch CSS*/
+.switch-width {
+    width: 72px;
+}
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .switch-width {
+        width: 72px;
+    }
+}

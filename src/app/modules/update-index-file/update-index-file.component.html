@@ -1,0 +1,100 @@
+<div class="row bg-software-gray-1 indexing-header">
+    <div class="col-md-12 col-sm-12">
+        <div class="p-1 hidden-sm-down">
+            <h2 class="display-1 left-pad">
+                Index File Maintenance</h2>
+        </div>
+        <div class="p-1 hidden-md-up">
+            <h2 class="display-3 left-pad">
+                Index File Maintenance</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row margin-20 hidden-sm-down">
+    <div class="col-md-2">
+        <label>Current Year Index:</label>
+    </div>
+    <div class="col-md-3">
+        <input type="text" class=" form-control" [(ngModel)]="currentIndex" decimalNumber>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary " (click)="onSave(currentIndex)" [disabled]="!currentIndex">Save</button>
+    </div>
+    <div class="col-md-5">
+        <button class="btn btn-secondary btn-float btn-margin" (click)="onExport()">Export</button>
+    </div>
+</div>
+
+<div class="row hidden-md-up">
+    <div class="col-sm-12 col-xs-12">
+        <label>Current Year Index:</label>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <input type="number " class=" form-control" [(ngModel)]="currentIndex" decimalNumber>
+    </div>
+    <div class="col-sm-12 col-xs-12"></div>
+    <div class="col-sm-12 col-xs-12 margin-10">
+
+        <button class="btn btn-primary btn-width" [disabled]="!currentIndex" (click)="onSave(currentIndex)" >Save</button>
+        <button class="btn btn-secondary btn-width margin-10">Export</button>
+    </div>
+</div>
+
+<div class="row margin-20">
+    <div class="col-md-12 table-responsive">
+        <table class="table table-sm">
+            <tr>
+                <th>Year</th>
+                <th>Index</th>
+                <th>Factor</th>
+            </tr>
+            <tr *ngFor='let item of updateIndexPager; let i=index'>
+                <td>
+                    {{item.year}}
+                </td>
+                <td>{{item.index}}</td>
+                <td>{{item.factor}}</td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="divClass col-md-12 col-sm-12">
+            <pager [allItems]="updateIndex" [pageSize]='20' (onPageChange)="onPageChange($event)" ></pager>
+        </div>
+
+</div>
+
+
+<div class="col-md-8" class="hidden-sm-down">
+    <div class="margin-20">
+        <table class="table table-new">
+            <tbody>
+                <td width="70%">
+                    <textarea  id="editor" name="body" class="form-control editor" disabled="false" [(ngModel)]="ReportText">
+                        {{ReportText}}
+                    </textarea>
+                </td>
+                <td>
+                    <button class="btn btn-secondary" *ngIf="toggleEdit" (click)="edit()">Edit</button>
+                    <button class="btn btn-primary" *ngIf="!toggleEdit" (click)="save(ReportText)">Save</button>
+                </td>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-sm-12 col-xs-12" class="hidden-md-up">
+    <div class="margin-20">
+        <div class="margin-10">
+            <textarea  id="editor" name="body" class="form-control editor" disabled="false" [(ngModel)]="ReportText">
+                    {{ReportText}}
+
+            </textarea>
+        </div>
+        <div class="margin-10">
+            <button class="btn btn-secondary btn-width" *ngIf="toggleEdit" (click)="edit()">Edit</button>
+            <button class="btn btn-primary btn-width" *ngIf="!toggleEdit" (click)="save(ReportText)">Save</button>
+        </div>
+    </div>
+</div>

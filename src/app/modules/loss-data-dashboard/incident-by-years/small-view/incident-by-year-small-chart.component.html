@@ -1,0 +1,45 @@
+<div class="bordered-card">
+  <div class="padding-7">
+    <span class="font">Incidents By Year</span>
+    <a class="floating" (click)="onExpand()">Expand
+      <span>
+        <i class="fal fa-expand-alt"></i>
+      </span>
+    </a>
+  </div>
+  <ng-template [ngIf]="chartData">
+    <stacked-column-chart [chartData]="chartData"></stacked-column-chart>
+  </ng-template>
+</div>
+
+
+<div class="modal fade user-search-result" id='maximize-incident-graph' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="col-md-10">
+          <h4 class="modal-title">Incidents By Year</h4>
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <incident-by-year-large-chart></incident-by-year-large-chart>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-12 col-sm-12 btn-invisible">
+  <button type="button" id='incidentByYearBtn' class="btn btn-primary" data-toggle="modal" data-target="#maximize-incident-graph"
+    data-backdrop="static" data-keyboard="false"></button>
+</div>

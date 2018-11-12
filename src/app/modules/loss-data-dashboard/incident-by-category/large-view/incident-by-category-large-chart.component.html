@@ -1,0 +1,153 @@
+<div class="hidden-sm-down">
+    <div class="row">
+        <div class="table-responsive table-container">
+            <table class="table">
+                <tr>
+                    <td style="width: 30px">
+                        <label class="label-filter">From&nbsp;</label>
+                    </td>
+                    <td style="width: 110px">
+                        <select class="form-control" name='fromYear' [(ngModel)]='chartFilter.fromYear' (change)="onYearChangeFrom(chartFilter.fromYear)">
+                            <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="chartFilter.fromYear > chartFilter.toYear">{{year}}</option>
+                        </select>
+                    </td>
+                    <td style="width: 30px">
+                        <label class="label-filter">To&nbsp;</label>
+                    </td>
+                    <td style="width: 110px">
+                        <select class="form-control" name='toYear' [(ngModel)]='chartFilter.toYear' (change)="onYearChangeTo(chartFilter.toYear)">
+                            <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="year < chartFilter.fromYear">{{year}}</option>
+                        </select>
+                    </td>
+                    <td style="width: 100px">
+                        <label class="label-filter">Up/Down/Power&nbsp;</label>
+                    </td>
+                    <td style="width: 150px">
+                        <select class="form-control" name='Up/Down/Power' [(ngModel)]='chartFilter.upDownPowerStreamId' (change)="onUpDownPowerChange(chartFilter.upDownPowerStreamId)">
+                            <option class="dropdown-item highlightHover" *ngFor="let upDownPower of chartLookup.upDownPowerStream" [value]="upDownPower.id">{{upDownPower.displayName}}</option>
+                        </select>
+                    </td>
+                    <td style="width: 100px" *ngIf="chartFilter.isCategory1Selected">
+                        <label class="label-filter">Category 1&nbsp;</label>
+                    </td>
+                    <td *ngIf="chartFilter.isCategory1Selected" style="width: 150px">
+                        <multi-select-auto-completer  [items]="chartLookup.category1" [selectedItems]="selectedItems" (onItemSelect)="onItemSelect($event)"
+                            (onItemRemove)="onItemRemove($event)"></multi-select-auto-completer>
+                    </td>
+                    <td style="width: 100px" *ngIf="!chartFilter.isCategory1Selected">
+                        <label class="label-filter">Category 2&nbsp;</label>
+                    </td>
+                    <td *ngIf="!chartFilter.isCategory1Selected" style="width: 150px">
+                        <multi-select-auto-completer  [items]="chartLookup.category2" [selectedItems]="selectedItems" (onItemSelect)="onItemSelect($event)"
+                            (onItemRemove)="onItemRemove($event)"></multi-select-auto-completer>
+                    </td>
+                    <td style="width: 120px">
+                        <label class="label-filter">Show Split By:&nbsp;</label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" id="radio3" checked  (click)="categoryChange(3)" name="optradio4" />&nbsp;Category 1
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" id="radio4"  (click)="categoryChange(4)" name="optradio4" />&nbsp;Category 2
+                        </label>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary float-xs-right" (click)="exportGraph()">Export</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="chart-incident-by-category">
+            <ng-template [ngIf]="chartData">
+                <pie-chart1 [chartData]="chartData"></pie-chart1>
+            </ng-template>
+        </div>
+        <div class="col-md-12">
+            <label class="label-filter">
+                    Selected Criteria : Year from {{fromYearPrev}} to {{toYearPrev}}; Up/Down/Power = {{upDownPowerValue}} ; Show Split By = {{showSplitBy}}
+            </label>
+        </div>
+    </div>
+</div>
+<canvas id="canvas" width="1215px" height="400px" style="display:none"></canvas>
+
+
+<div *ngIf="false" class="hidden-md-up">
+    <div class="col-sm-12 col-xs-12">
+        <hr>
+        <h5>Incident By Category</h5>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <label class="label-filter">From&nbsp;</label>
+        <div class="" role="group">
+            <select class="form-control" name='fromYear' [(ngModel)]='chartFilter.fromYear' (change)="onYearChangeFrom(chartFilter.fromYear)">
+                <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="chartFilter.fromYear > chartFilter.toYear">{{year}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <label class="label-filter">To&nbsp;</label>
+        <div class="" role="group">
+            <select class="form-control" name='toYear' [(ngModel)]='chartFilter.toYear' (change)="onYearChangeTo(chartFilter.toYear)">
+                <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="year < chartFilter.fromYear">{{year}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-xs-12">
+        <label class="label-filter">Up/Down/Power&nbsp;</label>
+        <div class="" role="group">
+            <select class="form-control" name='Up/Down/Power' [(ngModel)]='chartFilter.upDownPowerStreamId' (change)="onUpDownPowerChange(chartFilter.upDownPowerStreamId)">
+                <option class="dropdown-item highlightHover" *ngFor="let upDownPower of chartLookup.upDownPowerStream" [value]="upDownPower.id">{{upDownPower.displayName}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div *ngIf="chartFilter.isCategory1Selected" class="col-sm-12 col-xs-12">
+        <label class="label-filter">Category 1&nbsp;</label>
+        <div class="" role="group">
+            <multi-select-auto-completer  [items]="chartLookup.category1" [selectedItems]="selectedItems" (onItemSelect)="onItemSelect($event)"
+                (onItemRemove)="onItemRemove($event)"></multi-select-auto-completer>
+        </div>
+    </div>
+
+    <div *ngIf="!chartFilter.isCategory1Selected" class="col-sm-6 col-xs-6">
+        <label class="label-filter">Category 2&nbsp;</label>
+        <div class="" role="group">
+            <multi-select-auto-completer  [items]="chartLookup.category2" [selectedItems]="selectedItems" (onItemSelect)="onItemSelect($event)"
+                (onItemRemove)="onItemRemove($event)"></multi-select-auto-completer>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-xs-12 margin-top">
+        <div>
+            <label class="label-filter">Show Split By:&nbsp;</label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" id="radio33" [attr.value]="3" (click)="categoryChange(3)" name="optradiomob" />&nbsp;Category 1
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" id="radio44" [attr.value]="4" (click)="categoryChange(4)" name="optradiomob" />&nbsp;Category 2
+            </label>
+        </div>
+    </div>
+    <div id="chart-incident-by-category">
+        <ng-template [ngIf]="chartData">
+            <pie-chart1 [chartData]="chartData"></pie-chart1>
+        </ng-template>
+    </div>
+    <div class="col-md-12">
+        <label class="label-filter">
+            Selected Criteria : Year from {{fromYearPrev}} to {{toYearPrev}}; Up/Down/Power = {{upDownPowerValue}} ; Show Split By = {{showSplitBy}}
+        </label>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <button class="btn btn-primary btn-width-mob" (click)="exportGraph()">Export</button>
+    </div>
+</div>

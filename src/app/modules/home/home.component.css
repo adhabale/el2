@@ -1,0 +1,193 @@
+hr {
+    border-top: 1px solid white;
+}
+.card-text:first-of-type {
+    margin-top: 0.5rem;
+}
+.table-width{
+    width: 100%;
+}
+
+.home-top-margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.home-card-announcement {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+    padding: 10px 10px 20px 10px;
+    max-height: 220px;
+    overflow-y: auto;
+    /* background-color: #f3f3f3;
+    border: 0 solid rgba(0, 0, 0, 0.125); */
+}
+
+.home-card-announcement-contact {
+    position: relative;
+    display: block;
+    margin-bottom: 30px;
+    padding: 10px 10px 20px 0px;
+    /* background-color: #f3f3f3;
+    border: 0 solid rgba(0, 0, 0, 0.125); */
+}
+
+.home-card-no-announcement
+{
+    padding: 10px;
+    position: relative;
+    display: block;
+}
+
+.home-border-docs {
+    border: 0px solid rgba(0, 0, 0, 0.125);
+}
+
+a.home-link {
+    color: #00455b;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a.home-link:hover {
+    color: #00455b;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.home-card-documents {
+    position: relative;
+    display: block;
+    margin-bottom: 0.75rem;
+    padding: 0px 10px 2px 10px;
+    background-color: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.125);
+}
+
+.table td {
+    color: #444;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.reminder-text
+{
+font-weight:500px;	
+}
+
+.custom-margin
+{
+		margin-top:30px;
+}
+
+/* CSS FOR Correct Positioning */
+
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+    .divClassNew {
+        padding-left: 50px;
+    }
+}
+@media screen and (max-width: 1440px) and (min-width: 1024px) {
+    .divClassNew {
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width: 806px) and (min-width: 769px) {
+    .left-pad {
+        padding-left: 30px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .divClass {
+        padding-left: 50px;
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 1380px) and (min-width: 1025px) {
+    .col-md-1 {
+        width: 7.3%;
+    }
+    .col-md-11 {
+        width: 92.7%;
+    }
+}
+
+@media screen and (max-width: 1399px) and (min-width: 1381px) {
+    .col-md-1 {
+        width: 7.0%;
+    }
+    .col-md-11 {
+        width: 93.0%;
+    }
+}
+
+@media screen and (max-width: 1599px) and (min-width: 1399px) {
+    .col-md-1 {
+        width: 6.4%;
+    }
+    .col-md-11 {
+        width: 93.6%;
+    }
+}
+
+@media screen and (max-width: 1699px) and (min-width: 1600px) {
+    .col-md-1 {
+        width: 5.8%;
+    }
+    .col-md-11 {
+        width: 94.2%;
+    }
+}
+
+@media screen and (max-width: 1850px) and (min-width: 1700px) {
+    .col-md-1 {
+        width: 5.5%;
+    }
+    .col-md-11 {
+        width: 94.5%;
+    }
+}
+
+@media screen and (max-width: 2299px) and (min-width: 1851px) {
+    .col-md-1 {
+        width: 4.5%;
+    }
+    .col-md-11 {
+        width: 95.5%;
+    }
+}
+
+@media screen and (max-width: 2900px) and (min-width: 2300px) {
+    .col-md-1 {
+        width: 3.8%;
+    }
+    .col-md-11 {
+        width: 96.2%;
+    }
+}
+
+@media screen and (min-width: 2901px) {
+    .col-md-1 {
+        width: 3.2%;
+    }
+    .col-md-11 {
+        width: 96.8%;
+    }
+}
+
+
+/* -Placeholder Image- */
+
+.nav-vertical .nav-link img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 2.0rem;
+}
+
+
+/* -- */

@@ -1,0 +1,374 @@
+<div class="row">
+    <div  id="summaryCollapse"  class="collapse summary top-margin divClass-margin"  role="tabpanel"  arialabelledby="summaryHeading">
+        <div  class="card-block max-height">
+            <div  class="row margin-bottom" id="yearoflossSummary" *ngIf="searchCriteria.selectedSearchCriteria.yearOfLoss.length !=0">
+                <div  class="col-md-2 col-sm-12">
+                    <div class="chip-category">
+                        Year of Loss
+                        <span class="closebtn-category" (click)="removeAllSelectedYear()">&times;</span>
+                    </div>
+
+                </div>
+                <div  class="col-md-10 col-sm-12">
+                    <div class="tag tag-pill tag-info tag-margin-right" *ngFor="let year of searchCriteria.selectedSearchCriteria.yearOfLoss">
+                        {{year.value}}
+                        <span class="closebtn" (click)="removeSelectedYear(year)">&times;</span>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div *ngIf="searchCriteria.selectedSearchCriteria.area != undefined && searchCriteria.selectedSearchCriteria.country != 'undefined' && 
+            searchCriteria.selectedSearchCriteria.gomArea != undefined && searchCriteria.selectedSearchCriteria.usLocationCode != undefined &&
+            searchCriteria.selectedSearchCriteria.landOffShore.displayName != undefined && searchCriteria.selectedSearchCriteria.location">
+             -->
+            <div *ngIf="searchCriteria !undefined">
+                <div  class="row margin-bottom" id="locationSummary" *ngIf="searchCriteria.selectedSearchCriteria.area[0].displayName != 'All Areas' || searchCriteria.selectedSearchCriteria.country[0].displayName != 'All Countries' || 
+        searchCriteria.selectedSearchCriteria.gomArea[0].displayName != 'All GOM Areas' || searchCriteria.selectedSearchCriteria.usLocationCode[0].displayName != 'All US Location Codes' ||
+        searchCriteria.selectedSearchCriteria.landOffShore.displayName != 'Either' || searchCriteria.selectedSearchCriteria.location">
+                    <div  class="col-md-2 col-sm-12">
+                        <div class="chip-category">
+                            Location
+                            <span class="closebtn-category" (click)="removeAllLocationCriteria()">&times;</span>
+                        </div>
+                    </div>
+                    <div  class="col-md-10 col-sm-12 ">
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.area[0].displayName != 'All Areas'">
+                            <b class="summary-tag">Area</b>
+                            <span class="closebtn-i" (click)="removeAllSelectedArea()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let area of searchCriteria.selectedSearchCriteria.area">{{area.displayName}}
+                                <span class="closebtn" (click)="removeSelectedArea(area)" *ngIf="area.id!=null">&times;</span>
+                            </span>
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.country[0].displayName != 'All Countries'">
+                            <b class="summary-tag">Country</b>
+                            <span class="closebtn-i" (click)="removeAllSelectedCountry()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let country of searchCriteria.selectedSearchCriteria.country">{{country.displayName}}
+                                <span class="closebtn" (click)="removeSelectedCountry(country)" *ngIf="country.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class=" chip" *ngIf="searchCriteria.selectedSearchCriteria.location">
+                            <b class="summary-tag">Location</b>
+                            <span class="closebtn-i" (click)="removeSelectedLocation()">&times;</span>:
+                            <span *ngIf="searchCriteria.selectedSearchCriteria.location" class="tag tag-pill tag-info tag-margin-right">{{searchCriteria.selectedSearchCriteria.location}}
+                                <span class="closebtn" (click)="removeSelectedLocation()">&times;</span>
+                            </span>
+
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.gomArea[0].displayName != 'All GOM Areas'">
+                            <b class="summary-tag">GOM Area</b>
+                            <span class="closebtn-i" (click)="removeAllSelectedGOMArea()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let gomArea of searchCriteria.selectedSearchCriteria.gomArea">{{gomArea.displayName}}
+                                <span class="closebtn" (click)="removeSelectedGOMArea(gomArea)" *ngIf="gomArea.id!=null">&times;</span>
+                            </span>
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.usLocationCode[0].displayName != 'All US Location Codes'">
+                            <b class="summary-tag">US Location Code</b>
+                            <span class="closebtn-i" (click)="removeAllSelectedUSLocationCode()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let usLocationCode of searchCriteria.selectedSearchCriteria.usLocationCode">{{usLocationCode.displayName}}
+                                <span class="closebtn" (click)="removeSelectedUSLocationCode(usLocationCode)" *ngIf="usLocationCode.id!=null">&times;</span>
+                            </span>
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.landOffShore.displayName != 'Either'">
+                            <b class="summary-tag">Land/Offshore</b>
+                            <span class="closebtn-i" (click)="removeSelectedLandOffShore()">&times;</span>:
+                            <span *ngIf="searchCriteria.selectedSearchCriteria.landOffShore" class="tag tag-pill tag-info tag-margin-right">{{searchCriteria.selectedSearchCriteria.landOffShore.displayName}}
+                                <span class="closebtn" (click)="removeSelectedLandOffShore()" *ngIf="searchCriteria.selectedSearchCriteria.landOffShore.id!=null">&times;</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="searchCriteria !undefined">
+                <div class="row margin-bottom" id="lossDetailsSummary" *ngIf="searchCriteria.selectedSearchCriteria.category1[0].displayName != 'All Categories' || searchCriteria.selectedSearchCriteria.category2[0].displayName != 'All Categories' || 
+            searchCriteria.selectedSearchCriteria.category3[0].displayName != 'All Categories' || searchCriteria.selectedSearchCriteria.car_op[0].displayName != 'Either' ||
+            searchCriteria.selectedSearchCriteria.lossType[0].displayName != 'All Types' || searchCriteria.selectedSearchCriteria.cause[0].displayName != 'All Causes' ||
+            searchCriteria.selectedSearchCriteria.upDownPower[0].displayName != 'All Up/Down/Power' || searchCriteria.selectedSearchCriteria.event[0].displayName != 'All Events'">
+                    <div class="col-md-2">
+                        <div class="chip-category">
+                            Loss Details
+                            <span class="closebtn-category" (click)="removeAllLossDetailsCriteria()">&times;</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class=" chip" *ngIf="searchCriteria.selectedSearchCriteria.category1[0].displayName != 'All Categories'">
+                            <b class="summary-tag">Category 1</b>
+                            <span class="closebtn-i" (click)="removeAllCategory1()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let category1 of searchCriteria.selectedSearchCriteria.category1">{{category1.displayName}}
+                                <span class="closebtn" (click)="removeSelectedCategory1(category1)" *ngIf="category1.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.category2[0].displayName != 'All Categories'">
+                            <b class="summary-tag">Category 2</b>
+                            <span class="closebtn-i" (click)="removeAllCategory2()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let category2 of searchCriteria.selectedSearchCriteria.category2">{{category2.displayName}}
+                                <span class="closebtn" (click)="removeSelectedCategory2(category2)" *ngIf="category2.id!=null">&times;</span>
+                            </span>
+                        </div>
+
+                        <div class=" chip" *ngIf="searchCriteria.selectedSearchCriteria.category3[0].displayName != 'All Categories'">
+                            <b class="summary-tag">Category 3</b>
+                            <span class="closebtn-i" (click)="removeAllCategory3()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let category3 of searchCriteria.selectedSearchCriteria.category3">{{category3.displayName}}
+                                <span class="closebtn" (click)="removeSelectedCategory3(category3)" *ngIf="category3.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class=" chip" *ngIf="searchCriteria.selectedSearchCriteria.car_op[0].displayName != 'Either'">
+                            <b class="summary-tag">CAR/OP</b>
+                            <span class="closebtn-i" (click)="removeAllCar_OP()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let car_op of searchCriteria.selectedSearchCriteria.car_op">{{car_op.displayName}}
+                                <span class="closebtn" (click)="removeSelectedCar_OP(car_op)" *ngIf="car_op.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.lossType[0].displayName != 'All Types'">
+                            <b class="summary-tag">Loss Type</b>
+                            <span class="closebtn-i" (click)="removeAllLossType()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let lossType of searchCriteria.selectedSearchCriteria.lossType">{{lossType.displayName}}
+                                <span class="closebtn" (click)="removeSelectedLossType(lossType)" *ngIf="lossType.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.cause[0].displayName != 'All Causes'">
+                            <b class="summary-tag">Cause</b>
+                            <span class="closebtn-i" (click)="removeAllCause()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let cause of searchCriteria.selectedSearchCriteria.cause">{{cause.displayName}}
+                                <span class="closebtn" (click)="removeSelectedCause(cause)" *ngIf="cause.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.upDownPower[0].displayName != 'All Up/Down/Power'">
+                            <b class="summary-tag">Up/Down/Power</b>
+                            <span class="closebtn-i" (click)="removeAllUDP()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let upDownPower of searchCriteria.selectedSearchCriteria.upDownPower">{{upDownPower.displayName}}
+                                <span class="closebtn" (click)="removeSelectedUDP(upDownPower)" *ngIf="upDownPower.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.event[0].displayName != 'All Events'">
+                            <b class="summary-tag">Event</b>
+                            <span class="closebtn-i" (click)="removeAllEvent()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let event of searchCriteria.selectedSearchCriteria.event">{{event.displayName}}
+                                <span class="closebtn" (click)="removeSelectedEvent(event)" *ngIf="event.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="searchCriteria !undefined">
+                <div  class="row margin-bottom" id="claimsSummary" *ngIf="
+            searchCriteria.selectedSearchCriteria.pdClaim.max || searchCriteria.selectedSearchCriteria.pdClaim.min ||
+            searchCriteria.selectedSearchCriteria.oeeClaim.min ||searchCriteria.selectedSearchCriteria.oeeClaim.max || 
+            searchCriteria.selectedSearchCriteria.biClaim.min || searchCriteria.selectedSearchCriteria.biClaim.max ||
+            searchCriteria.selectedSearchCriteria.totalClaim.min || searchCriteria.selectedSearchCriteria.totalClaim.max ||
+            searchCriteria.selectedSearchCriteria.totalIndexedClaim.min || searchCriteria.selectedSearchCriteria.totalIndexedClaim.max">
+                    <div  class="col-md-2 col-sm-12">
+                        <div class="chip-category">
+                            Claim US$
+                            <span class="closebtn-category" (click)="removeAllClaimCriteria()">&times;</span>
+                        </div>
+                    </div>
+                    <div  class="col-md-10 col-sm-12">
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.pdClaim.max || searchCriteria.selectedSearchCriteria.pdClaim.min">
+                            <b class="summary-tag">PD</b>
+                            <span class="closebtn-i" (click)="removePDClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.pdClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.pdClaim.max|
+                                number}}
+                                <span class="closebtn" (click)="removePDClaim()">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.oeeClaim.min || searchCriteria.selectedSearchCriteria.oeeClaim.max">
+                            <b class="summary-tag">OEE</b>
+                            <span class="closebtn-i" (click)="removeOEEClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.oeeClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.oeeClaim.max|
+                                number}}
+                                <span class="closebtn" (click)="removeOEEClaim()">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.biClaim.min || searchCriteria.selectedSearchCriteria.biClaim.max">
+                            <b class="summary-tag">BI</b>
+                            <span class="closebtn-i" (click)="removeBIClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.biClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.biClaim.max|
+                                number}}
+                                <span class="closebtn" (click)="removeBIClaim()">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.totalClaim.min || searchCriteria.selectedSearchCriteria.totalClaim.max">
+                            <b class="summary-tag">Total</b>
+                            <span class="closebtn-i" (click)="removeTotalClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.totalClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.totalClaim.max|
+                                number}}
+                                <span class="closebtn" (click)="removeTotalClaim()">&times;</span>
+                            </span>
+
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.totalIndexedClaim.min || searchCriteria.selectedSearchCriteria.totalIndexedClaim.max">
+                            <b class="summary-tag">Total Indexed</b>
+                            <span class="closebtn-i" (click)="removeTotalIndexedClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.totalIndexedClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.totalIndexedClaim.max|
+                                number}}
+                                <span class="closebtn" (click)="removeTotalIndexedClaim()">&times;</span>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div *ngIf="searchCriteria !undefined">
+                <div  class="row margin-bottom" id="wellDetailsSummary" *ngIf="searchCriteria.selectedSearchCriteria.ratingAreas[0].displayName != 'All Areas'|| searchCriteria.selectedSearchCriteria.wellTypes[0].displayName != 'All Types' ||
+            searchCriteria.selectedSearchCriteria.drillingStatues[0].displayName != 'All Status' || searchCriteria.selectedSearchCriteria.ugbo[0].displayName != 'Either' ||
+            searchCriteria.selectedSearchCriteria.depthCategories[0].displayName != 'All Categories'|| searchCriteria.selectedSearchCriteria.ptd.min || searchCriteria.selectedSearchCriteria.ptd.max">
+                    <div  class="col-md-2 col-sm-12">
+                        <div class="chip-category">
+                            Well Details
+                            <span class="closebtn-category" (click)="removeAllWellDetailsCriteria()">&times;</span>
+                        </div>
+
+                    </div>
+                    <div  class="col-md-10 col-sm-12 ">
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.ratingAreas[0].displayName != 'All Areas'">
+                            <b class="summary-tag">Rating Area</b>
+                            <span class="closebtn-i" (click)="removeAllRatingArea()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let ratingArea of searchCriteria.selectedSearchCriteria.ratingAreas">{{ratingArea.displayName}}
+                                <span class="closebtn" (click)="removeSelectedRatingArea(ratingArea)" *ngIf="ratingArea.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.wellTypes[0].displayName != 'All Types'">
+                            <b class="summary-tag">Well Type</b>
+                            <span class="closebtn-i" (click)="removeAllWellTypes()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let wellType of searchCriteria.selectedSearchCriteria.wellTypes">{{wellType.displayName}}
+                                <span class="closebtn" (click)="removeSelectedWellType(wellType)" *ngIf="wellType.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.drillingStatues[0].displayName != 'All Status'">
+                            <b class="summary-tag">Drilling Status</b>
+                            <span class="closebtn-i" (click)="removeAllDrillingStatus()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let drillingStatus of searchCriteria.selectedSearchCriteria.drillingStatues">{{drillingStatus.displayName}}
+                                <span class="closebtn" (click)="removeSelectedDrillingStatus(drillingStatus)" *ngIf="drillingStatus.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.ugbo[0].displayName != 'Either'">
+                            <b class="summary-tag">UGBO</b>
+                            <span class="closebtn-i" (click)="removeAllUGBO()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let ugbo of searchCriteria.selectedSearchCriteria.ugbo">{{ugbo.displayName}}
+                                <span class="closebtn" (click)="removeSelectedUGBO(ugbo)" *ngIf="ugbo.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.depthCategories[0].displayName != 'All Categories'">
+                            <b class="summary-tag">Depth Category</b>
+                            <span class="closebtn-i" (click)="removeAllDepthCategory()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let depthCategory of searchCriteria.selectedSearchCriteria.depthCategories">{{depthCategory.displayName}}
+                                <span class="closebtn" (click)="removeSelectedDepthCategory(depthCategory)" *ngIf="depthCategory.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.ptd.min || searchCriteria.selectedSearchCriteria.ptd.max">
+                            <b class="summary-tag">PTD</b>
+                            <span class="closebtn-i" (click)="removeSelectedPTD()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.ptd.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.ptd.max|
+                                number}}
+                                <span class="closebtn" (click)="removeSelectedPTD()">&times;</span>
+                            </span>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div *ngIf="searchCriteria !undefined">
+                <div  class="row margin-bottom details" id="costCatSummary" *ngIf="searchCriteria.selectedSearchCriteria.actualPDLiabCategory[0].displayName != 'All Categories'|| 
+            searchCriteria.selectedSearchCriteria.indexedPDLiabCategory[0].displayName != 'All Categories'||
+            searchCriteria.selectedSearchCriteria.actualOEECategory[0].displayName != 'All Categories'|| 
+            searchCriteria.selectedSearchCriteria.indexedOEECategory[0].displayName != 'All Categories'||
+            searchCriteria.selectedSearchCriteria.actualTotalCategory[0].displayName != 'All Categories'|| 
+            searchCriteria.selectedSearchCriteria.indexedTotalCategory[0].displayName != 'All Categories'">
+                    <div  class="col-md-2 col-sm-12">
+                        <div class="chip-category">
+                            Cost Categories
+                            <span class="closebtn-category" (click)="removeAllCostCategoryCriteria()">&times;</span>
+                        </div>
+                    </div>
+                    <div  class="col-md-10 col-sm-12 ">
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.actualPDLiabCategory[0].displayName != 'All Categories'">
+                            <b class="summary-tag">PD Claim-Actual</b>
+                            <span class="closebtn-i" (click)="removeAllActualPDClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let actualPDLiabCategory of searchCriteria.selectedSearchCriteria.actualPDLiabCategory">{{actualPDLiabCategory.displayName}}
+                                <span class="closebtn" (click)="removeSelectedActualPDClaim(actualPDLiabCategory)" *ngIf="actualPDLiabCategory.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.indexedPDLiabCategory[0].displayName != 'All Categories'">
+                            <b class="summary-tag">PD Claim-Indexed</b>
+                            <span class="closebtn-i" (click)="removeAllIndexedPDClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let indexedPDLiabCategory of searchCriteria.selectedSearchCriteria.indexedPDLiabCategory">{{indexedPDLiabCategory.displayName}}
+                                <span class="closebtn" (click)="removeSelectedIndexedPDClaim(indexedPDLiabCategory)" *ngIf="indexedPDLiabCategory.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.actualOEECategory[0].displayName != 'All Categories'">
+                            <b class="summary-tag">OEE Claim-Actual</b>
+                            <span class="closebtn-i" (click)="removeAllActualOEEClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let actualOEECategory of searchCriteria.selectedSearchCriteria.actualOEECategory">{{actualOEECategory.displayName}}
+                                <span class="closebtn" (click)="removeSelectedActualOEEClaim(actualOEECategory)" *ngIf="actualOEECategory.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.indexedOEECategory[0].displayName != 'All Categories'">
+                            <b class="summary-tag">OEE Claim-Indexed</b>
+                            <span class="closebtn-i" (click)="removeAllIndexedOEEClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let indexedOEECategory of searchCriteria.selectedSearchCriteria.indexedOEECategory">{{indexedOEECategory.displayName}}
+                                <span class="closebtn" (click)="removeSelectedIndexedOEEClaim(indexedOEECategory)" *ngIf="indexedOEECategory.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.actualTotalCategory[0].displayName != 'All Categories'">
+                            <b class="summary-tag">Total Claim-Actual</b>
+                            <span class="closebtn-i" (click)="removeAllActualTotalClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let actualTotalCategory of searchCriteria.selectedSearchCriteria.actualTotalCategory">{{actualTotalCategory.displayName}}
+                                <span class="closebtn" (click)="removeSelectedActualTotalClaim(actualTotalCategory)" *ngIf="actualTotalCategory.id!=null">&times;</span>
+                            </span>
+
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.indexedTotalCategory[0].displayName != 'All Categories'">
+                            <b class="summary-tag">Total Claim-Indexed</b>
+                            <span class="closebtn-i" (click)="removeAllIndexedTotalClaim()">&times;</span>:
+                            <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let indexedTotalCategory of searchCriteria.selectedSearchCriteria.indexedTotalCategory">{{indexedTotalCategory.displayName}}
+                                <span class="closebtn" (click)="removeSelectedIndexedTotalClaim(indexedTotalCategory)" *ngIf="indexedTotalCategory.id!=null">&times;</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

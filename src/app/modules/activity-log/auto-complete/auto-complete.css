@@ -1,0 +1,22 @@
+.suggestions{
+    background-color:#f4f4f4;
+    position:absolute;
+    z-index: 3;
+width:83%
+}
+.filter-input{
+    width: 168px
+}
+.none li{
+   list-style-type: none;
+}
+ul{
+    padding-left: 10px!important;
+}
+
+.suggestions-mbl{
+    background-color:#f4f4f4;
+    position:absolute;
+    z-index: 3;
+width:91%
+}

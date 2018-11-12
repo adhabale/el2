@@ -1,0 +1,54 @@
+<!-- Subscription Desktop Routing-->
+<div class="row hidden-sm-down">
+    <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 sub-top-margin">
+                    <div class="nav-container">
+                        <ul class="nav nav-horizontal nav-horizontal-light nav-pills">
+                            <li class="nav-item">
+                                <a id="subscriptionInfoTab" class="nav-link" routerLink="subscription-info" routerLinkActive="active">Client Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="accountInfoTab" class="nav-link" routerLink="account-info" routerLinkActive="active">EL Subscriber Information</a>
+                            </li>
+                            <li class="nav-item" *ngIf='showUserMaintenanceTab'>
+                                <a id="userMaintenanceTab" class="nav-link" [routerLink]="isUserMaintenanceDisabled?null:'users'" [routerLinkActive]="isUserMaintenanceDisabled?'':'active'">User Maintenance</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Subscription Mobile Routing-->
+<div class="row hidden-md-up">
+    <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12 p-top-bottom2" *ngIf='showUserMaintenanceTab'>
+                <select class="form-control" [(ngModel)]='selectedRoute' (change)="onNavigation(selectedRoute)">
+                <option value="subscription-info">Client Information</option>
+                <option value="account-info">EL Subscriber Information</option>
+                <option value="users">User Maintenance</option>
+            </select>
+        </div>
+        <div class="col-md-12 col-sm-12 p-top-bottom2" *ngIf='!showUserMaintenanceTab'>
+                <select class="form-control" [(ngModel)]='selectedRoute' (change)="onNavigation(selectedRoute)">
+                <option value="subscription-info">Client Information</option>
+                <option value="account-info">EL Subscriber Information</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- Subscription Routing Area-->
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12">
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

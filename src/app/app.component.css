@@ -1,0 +1,276 @@
+.nav-w-submenu-container .nav-vertical-submenu.active {
+    height: 100%;
+    margin-left: 100px;
+    padding: 20px 0;
+    background: #e4e4e4 repeat;
+    position: absolute;
+    z-index: 30;
+}
+@media screen and (min-width: 769px) {
+    .row.display-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .row.display-flex>[class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.nav-w-submenu-container .nav-vertical-submenu.active li {
+    cursor: pointer;
+}
+
+.nav-w-submenu-container .nav-vertical-submenu.active li a {
+    cursor: pointer;
+}
+
+.nav-w-submenu-container .nav-vertical-submenu.active li {
+    cursor: pointer;
+}
+
+.nav-w-submenu-container .nav-vertical-submenu.active li a {
+    cursor: pointer;
+}
+
+.sidenav-priority {
+    z-index: 31;
+}
+.nav-item.open .nav-link, .nav-pills .nav-item.open .nav-link:focus, .nav-pills .nav-item.open .nav-link:hover {
+    color: #444;
+    cursor: default;
+    background-color: white;
+}
+
+/* Controlling navbar length */
+
+.nav-w-submenu-container {
+    height: 1000px;
+    width: 100px;
+    position: inherit;
+    /* height: 100%;
+    width: 100px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px; */
+}
+
+
+/* End */
+
+
+/* CSS FOR Correct Positioning */
+
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+    .divClassNew {
+        padding-left: 40px;
+    }
+}
+
+@media screen and (max-width: 806px) and (min-width: 769px) {
+    .left-pad {
+        padding-left: 30px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .divClass {
+        /* padding-left: 50px; */
+        padding-right: 10px;
+    }
+}
+
+@media screen and (max-width: 1380px) and (min-width: 1025px) {
+    .col-md-1 {
+        width: 7.3%;
+    }
+    .col-md-11 {
+        width: 92.7%;
+    }
+}
+
+@media screen and (max-width: 1399px) and (min-width: 1381px) {
+    .col-md-1 {
+        width: 7.0%;
+    }
+    .col-md-11 {
+        width: 93.0%;
+    }
+}
+
+@media screen and (max-width: 1599px) and (min-width: 1399px) {
+    .col-md-1 {
+        width: 6.4%;
+    }
+    .col-md-11 {
+        width: 93.6%;
+    }
+}
+
+@media screen and (max-width: 1699px) and (min-width: 1600px) {
+    .col-md-1 {
+        width: 5.8%;
+    }
+    .col-md-11 {
+        width: 94.2%;
+    }
+}
+
+@media screen and (max-width: 1850px) and (min-width: 1700px) {
+    .col-md-1 {
+        width: 5.5%;
+    }
+    .col-md-11 {
+        width: 94.5%;
+    }
+}
+
+@media screen and (max-width: 2299px) and (min-width: 1851px) {
+    .col-md-1 {
+        width: 4.5%;
+    }
+    .col-md-11 {
+        width: 95.5%;
+    }
+}
+
+@media screen and (max-width: 2900px) and (min-width: 2300px) {
+    .col-md-1 {
+        width: 3.8%;
+    }
+    .col-md-11 {
+        width: 96.2%;
+    }
+}
+
+@media screen and (min-width: 2901px) {
+    .col-md-1 {
+        width: 3.2%;
+    }
+    .col-md-11 {
+        width: 96.8%;
+    }
+}
+
+
+/* -Placeholder Image- */
+
+.nav-vertical .nav-link img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 2.4rem;
+}
+
+
+/* -- */
+
+
+/* Mobile Navigation CSS*/
+
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .navbar-dark {
+        background-color: #585858;
+        color: #fff;
+    }
+    .navbar-dark .navbar-toggler {
+        color: #fff;
+    }
+    .nav-pills .nav-link {
+        display: block;
+        /* padding: 0.5em 2em; */
+    }
+    .nav-mobile-text {
+        text-align: center;
+        padding-left: 35px;
+    }
+    .navbar-toggler.closedtime {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        border-color: transparent;
+    }
+    .navbar-toggler.opentime {
+        background-image: url('https://cdn.shopify.com/s/files/1/1051/0874/files/close-icon-white.png?4189555651482290007');
+        border-color: transparent;
+        background-size: 45px 35px;
+    }
+    .container {
+        margin-left: 0px;
+    }
+    nav.navbar {
+        display: none;
+    }
+    ul.nav-vertical {
+        display: none;
+    }
+    .footer {
+        position: relative;
+    }
+    nav.mobile-nav {
+        display: block
+    }
+    .display-2 {
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .display-4 {
+        font-size: 35px;
+        font-weight: 550;
+    }
+    .nav-mobile-collapse,
+    .nav-item {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+    .pp-1 {
+        padding: 0rem 0rem !important;
+    }
+    .pp-2 {
+        padding: 0rem 0rem !important;
+    }
+    .btn-shift-left {
+        padding-left: -10px;
+    }
+}
+
+
+/*-Mobile- */
+
+a.dropdown-toggle {
+    font-size: 14px;
+}
+
+ul.no-padding {
+    padding-left: 15px;
+}
+
+.navbar-toggler.closedtime {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    border-color: transparent;
+}
+
+.navbar-toggler.opentime {
+    background-image: url('https://cdn.shopify.com/s/files/1/1051/0874/files/close-icon-white.png?4189555651482290007');
+    border-color: transparent;
+    background-size: 45px 35px;
+}
+.clickable-li{
+    outline: #444;
+}
+.clickable-li span{
+    color: #000
+}
+.activatedSME{
+    color: #fff;
+    cursor: default;
+    background-color: #702082;
+    margin-right: -0.5rem;
+}
+
+.activatedAdmin{
+    color: #fff;
+    cursor: default;
+    background-color: #702082;
+    margin-right: -0.5rem;
+}

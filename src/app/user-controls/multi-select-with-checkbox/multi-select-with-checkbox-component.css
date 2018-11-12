@@ -1,0 +1,37 @@
+.suggestions{
+    background-color:#f4f4f4;
+    position:absolute;
+    z-index: 3;
+    width:15%;
+    height: 200px;
+    overflow-y: scroll;
+}
+.none li{
+   list-style-type: none;
+   white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+.none{
+    padding-left: 5px!important;
+}
+.suggestions-mbl{
+    background-color:#f4f4f4;
+    position:absolute;
+    z-index: 3;
+width:91%;
+ height: 200px;
+    overflow-y: scroll;
+}
+
+.filter-input-box{
+    height: calc(2.5rem - 0px);
+    padding: 0.3rem 2.0rem 0.5rem .75rem;
+    background-position: 97.5% 55%;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-image: url(/assets/images/drop-caret.svg);
+    /* width: 180px; */
+    width: 100%
+}

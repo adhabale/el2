@@ -1,0 +1,66 @@
+<div class="modal fade user-search-result" id='exportReportModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+                </button>
+                <h4 class="modal-title">Export Report</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <p>Use this option to download a file containing information from the view: {{reportType}} {{selectedReport.reportName}}. Downloading this file is safe and free from potential computer viruses.</p>
+                    </div>
+                    <div class="col-md-3 col-sm-4" *ngIf="summaryLevels.length>0">
+                        <label>Summary Level: </label>
+                    </div>
+                    <div class="col-md-9 col-sm-8" *ngIf="summaryLevels.length>0">
+                        <div class="radio" *ngFor="let summaryLevel of summaryLevels">
+                            <label>
+                                <input type="radio" [attr.value]="summaryLevel" (click)="selectedSummaryLevel = summaryLevel" name="optradio" />&nbsp;{{summaryLevel.displayName}} Level
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <label>Format: </label>
+                    </div>
+                    <div class="col-md-9 col-sm-8">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" value="csv" name="fileType" (click)="selectedExportType = 'CSV'" [checked]="selectedExportType == 'CSV'"
+                                />&nbsp;Comma Separated Values (.csv)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" value="excel" (click)="selectedExportType = 'EXCEL'" name="fileType" [checked]="selectedExportType == 'EXCEL'"
+                                />&nbsp;Excel
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" value="pdf" (click)="selectedExportType = 'PDF'" name="fileType" [checked]="selectedExportType == 'PDF'"
+                                />&nbsp;PDF
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <hr>
+                <button type="button" [disabled]='isDownloadBtnDisabled' class="btn btn-primary btn-block hidden-md-up" data-dismiss="modal"
+                    name="downloadButton" (click)="download()">Download</button>
+                <button type="button" class="btn btn-secondary btn-block hidden-md-up" data-dismiss="modal" name="cancelButton">Cancel</button>
+
+                <button type="button" class="btn btn-secondary hidden-sm-down margin-set-right" data-dismiss="modal" name="cancelButton">Cancel</button>
+                <button type="button" [disabled]='isDownloadBtnDisabled' class="btn btn-primary hidden-sm-down margin-set-left" name="downloadButton"
+                    data-dismiss="modal" (click)="download()">Download</button>
+
+            </div>
+        </div>
+    </div>
+</div>

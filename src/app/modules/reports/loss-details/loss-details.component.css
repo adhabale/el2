@@ -1,0 +1,119 @@
+.heading {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 24px;
+    font-weight: 400;
+  }
+  
+  .heading-margin {
+    margin-bottom: 10px;
+  }
+  .col-md-6 h6
+  {
+    word-break: break-all;
+  }
+
+  .well-report {
+    background-color: rgb(242,242,242);
+  }
+  
+  .well-border {
+    border-bottom: 2px solid rgb(112,32,130);
+    margin-bottom: 10px;
+  }
+  
+  .well-col {
+    padding-left: 45px;
+  }
+  
+  .well-col h3 {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  
+  .well-report-headers {
+    padding-top: 6px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+  }
+  
+  .no-bold-text {
+    font-weight: 400;
+    font-size: 14px;
+    color:black;
+  }
+  
+  .extra-padding-top {
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .no-padding-left {
+    padding-left: 0;
+  }
+  
+  .no-padding-right {
+    padding-right: 0;
+  }
+  
+  .no-padding {
+    padding: 0;
+  }
+  
+  .col-md-6 h6 {
+    margin-bottom: 15px;
+  }
+  
+  .col-margin {
+    margin-bottom: 10px;
+  }
+  
+  .postion-class {
+    padding-left: 0;
+  }
+  
+  .position-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .date-css {
+    font-style: italic;
+    font-size: 10px;
+  }
+
+  .hidden-row
+  {
+    visibility:hidden;
+  }
+  /* CSS FOR Correct Positioning According To Resolutions */
+  @media screen and (max-width:800px) and (min-width:200px) {
+    .postion-class {
+      padding-left: 15px;
+    }
+  
+    .well-col {
+      padding-left: 25px;
+    }
+  }
+  
+  @media screen and (max-width: 1200px) and (min-width: 769px) {
+    .col-md-6 {
+      width: 100%;
+    }
+  
+    .col-md-6 .col-md-6 {
+      width: 50%;
+    }
+  
+    .postion-class {
+      padding-left: 15px;
+    }
+  
+    .position-padding {
+      padding-left: 30px;
+      padding-right: 10px;
+    }
+  }
+  /* End Of CSS FOR Correct Positioning According To Resolutions */

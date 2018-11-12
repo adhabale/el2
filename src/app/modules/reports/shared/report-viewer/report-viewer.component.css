@@ -1,0 +1,249 @@
+.btn-invisible {
+    visibility: hidden;
+}
+b, strong {
+    font-weight: 100 !important;
+}
+.header-customize
+{
+  padding-top: 10px;
+}
+
+/* .tableBodyScroll tbody {
+display:block;
+max-height:100px;
+overflow-y:auto;
+}
+.tableBodyScroll thead, tbody tr {
+display:table;
+width:100%;
+table-layout:fixed;
+} */
+
+.export-btn
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.max-height{
+max-height: 250px;
+
+}
+
+.label-filter
+{
+padding-top: 8%;
+font-size: 15px;
+font-weight: 500;
+}
+
+/*Accordian*/
+.accordion .accordion-icon {
+left: 6rem;
+right: 0rem;
+}
+.accordion .card-header {
+    border-bottom-width: 0px!important;
+    background-color:#fff!important
+}
+.max-height {
+    max-height:250px;
+}
+.border-bottom{
+    border-bottom: 1px solid #ccc
+}
+.summary{
+    height: 200px!important;
+    overflow-y: scroll;
+    border:1px solid #ccc;
+
+}
+.margin-top{
+    margin-top: 20px;
+}
+.selected-value{
+    background-color: #ecedee;
+    padding-left:10px;
+    /* padding-right:10px;  */
+    margin-right: 15px
+}
+#close {
+    display:inline-block;
+    padding:2px 5px;
+
+}
+.closebtn {
+    padding-left: 10px;
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.closebtn-i {
+    padding-left:4px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
+.padding-save-search
+{
+  padding-top:8px;
+}
+
+/*Accordian end */
+.btn-group button.btn {
+    background-color: #fff;
+    color: #585858;
+}
+
+.margin-set-right {
+    margin-right: 6px;
+}
+.margin-set-left
+{
+  margin-left: 6px;
+}
+.no-padding
+{
+  padding: 0px;
+}
+.no-padding-right{
+  padding-right: 0px;
+}
+.no-padding-left
+{
+  padding-left:0px;
+}
+.btn-invisible {
+    visibility: hidden;
+}
+
+
+.dropdown-menu
+{
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.width-25{
+  width:5%;
+}
+
+.aggregate{
+  border-top: 2px solid gainsboro;
+  background-color: rgb(242,242,242);
+}
+.aggregate td{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+ /* .last-table tr:nth-last-child(1){
+    background-color:red!important
+
+}  */
+@media screen and (max-width: 768px) and (min-width: 320px) {/*mobile view*/
+.mobile-view{
+    font-family: "sans-serif !important";
+}
+.custom-padding{
+  padding:0!important;
+}
+
+.padding-13{
+  padding-left: 13px;
+}
+.padding-20{
+  padding-left: 20px;
+}
+
+
+
+  }
+
+  @media screen and (max-width:1600px) and (min-width: 769px) {/*desktop views*/
+.custom-padding{
+  padding:0!important;
+}
+.padding-20-tab{
+  padding-left: 20px;
+}
+.padding-40-tab{
+  padding-left: 40px;
+}
+.padding-60-tab{
+  padding-left: 60px;
+}
+.padding-80-tab{
+  padding-left: 80px;
+}
+}
+
+
+@media screen and (max-width: 768px) and (min-width: 576px) {/*tab-view*/
+.custom-padding{
+  padding:0!important;
+}
+.padding-20-tab{
+  padding-left: 20px;
+}
+.padding-30-tab{
+  padding-left: 30px;
+}
+.padding-40-tab{
+  padding-left: 40px;
+}
+.padding-60-tab{
+  padding-left: 60px;
+}
+.padding-80-tab{
+  padding-left: 80px;
+}
+.padding-70{
+  padding-left: 70px;
+}
+}
+
+.sticky{
+  position: sticky;
+  top: -1px;
+}
+.bottom-margin{
+  margin-bottom: 15px;
+}
+.border-total{
+border-top: 1px solid #ece7e7;
+
+}
+.total td span{
+  font-weight: 800;
+}
+.right-align{
+  float:right;
+
+}
+
+.border{
+  border-top: 2px solid #ece7e7;
+    border-bottom: 2px solid #ece7e7;
+}
+.left-align{
+  float:left;
+}
+.heading-left{
+text-align: left
+}
+.heading-right{
+text-align: right
+}
+.table-font{
+font-size: 0.8rem
+}

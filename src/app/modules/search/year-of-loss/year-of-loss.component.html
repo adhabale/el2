@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <div class="row">
+        <table id="table" class='table table-year table-responsive'>
+          <tr *ngFor="let decade of searchCriteria.masterSearchData.yearOfLoss.decades">
+            <td (click)="onDecadeToggle(decade)" class="td-hover" [ngClass]="decade.isSelected?'selectedClass':'notSelectedClass'">{{decade.displayName}}</td>
+            <td *ngFor="let year of decade.years" (click)="OnYearToggle(year)" [ngClass]="year.isSelected?'selectedClass':'notSelectedClass'">{{year.value}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row hidden-sm-down">
+  <div class="col-md-10"></div>
+  <div class="col-md-12">
+
+    <button type="button" id="btnContinueyear" class="btn btn-primary pull-right margin-set-left float-xs-right" style="margin-left:6px"
+      data-toggle="tab" href="#location" (click)='onContinue();'>Continue</button>
+
+    <button id="selectAll" class="btn btn-secondary pull-right margin-set-right float-xs-right" style="margin-right:6px" (click)="showSelectAll=!showSelectAll;onToggleAll(true);"
+      *ngIf="showSelectAll">Select All</button>
+
+    <button id="deselectAll" class="btn btn-secondary pull-right margin-set-right float-xs-right" style="margin-right:6px" (click)="showSelectAll=!showSelectAll;onToggleAll(false);"
+      *ngIf="!showSelectAll">Deselect All</button>
+
+  </div>
+</div>
+<div class="hidden-md-up">
+  <button id="selectAll" class="btn btn-secondary btn-mob" (click)="showSelectAll=!showSelectAll;onToggleAll(true);" *ngIf="showSelectAll">Select All</button>
+
+  <button id="deselectAll" class="btn btn-secondary btn-mob" (click)="showSelectAll=!showSelectAll;onToggleAll(false);"
+    *ngIf="!showSelectAll">Deselect All</button>
+
+  <button type="button" id="btnContinueyear" class="btn btn-primary btn-mob-top" (click)='onContinueMob();'>Continue</button>
+
+
+</div>

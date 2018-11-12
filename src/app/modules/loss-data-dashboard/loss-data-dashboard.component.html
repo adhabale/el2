@@ -1,0 +1,53 @@
+<div class="divClass row bg-software-gray-1 indexing-header">
+  <div class="col-md-12 col-sm-12">
+    <div class="p-1 hidden-sm-down">
+      <h2 class="display-1 left-pad">
+        Visual Analytics</h2>
+    </div>
+    <div class="p-1 hidden-md-up">
+      <h2 class="display-3 left-pad">
+        Visual Analytics</h2>
+    </div>
+  </div>
+</div>
+<div class="hidden-sm-down">
+  <div class="row margin-top">
+    <div class="col-md-8">
+      <losses-by-location (mapLoaded)="mapLoadedEvent($event)"></losses-by-location>
+    </div>
+    <div class="col-md-4">
+      <incident-by-category-small-chart></incident-by-category-small-chart>
+    </div>
+  </div>
+  <div class="row margin-top">
+    <div class="col-md-4 ">
+      <losses-by-year-small-chart></losses-by-year-small-chart>
+    </div>
+    <div class="col-md-4">
+      <incident-by-year-small-chart></incident-by-year-small-chart>
+    </div>
+    <div class="col-md-4">
+      <incident-by-loss-type-small-chart></incident-by-loss-type-small-chart>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="false && isMobile" class="hidden-md-up">
+  <div class="row margin-top">
+    <div class="col-sm-12 col-xs-12 mob-width">
+      <losses-by-location (mapLoaded)="mapLoadedEvent($event)"></losses-by-location>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+      <incident-by-category-large-chart></incident-by-category-large-chart>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+      <losses-by-year-large-chart></losses-by-year-large-chart>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+      <incident-by-year-large-chart></incident-by-year-large-chart>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+      <incident-by-loss-type-large-chart></incident-by-loss-type-large-chart>
+    </div>
+  </div>
+</div>

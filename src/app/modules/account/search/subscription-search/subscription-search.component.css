@@ -1,0 +1,207 @@
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+ol li{
+    display: inline;
+  } 
+li a i:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+li a.search i:before {
+    content:"\f002";
+}
+
+/* Modal CSS */
+.pointer {cursor: pointer;}
+
+/* tr td.pointer.ex1:hover{
+    color: white !important;
+    background-color: #444 !important;
+}
+tr td.pointer.ex1:active {
+    color: white !important;
+    background-color: #444 !important;
+}
+.ul-mod{
+    border-bottom: none;
+    margin-bottom: 0.5rem;
+} */
+/* tr td.pointer.ex1:hover {
+    color: white !important;
+    background-color: #444 !important;
+  }
+  tr td.pointer.ex1:hover ol li {
+    color: #fff !important;
+    background-color: #444 !important;
+  }
+  tr td.pointer.ex1:active {
+    color: white !important;
+    background-color: #444 !important;
+  }
+  tr td.pointer.ex1:active ol li {
+    color: #444 !important;
+  } */
+  tr td.pointer.ex1:hover {
+    color: white !important;
+    background-color: #444 !important;
+  }
+  tr td.pointer.ex1:hover ol li {
+    color: #fff !important;
+    background-color: #444 !important;
+  }
+  
+  tr td.pointer.ex1:active {
+    color: white !important;
+    background-color: #444 !important;
+  }
+
+  tr td.pointer.ex1:active:hover {
+    color: white !important;
+    background-color: #444 !important;
+  }
+
+
+  tr td.pointer.ex1:active ol li {
+    color: #fff !important;
+    background-color: #444 !important;
+  }
+
+  tr td.pointer.ex1:active ol li:hover{
+    color: #444 !important;
+    background-color: #fff !important;
+  }
+  .table tr.active td {
+    background-color: #f4f4f4 !important;
+}
+  .table tr.active td:hover{
+      color:#444 !important;
+    background-color: #f4f4f4 !important;
+}
+
+tr.active td.pointer.ex1:hover ol li {
+    color: #444 !important;
+    background-color: #f4f4f4 !important;
+}
+  
+  .ul-mod{
+    border-bottom: none;
+    margin-bottom: 0rem;
+    margin-left: -44px;
+}
+.pad-top{
+    padding-top: 10px;
+}
+/* Modal Css  End */
+
+.table tr.active td {
+    background-color: #f4f4f4 !important;
+}
+
+.table tr.active td:hover {
+    background-color: #f4f4f4 !important;
+}
+
+.addSubTableHeight {    
+    height: 250px;
+    overflow: auto;
+}
+
+th.header-add-sub {
+    border-top: 0px solid #eceeef;
+}
+    
+.btn-margin-left {
+    margin-left: 6px;
+}
+
+.table th {
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-margin-right {
+    margin-right: 6px;
+}
+
+
+/* input box */
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .divClass {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .container {
+        width: 100%;
+    }
+    .select-extra-right {
+        margin-right: -15px;
+    }
+    .pad-left{
+        padding-left: 20px;
+    }
+    .input-width{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .divClass {
+        padding-left: 50px;
+        padding-right: 10px;
+    }
+    .shiftView {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .input-width{
+        width: 115%;
+    }
+    .margin-set {
+        margin-left: 6px;
+        margin-right: 6px;
+    }
+}
+
+@media screen and (max-width: 1500px) and (min-width: 1025px) {
+    .divClass {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .shiftView {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .input-width{
+        width: 115%;
+    }
+}
+
+@media screen and (max-width: 2600px) and (min-width: 1501px) {
+    .divClass {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .shiftView {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .input-width{
+        width: 115%;
+    }
+}
+.margin-set-left {
+    margin-left: 6px;
+}
+
+.margin-set-right {
+    margin-right: 6px;
+}
+
+.margin-set {
+    margin-left: 6px;
+    margin-right: 6px;
+}

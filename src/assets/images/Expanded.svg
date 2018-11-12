@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1342px" height="401px" viewBox="0 0 1342 401" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 6</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Context-Switcher---Custom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-49.000000, -349.000000)">
+        <g id="Group-6" transform="translate(50.000000, 350.000000)">
+            <polygon id="Fill-4" stroke="#C5C5C5" fill="#F4F4F4" points="0 80 1340 80 1340 0 0 0"></polygon>
+            <path d="M42.6682868,28 C37.5255768,28 33.3365735,32.1890035 33.3365735,37.3317132 C33.3365735,39.5666492 34.1194583,41.6132022 35.436209,43.2223572 L28,50.6585662 L29.3414338,52 L36.7776428,44.563791 C38.3867978,45.8805415 40.4333508,46.6634265 42.6682868,46.6634265 C47.8109967,46.6634265 52,42.4744232 52,37.3317132 C52,32.1890035 47.8109967,28 42.6682868,28 Z M42.6682868,29.8663426 C46.8023505,29.8663426 50.1336574,33.1976499 50.1336574,37.3317132 C50.1336574,41.465777 46.8023505,44.7970838 42.6682868,44.7970838 C38.534223,44.7970838 35.2029162,41.465777 35.2029162,37.3317132 C35.2029162,33.1976499 38.534223,29.8663426 42.6682868,29.8663426 Z" id="Shape" fill="#00A0D2" fill-rule="nonzero" transform="translate(40.000000, 40.000000) scale(-1, 1) translate(-40.000000, -40.000000) "></path>
+            <text id="Client-Name" font-family="NHaasGroteskDSPro-45Lt, Neue Haas Grotesk Display Pro" font-size="36" font-weight="300" fill="#444444">
+                <tspan x="68" y="53">Client Name</tspan>
+            </text>
+            <polygon id="Fill-1" fill="#F4F4F4" points="0 400 1340 400 1340 80 0 80"></polygon>
+            <text id="Client-One" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="20" font-weight="500" fill="#000000">
+                <tspan x="68" y="121">Client One</tspan>
+            </text>
+            <text id="Client-Two" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="20" font-weight="500" fill="#000000">
+                <tspan x="68" y="178">Client Two</tspan>
+            </text>
+            <text id="Client-Three" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="20" font-weight="500" fill="#000000">
+                <tspan x="68" y="235">Client Three</tspan>
+            </text>
+            <text id="Client-Four" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="20" font-weight="500" fill="#000000">
+                <tspan x="68" y="292">Client Four</tspan>
+            </text>
+            <path d="M0,319 L1340,319" id="Path-4-Copy-2" stroke="#C5C5C5"></path>
+            <polygon id="Fill-2-Copy" fill="#00A0D2" points="0 82 1340 82 1340 80 0 80"></polygon>
+            <g id="Group-5-Copy-2" transform="translate(0.000000, 336.000000)">
+                <polygon id="Fill-2" fill-opacity="0.7" fill="#00A0D2" points="0 48 1340 48 1340 0 0 0"></polygon>
+                <g id="Group-3" transform="translate(68.000000, 13.000000)" fill="#FFFFFF">
+                    <text id="Add-New-Subscription" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="20" font-weight="500">
+                        <tspan x="40" y="19">Add New Subscription</tspan>
+                    </text>
+                    <path d="M12,1 C5.38351652,1 0,6.38351652 0,13 C0,19.6164834 5.38351652,25 12,25 C18.6164834,25 24,19.6164834 24,13 C24,6.38351652 18.6164834,1 12,1 Z M12,3 C17.5336155,3 22,7.46638464 22,13 C22,18.5336155 17.5336155,23 12,23 C6.46638464,23 2,18.5336155 2,13 C2,7.46638464 6.46638464,3 12,3 Z M10.6,8 L10.6,11.6 L7,11.6 L7,13.4 L10.6,13.4 L10.6,17 L12.4,17 L12.4,13.4 L16,13.4 L16,11.6 L12.4,11.6 L12.4,8 L10.6,8 Z" id="Shape" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

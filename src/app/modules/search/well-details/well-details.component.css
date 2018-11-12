@@ -1,0 +1,17 @@
+.btn-mob{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.label-bold{
+    font-weight: 600 !important;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 0; 
+}
+.btn-mob-top{
+    width: 100%;
+    margin-bottom: 0px;
+}

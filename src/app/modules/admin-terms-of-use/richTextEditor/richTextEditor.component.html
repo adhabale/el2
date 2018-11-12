@@ -1,0 +1,80 @@
+<div class="col-md-12 col-sm-12 margin-top">
+    <div class="form-group">
+        <div id="richTextEditor">
+            <div class="btn-group btn-group-customised-class" >
+                <button id="bold-new" (click)="makeBold();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_bold.svg" onmouseover="this.src='/assets/images/ico_rev_bold.svg'" onmouseout="this.src='/assets/images/ico_bold.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="italic-new" (click)="makeItalics();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_italic.svg" onmouseover="this.src='/assets/images/ico_rev_italic.svg'" onmouseout="this.src='/assets/images/ico_italic.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="underline-new" (click)="makeUnderlined();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_underline.svg" onmouseover="this.src='/assets/images/ico_rev_underline.svg'" onmouseout="this.src='/assets/images/ico_underline.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="justifyLeft-new" (click)="makeLeft();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_align_left.svg" onmouseover="this.src='/assets/images/ico_rev_align_left.svg'" onmouseout="this.src='/assets/images/ico_align_left.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="justifyCenter-new" (click)="makeCenter();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_align_center.svg" onmouseover="this.src='/assets/images/ico_rev_align_center.svg'" onmouseout="this.src='/assets/images/ico_align_center.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="justifyRight-new" (click)="makeRight();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_align_right.svg" onmouseover="this.src='/assets/images/ico_rev_align_right.svg'" onmouseout="this.src='/assets/images/ico_align_right.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="insertUnorderedList-new" (click)="insertUnorderedList();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_bullet.svg" onmouseover="this.src='/assets/images/ico_rev_bullet.svg'" onmouseout="this.src='/assets/images/ico_bullet.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="insertOrderedList-new" (click)="insertOrderedList();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_ordered.svg" onmouseover="this.src='/assets/images/ico_rev_ordered.svg'" onmouseout="this.src='/assets/images/ico_ordered.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="superscript-new" (click)="makeSuperscript();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_superscript.svg" onmouseover="this.src='/assets/images/ico_rev_superscript.svg'" onmouseout="this.src='/assets/images/ico_superscript.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="subscript-new" (click)="makeSubscript();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_subscript.svg" onmouseover="this.src='/assets/images/ico_rev_subscript.svg'" onmouseout="this.src='/assets/images/ico_subscript.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="createLink-new" (click)="createLink();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_link.svg" onmouseover="this.src='/assets/images/ico_rev_link.svg'" onmouseout="this.src='/assets/images/ico_link.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <button id="unLink-new" (click)="removeLink();" class="btn" [disabled]="!editMode">
+                    <img src="/assets/images/ico_unlink.svg" onmouseover="this.src='/assets/images/ico_rev_unlink.svg'" onmouseout="this.src='/assets/images/ico_unlink.svg'"
+                        width="18px" height="18px" />
+                </button>
+                <!-- <button id="htmlCode-new" (click)="generateHtmlCode();" class="btn float-xs-right" [disabled]="!editMode">
+                    <img src="/assets/images/ico_html.svg" onmouseover="this.src='/assets/images/ico_rev_html.svg'" onmouseout="this.src='/assets/images/ico_html.svg'"
+                        width="18px" height="18px" />
+                </button> -->
+            </div>
+        </div>
+        <div id="export-content" class="wrap">
+            <div id="editor" contenteditable="false" [innerHtml]="termsOfUse.termsOfUseText"></div>
+            <div *ngIf="isInvalid " class="alert alert-danger alert-margin">
+                   Terms of Use can not be blank.
+                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 hidden-sm-down">
+            <button type="button" class="btn btn-primary margin-set-left float-xs-right" (click)="onSave()" [disabled]="!editMode || !isLatest" >Save</button>
+            <button type="button" class="btn btn-secondary margin-set float-xs-right" (click)="onCancel()" [disabled]="!editMode">Cancel</button>
+            <button type="button" class="btn btn-secondary margin-set float-xs-right" (click)="onCreateNew()" >Create New Version</button>
+            <button type="button" class="btn btn-primary margin-set float-xs-right" (click)="onEdit()" [disabled]="!isLatest || editMode">Edit</button>
+        </div>
+        <div class="col-md-12 col-sm-12 hidden-md-up">
+            <button type="button" class="btn btn-secondary btn-mob-width btn-margin" (click)="onCreateNew()">Create New Version</button>
+            <button type="button" class="btn btn-primary btn-mob-width btn-margin" (click)="onEdit()" [disabled]="!isLatest || editMode">Edit</button>
+            <button type="button" class="btn btn-primary btn-mob-width btn-margin" (click)="onSave()" [disabled]="!editMode || !isLatest">Save</button>
+            <button type="button" class="btn btn-secondary btn-mob-width btn-margin" (click)="onCancel()" [disabled]="!isLatest">Cancel</button>
+        </div>
+    </div>
+</div>

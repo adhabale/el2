@@ -1,0 +1,101 @@
+<div class="row divClassNew hidden-sm-down">
+  <div class="col-md-4">
+    <h4 class='display-3 top-margin'>Validation List</h4>
+  </div>
+</div>
+<div class="divClassNew hidden-md-up">
+  <div class="col-sm-12">
+    <h4 class='display-3 title-margin'>Validation List</h4>
+  </div>
+</div>
+<div id="historyLossDataSubmission">
+  <div class="div-border">
+    <div class="col-md-12 col-sm-12 margin-top">
+      <div class="table-responsive table-striped">
+        <table class="table table-sm">
+          <tbody>
+            <tr>
+              <th (click)="sortById()" class="pointer">
+                <span>Sub. ID</span>
+                <span class="caret" *ngIf="!idFlag"></span>
+                <span class="caret caret-reversed" *ngIf="idFlag"></span>
+              </th>
+              <th (click)="sortByFileRef()" class="pointer" width="10%">
+                <span>Adj. File Reference</span>
+                <span class="caret" *ngIf="!idFileRef"></span>
+                <span class="caret caret-reversed" *ngIf="idFileRef"></span>
+              </th>
+              <th (click)="sortByCustomerName()" class="pointer">
+                <span>Client Name</span>
+                <span class="caret" *ngIf="!idName"></span>
+                <span class="caret caret-reversed" *ngIf="idName"></span>
+              </th>
+              <th (click)="sortByType()" class="pointer">
+                <span>Type of Loss Data</span>
+                <span class="caret" *ngIf="!idType"></span>
+                <span class="caret caret-reversed" *ngIf="idType"></span>
+              </th>
+              <th (click)="sortBySubmittedBy()" class="pointer">
+                <span>Submitted By</span>
+                <span class="caret" *ngIf="!idSubmittedBy"></span>
+                <span class="caret caret-reversed" *ngIf="idSubmittedBy"></span>
+              </th>
+              <th (click)="sortByTime()" class="pointer" width="10%">
+                <span>Date Time of Sub.</span>
+                <span class="caret" *ngIf="idTime"></span>
+                <span class="caret caret-reversed" *ngIf="!idTime"></span>
+              </th>
+              <th (click)="sortByStatus()" class="pointer">
+                <span>Status</span>
+                <span class="caret" *ngIf="!idStatus"></span>
+                <span class="caret caret-reversed" *ngIf="idStatus"></span>
+              </th>
+              <th (click)="sortByReviewDate()" class="pointer">
+                <span>Date of Review</span>
+                <span class="caret" *ngIf="idReviewDate"></span>
+                <span class="caret caret-reversed" *ngIf="!idReviewDate"></span>
+              </th>
+              <th (click)="sortByStatusComment()" class="pointer" width="10%">
+                <span>SME Comments</span>
+                <span class="caret" *ngIf="!idStatusComment"></span>
+                <span class="caret caret-reversed" *ngIf="idStatusComment"></span>
+              </th>
+              <th></th>
+            </tr>
+            <tr *ngFor="let lossDataSubmission of lossDataSubmissionDataInPage">
+              <td>
+                <a (click)="openValidatePage(lossDataSubmission)"> {{lossDataSubmission.submissionId}} </a>
+              </td>
+              <td>{{lossDataSubmission.adjusterFileRef}}</td>
+              <td>{{lossDataSubmission.clientName}}</td>
+              <td>{{lossDataSubmission.lossType}}</td>
+              <td>{{lossDataSubmission.submittedBy}}</td>
+              <td>{{lossDataSubmission.submissionDate | date:'dd-MMM-yyyy h:mma'}}</td>
+              <td *ngIf="lossDataSubmission.status == 'Submitted'">
+                <span class="tag tag-pill tag-info tag-width">Submitted
+                </span>
+              </td>
+              <td *ngIf="lossDataSubmission.status == 'OnHold'">
+                <span class="tag tag-pill tag-warning tag-width">On-Hold
+                </span>
+              </td>
+              <td>{{lossDataSubmission.reviewDate | date:'dd-MMM-yyyy h:mma'}}</td>
+              <td class="default" *ngIf="lossDataSubmission.statusComment && lossDataSubmission.statusComment.length>20" data-toggle="tooltip"
+                data-placement="below" title="{{lossDataSubmission.statusComment}}">
+                {{(lossDataSubmission.statusComment | slice:0:20)+'...'}}</td>
+              <td *ngIf="lossDataSubmission.statusComment && lossDataSubmission.statusComment.length<20">{{lossDataSubmission.statusComment}}</td>
+              <td>
+                <a (click)="openValidatePage(lossDataSubmission)">
+                  <img class='img-responsive' height="25px" src="./assets/images/icons8-view_file.svg" alt="Edit">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <pager [hidden]="lossDataSubmissionData?.length<=49" [allItems]="lossDataSubmissionData" [pageSize]="50" (onPageChange)="onPageChange($event)"></pager>
+    </div>
+  </div>
+</div>

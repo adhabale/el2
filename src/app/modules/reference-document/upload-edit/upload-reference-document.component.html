@@ -1,0 +1,59 @@
+<div class="modal fade user-search-result" id='uploadReferenceDocument' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button (click)="onClose()" type="button" class="close" data-dismiss="modal" arialabel="Close">
+          <span ariahidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">{{modalHeader}} Document</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+              <div class="card card-block bg-software-gray-1">
+                <p class="card-text">
+                  Accepted file types : Word, Excel, Powerpoint, PDF
+                  <br> Max file size : 10mb
+                </p>
+              </div>
+              <div class="">
+                Select File
+                <span style='color:red;'>*</span>
+              </div>
+              <div class="margin-top">
+                <input type="file" name="pic" #file  (change)="fileUpload($event)">
+              </div>
+              <div class="margin-top-xs">
+                <label>Document Name
+                  <span style='color:red;'>*</span>
+                </label>
+                <input type="text" class="form-control" name="docname" [(ngModel)]="document.title">
+                <div *ngIf="isInvalid" class="alert alert-danger alert-margin">
+                    {{errMsg}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <button type="button" [disabled]="isInvalid || document.title==undefined || document.title==''" class="btn btn-primary btn-block hidden-md-up" (click)="onSave();file.value = ''" data-dismiss="modal" name="continueButton">
+            Save
+          </button>
+          <button type="button" class="btn btn-secondary btn-block btn-mob-margin hidden-md-up" data-dismiss="modal" (click)="onClose();file.value =''"
+            name="cancelButton">Cancel</button>
+          <button type="button" id="cancelBtn" class="btn btn-secondary hidden-sm-down margin-set-right" data-dismiss="modal" (click)="onClose();file.value =''"
+            name="cancelButton">Cancel</button>
+          <button type="button" [disabled]="isInvalid || document.title==undefined || document.title==''" class="btn btn-primary hidden-sm-down margin-set-left" (click)="onSave();file.value =''" data-dismiss="modal" name="continueButton">
+            Save
+          </button>
+          <button id='closeAccountSearchModal' type="button" hidden='true' data-dismiss="modal" name="continueButton">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

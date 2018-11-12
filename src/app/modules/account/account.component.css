@@ -1,0 +1,428 @@
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+ol li{
+    display: inline;
+  } 
+li a i:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+li a.search i:before {
+    content:"\f002";
+}
+.btn-mob{
+    width: 100%;
+}
+/*Angular-switch CSS*/
+.switch-width {
+    width: 72px;
+}
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .divClass {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .container {
+        width: 100%;
+    }
+    .select-extra-right {
+        margin-right: -15px;
+    }
+    .pad-left{
+        padding-left: 20px;
+    }
+    .input-width{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .divClass {
+        padding-left: 50px;
+        padding-right: 10px;
+    }
+    .shiftView {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .input-width{
+        width: 115%;
+    }
+}
+
+@media screen and (max-width: 1500px) and (min-width: 1025px) {
+    .divClass {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .shiftView {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .input-width{
+        width: 115%;
+    }
+}
+
+@media screen and (max-width: 2600px) and (min-width: 1501px) {
+    .divClass {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .shiftView {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .input-width{
+        width: 115%;
+    }
+}
+
+
+/* -- */
+.p-11{
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+.display-1{
+    font-size: 25px;
+}
+.p-top-bottom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.p-top-bottom2 {
+    padding-top: 20px;
+}
+
+.margin-set-left {
+    margin-left: 6px;
+}
+
+.margin-set-right {
+    margin-right: 6px;
+}
+
+.margin-set {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.input-group-addon {
+    padding: 0rem 0rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.25;
+    color: #000;
+    text-align: center;
+    background-color: #ecedee;
+    border: 0px solid #c5c5c5;
+}
+.reduce-bottom{
+    margin-bottom: 0px;
+}
+
+/* -- */
+
+/* -Routing CSS- */
+
+.nav-pills .nav-link.active,
+.nav-pills .nav-link.active:focus,
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-item.open .nav-link,
+.nav-pills .nav-item.open .nav-link:focus,
+.nav-pills .nav-item.open .nav-link:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: #009ed1;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover{
+    background-color: #00607d;
+}
+.card-tabs .nav-link.active, .card-tabs .nav-link.active:focus, .card-tabs .nav-link.active:hover {
+    /* background-color: #009ed1; */
+    border-color: #00607d #00607d transparent;
+}
+
+.nav-horizontal .nav-link.active {
+    margin-top: -0.5rem;
+    padding-top: 1.9rem;
+    padding-bottom: 1.1rem;
+}
+
+.nav-horizontal {
+    padding-left: 0rem;
+}
+
+.divClass .text-gray-light {
+    margin-bottom: 1.5rem;
+}
+
+.nav-link {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 14px;
+    border-left-width: 0px;
+    margin-left: 0px;
+    cursor: pointer;
+}
+
+ul {
+    border-bottom: 1px solid #009ed1;
+}
+
+.text-gray-light {
+    color: #757575;
+}
+
+.text-gray-light.secondary {
+    color: #757575;
+    padding-top: 20px;
+}
+
+.btn-cd {
+    margin-top: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.table td {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.table th.float-xs-right,
+th {
+    border-top: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #585858;
+    padding-top: 10px;
+}
+
+.table th, .table td {
+    border-top: 0px solid #eceeef;
+}
+hr.main-hr {
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-ratings td,
+th {
+    border-top: 0px solid #eceeef;
+}
+
+.table.searchSubscription th {
+    padding-left: 0px;
+}
+
+.table.searchSubscription td {
+    padding: 0px;
+}
+
+.table-ratings th.no-top-border {
+    border-top: 0px solid #eceeef;
+}
+
+.table-documents th.border-top,
+.table-documents td.border-top {
+    border-top: 0px solid #eceeef;
+    padding-bottom: 10px;
+}
+
+.table-documents th.padding-bottom,
+.table-documents th.padding-bottom {
+    padding-bottom: 10px;
+}
+
+.th-black {
+    color: #000;
+}
+
+.gray-color {
+    color: #989898
+}
+
+.cs-mobile-padding {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+/* .table tr.hover td{
+    background-color: #444 !important;
+} */
+
+/* -Routing CSS End- */
+
+.btn-invisible {
+    visibility: hidden;
+}
+
+.sub-top-margin {
+    margin-top: 20px;
+}
+
+.table tbody tr.highlight td {
+    background-color: #f4f4f4;
+}
+
+th.header-add-sub {
+    border-top: 0px solid #eceeef;
+}
+
+.addSubTableHeight {
+    height: 250px;
+}
+
+.table tr.active td {
+    background-color: #f4f4f4 !important;
+}
+
+.sub-add-btn {
+    /*background: #009ed1;*/
+    background: #00a0d2;
+    color: #fff;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.sub-add-btn a i {
+    color: #fff;
+}
+
+.sub-add-btn-mob {
+    /*background: #009ed1;*/
+    background: #00a0d2;
+    color: #fff;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 10px;
+}
+
+.sub-add-btn-mob a i {
+    color: #fff;
+}
+.pad-left{
+    padding-left: 40px;
+}
+
+    
+.btn-margin-left {
+    margin-left: 6px;
+}
+
+.btn-margin-right {
+    margin-right: 6px;
+}
+/* Modal CSS */
+.pointer {cursor: pointer;}
+
+.ul-mod{
+    border-bottom: none;
+    margin-bottom: 0.5rem;
+}
+.pad-top{
+    padding-top: 10px;
+}
+/* Modal Css  End */
+/*Switcher Component */
+.add-new-subscription {
+    background: #f4f4f4;
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    width: 100%;
+    z-index: 500;
+  }
+  .add-new-subscription.lookup-active {
+    position: absolute;
+    bottom: -58px;
+  }
+  .add-new-subscription .new-sub-link {
+    margin: 0.5rem 0;
+    padding: 0.5rem 2rem;
+    display: block;
+  }
+  .add-new-subscription .new-sub-link:hover {
+    background: #01a0d2;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  .add-new-subscription .new-sub-link:hover .icon {
+    fill: #ffffff;
+  }
+  
+  lookup {
+    position: relative;
+    width: 100%;
+  }
+  lookup .form-control {
+    border-top: 1px solid #d8d8d8;
+    padding: 1rem .75rem 1rem 3rem;
+    font-size: 1.25rem;
+    color: #444;
+    font-weight: 100;
+    transition: all 0.5s ease;
+  }
+  lookup .form-control.lookup-input::placeholder {
+    color: #444;
+  }
+  lookup .form-control:focus {
+    font-size: 2.2rem;
+    font-weight: 100;
+  }
+  lookup .form-control:focus::placeholder {
+    color: #d8d8d8;
+  }
+
+  .form-control-input {
+    display: none;
+    width: 80%;
+}
+
+.switcher-input{
+    display: inline-block; 
+    width:80%;
+    margin-top: 20px;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+.btn-switcher{
+margin-top: 15px;
+}
+.switcher-div{
+    background-color: #f4f4f4;
+    z-index: 100;
+}
+.margin-set-left {
+    margin-left: 6px;
+}
+
+.margin-set-right {
+    margin-right: 6px;
+}
+
+.margin-set {
+    margin-left: 12px;
+    margin-right: 30px;
+}
+a.no-cursor {
+    pointer-events: none;
+}
+/*Switcher Component Ends */
+  
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .switcher-input {
+        width: 100%;
+    }
+    .form-control-input {
+        width: 100%;
+    }
+}
+@media screen and (max-width:1145px) and (min-width: 769px) {
+    .switcher-input {
+        width: 70%;
+    }
+}

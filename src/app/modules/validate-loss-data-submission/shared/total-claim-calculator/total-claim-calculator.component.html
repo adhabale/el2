@@ -1,0 +1,146 @@
+<div class="card card-block bg-software-gray-1" *ngIf='editableMode'>
+    <h4 class="card-title display-4">Claim Amounts</h4>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th *ngIf="pageType == 1 || pageType == 2" width="45%"> PD/S&P Claim:
+
+                        <br> (100% gross, ground-up)
+                    </th>
+                    <th *ngIf="pageType == 3" width="45%"> PD Claim:
+
+                        <br> (100% gross, ground-up)
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input tabindex="29" type="text" (keyup)="onModelChange($event)" class="form-control align-right" aria-describedby="basic-addon1" [(ngModel)]="pd"
+                                id="pd" value="0" onclick="this.select()" maxlength="17" decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="pageType == 1">
+                    <th>OEE Claim:
+
+                        <br> (100% gross, ground-up)
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input tabindex="30" type="text" (keyup)="onModelChange($event)" class="form-control align-right" aria-describedby="basic-addon1" [(ngModel)]="oee"
+                                id="oee" value="0" onclick="this.select()" autocomplete="off" maxlength="17" decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>BI/CBI Claim:
+
+                        <br> (Please clarify basis of costs)
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input tabindex="31" type="text" (keyup)="onModelChange($event)" class="form-control align-right" aria-describedby="basic-addon1" [(ngModel)]="bi"
+                                id="bi" value="0" onclick="this.select()" autocomplete="off" maxlength="17" decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Total Claim:
+                        <span style='color:red;'> *</span>
+                    </th>
+                    <td>
+                        <div class="input-group" *ngIf='total==NaN'>
+                            <input tabindex="32" type="text" (keyup)="onModelChange($event)" class="form-control align-right" aria-describedby="basic-addon1" id="total"
+                                (focusout)="total = formatInput(total);" autocomplete="off" disabled decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+
+                        <div class="input-group" *ngIf='total!=NaN'>
+                            <input tabindex="32" type="text" (keyup)="onModelChange($event)" class="form-control align-right" aria-describedby="basic-addon1" id="total"
+                                [(ngModel)]="total" (focusout)="total = formatInput(total);" disabled decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+                        <div *ngIf="total=='0'" class="alert alert-danger">
+                            Enter appropriate amounts above as 'Total Claim' should be more than zero.
+                        </div>
+                        <div *ngIf="isTotalGreaterThanTenDigits" class="alert alert-danger">
+                            Total Shouldn't Be Greater Than A Value of 13 Digits.
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card card-block bg-software-gray-1" *ngIf='!editableMode'>
+    <h4 class="card-title display-4">Claim Amounts</h4>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th *ngIf="pageType == 1 || pageType == 2" width="45%"> PD/S&P Claim:
+
+                        <br> (100% gross, ground-up)
+                    </th>
+                    <th *ngIf="pageType == 3" width="45%"> PD Claim:
+
+                        <br> (100% gross, ground-up)
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input tabindex="29" type="text" (keyup)="onModelChange($event)" readonly class="form-control align-right" aria-describedby="basic-addon1"
+                                [(ngModel)]="pd" onclick="this.select()" id="pd" value="0" maxlength="17" decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="pageType == 1">
+                    <th>OEE Claim:
+
+                        <br> (100% gross, ground-up)
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input tabindex="30" type="text" (keyup)="onModelChange($event)" readonly class="form-control align-right" aria-describedby="basic-addon1"
+                                [(ngModel)]="oee" onclick="this.select()" id="oee" value="0" maxlength="17" decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>BI/CBI Claim:
+
+                        <br> (Please clarify basis of costs)
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input tabindex="31" type="text" (keyup)="onModelChange($event)" readonly class="form-control align-right" aria-describedby="basic-addon1"
+                                [(ngModel)]="bi" onclick="this.select()" id="bi" value="0" maxlength="17" decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Total Claim:
+                        <span style='color:red;'> *</span>
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input tabindex="32" type="text" (keyup)="onModelChange($event)" readonly class="form-control align-right" aria-describedby="basic-addon1"
+                                id="total" [(ngModel)]="total" (focusout)="total = formatInput(total);" disabled decimalNum-val>
+                            <span class="input-group-addon" id="basic-addon1">$</span>
+                        </div>
+                        <div *ngIf="total=='0'" class="alert alert-danger">
+                            Enter appropriate amounts above as 'Total Claim' should be more than zero.
+                        </div>
+                        <div *ngIf="isTotalGreaterThanTenDigits" class="alert alert-danger">
+                            Total Shouldn't Be Greater Than A Value of 13 Digits.
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

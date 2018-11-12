@@ -1,0 +1,1214 @@
+<div id='filters' class="collapse">
+    <hr>
+    <div class='filter-design'>
+        <div class="">
+            <div class="col-md-4">
+                <div class="">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Global Search On Text Fields</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="101" class='form-control' [(ngModel)]='search.globalSearch' type="text" name="globalSearch" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Year (YYYY)</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="105" class="form-control" name="year" #year="ngModel" [(ngModel)]='search.year' required [class.selected]="search.year != null">
+                                        <option [ngValue]='null'>All Years</option>
+                                        <option *ngFor='let year of dateObjects.yearList' [ngValue]='year'>{{year}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Month (MM)</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="108" class="form-control" name="month" #month="ngModel" [(ngModel)]='search.month' required [class.selected]="search.month != null">
+                                        <option [ngValue]='null'>All Months</option>
+                                        <option *ngFor='let month of dateObjects.monthList' [ngValue]='month'>{{month.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Category 1</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="112" class="form-control" name="category1" #category1="ngModel" [(ngModel)]='search.category1' required
+                                        [class.selected]="search.category1 != null">
+                                        <option [ngValue]="null">All Category 1</option>
+                                        <optgroup label="{{operationTypeEnum.Upstream}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories1 | optgroup : operationTypeEnum.Upstream" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Downstream}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories1 | optgroup : operationTypeEnum.Downstream" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Power}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories1 | optgroup : operationTypeEnum.Power" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Category 2</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="116" class="form-control" name="category2" #category2="ngModel" [(ngModel)]='search.category2' required
+                                        [class.selected]="search.category2 != null">
+                                        <option [ngValue]="null">All Category 2</option>
+                                        <optgroup label="{{operationTypeEnum.Upstream}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories2 | optgroup : operationTypeEnum.Upstream" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Downstream}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories2 | optgroup : operationTypeEnum.Downstream" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Power}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories2 | optgroup : operationTypeEnum.Power" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Category 3</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="119" class="form-control" name="category3" #category3="ngModel" [(ngModel)]='search.category3' required
+                                        [class.selected]="search.category3 != null">
+                                        <option [ngValue]="null">All Category 3</option>
+                                        <optgroup label="{{operationTypeEnum.Upstream}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories3 | optgroup : operationTypeEnum.Upstream" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Downstream}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories3 | optgroup : operationTypeEnum.Downstream" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Power}}">
+                                            <option *ngFor="let cat of formLookUp.lossSubmission.categories3 | optgroup : operationTypeEnum.Power" [ngValue]="{id:cat.id,value:cat.displayName}">
+                                                {{cat.displayName}}
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Operational Status</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="122" class="form-control" name="operationalStatus" [(ngModel)]='search.operationalStatus' required [class.selected]="search.operationalStatus != null">
+                                        <option [ngValue]="null">All Operational Status</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.opeartionalStatus" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Assured & Co-venturers</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="125" class='form-control' [(ngModel)]='search.assured' type="text" name="assured" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Land/Offshore</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="128" class="form-control" name="landOffshore" [(ngModel)]='search.landOffshore' required [class.selected]="search.landOffshore != null">
+                                        <option [ngValue]="null">All Land/Offshore</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.land_Offshore" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Loss Location</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="131" class='form-control' [(ngModel)]='search.location' type="text" name="location" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Country</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="134" class="form-control" name="country" [(ngModel)]='search.country' required [class.selected]="search.country != null">
+                                        <option [ngValue]="null">All Country</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.country" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:4px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Platform Asset Cat.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="137" class="form-control" name="assetCategory" [(ngModel)]='search.assetCategory' required [class.selected]="search.assetCategory != null">
+                                        <option [ngValue]="null">All Platform Asset Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.assetCategory" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Loss Type</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="140" class="form-control" name="lossType" [(ngModel)]='search.lossType' required [class.selected]="search.lossType != null">
+                                        <option [ngValue]="null">All Loss Type</option>
+                                        <optgroup label="{{operationTypeEnum.Upstream}}">
+                                            <option *ngFor="let item of formLookUp.lossSubmission.lossType | optgroup : operationTypeEnum.Upstream" [ngValue]="{id:item.id,value:item.displayName}">
+                                                {{item.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Downstream}}">
+                                            <option *ngFor="let item of formLookUp.lossSubmission.lossType | optgroup : operationTypeEnum.Downstream" [ngValue]="{id:item.id,value:item.displayName}">
+                                                {{item.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Power}}">
+                                            <option *ngFor="let item of formLookUp.lossSubmission.lossType | optgroup : operationTypeEnum.Power" [ngValue]="{id:item.id,value:item.displayName}">
+                                                {{item.displayName}}
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Area</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="143" class="form-control" name="area" [(ngModel)]='search.area' required [class.selected]="search.area != null">
+                                        <option [ngValue]="null">All Area</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.area" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Water Depth Category</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="146" class="form-control" name="waterDepthCategory" [(ngModel)]='search.waterDepthCategory' required [class.selected]="search.waterDepthCategory != null">
+                                        <option [ngValue]="null">All Water Depth Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.waterDepthCategory" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Install/Build Year Cat.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="149" class="form-control" name="buildYearCategory" #buildYearCategory="ngModel" [(ngModel)]='search.buildYearCategory'
+                                        required [class.selected]="search.buildYearCategory != null">
+                                        <option [ngValue]='null'>All Build Year Category</option>
+                                        <option *ngFor='let decade of dateObjects.decadeList' [ngValue]='{id:decade,value:decade}'>{{decade}}s</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Water Depth ft</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="152" class='form-control' [(ngModel)]='search.waterDepth' type="text" decimalNumber name="waterDepth" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Year of Installation</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="155" class='form-control' [(ngModel)]='search.builtYear' maxlength="4" type="text" number name="builtYear"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>PD Claim US$</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="158" class='form-control' dollar (valueChange)="search.pdClaim.value = $event" [(ngModel)]='search.pdClaim.model'
+                                        type="text" name="pdClaim" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:4px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>OEE Claim US$</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="161" class='form-control' dollar (valueChange)="search.oeeClaim.value = $event" [(ngModel)]='search.oeeClaim.model'
+                                        type="text" name="oeeClaim" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>BI Claim US$</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="164" class='form-control' dollar (valueChange)="search.biClaim.value = $event" [(ngModel)]='search.biClaim.model'
+                                        type="text" name="biClaim" decimalNum-val/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Total Claim US$</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="167" class='form-control' dollar (valueChange)="search.totalClaim.value = $event" [(ngModel)]='search.totalClaim.model'
+                                        type="text" name="totalClaim" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Indexed Total Claim US$</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="170" class='form-control' dollar (valueChange)="search.totalIndexedClaim.value = $event" [(ngModel)]='search.totalIndexedClaim.model'
+                                        type="text" name="totalIndexedClaim" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>OEE Indexed US$</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="173" class='form-control' dollar (valueChange)="search.totalIndexedOEEClaim.value = $event" [(ngModel)]='search.totalIndexedOEEClaim.model'
+                                        type="text" name="totalIndexedOEEClaim" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>WELD URN</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="102" class="form-control" [(ngModel)]='search.urn' type="text" number name="urn" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:6px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Cause</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="106" class="form-control" name="cause" [(ngModel)]='search.cause' required [class.selected]="search.cause != null">
+                                        <option [ngValue]="null">All Cause</option>
+                                        <optgroup label="{{operationTypeEnum.Upstream}}">
+                                            <option *ngFor="let item of formLookUp.lossSubmission.cause | optgroup : operationTypeEnum.Upstream" [ngValue]="{id:item.id,value:item.displayName}">
+                                                {{item.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Downstream}}">
+                                            <option *ngFor="let item of formLookUp.lossSubmission.cause | optgroup : operationTypeEnum.Downstream" [ngValue]="{id:item.id,value:item.displayName}">
+                                                {{item.displayName}}
+                                            </option>
+                                        </optgroup>
+                                        <optgroup label="{{operationTypeEnum.Power}}">
+                                            <option *ngFor="let item of formLookUp.lossSubmission.cause | optgroup : operationTypeEnum.Power" [ngValue]="{id:item.id,value:item.displayName}">
+                                                {{item.displayName}}
+                                            </option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group date" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Created Date</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- calendar control -->
+                                    <datepicker tabindex="109" datepickerId="createdDate" (dateChange)="search.createdDate = $event" [selectedDate]="search.createdDate | date: 'dd-MMM-yyy'"
+                                        name="createdDate"></datepicker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group date" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Updated Date</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- calendar control -->
+                                    <datepicker tabindex="113" datepickerId="updatedDate" name="updatedDate" (dateChange)="search.updatedDate = $event" [selectedDate]="search.updatedDate | date: 'dd-MMM-yyy'"></datepicker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Rating Area</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="117" class="form-control" name="ratingArea" [(ngModel)]='search.ratingArea' required [class.selected]="search.ratingArea != null">
+                                        <option [ngValue]="null">All Rating Area</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.ratingArea" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Well Type</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="120" class="form-control" name="wellType" [(ngModel)]='search.wellType' required [class.selected]="search.wellType != null">
+                                        <option [ngValue]="null">All Well Type</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.wellType" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Drilling Status</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="123" class="form-control" name="drillingStatus" [(ngModel)]='search.drillingStatus' required [class.selected]="search.drillingStatus != null">
+                                        <option [ngValue]="null">All Drilling Status</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.drillingStatus" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>U/G Blowout</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" tabindex="126" name="ugbo" [(ngModel)]='search.ugbo' required [class.selected]="search.ugbo != null">
+                                        <option [ngValue]="null">All U/G Blowout</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.ugbo" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>US Loc Code</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="129" class="form-control" name="usLocationCode" [(ngModel)]='search.usLocationCode' required [class.selected]="search.usLocationCode != null">
+                                        <option [ngValue]="null">All US Loc Code</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.usLocationCode" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Shale Well</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="132" class="form-control" name="shaleWell" [(ngModel)]='search.shaleWell' required [class.selected]="search.shaleWell != null">
+                                        <option [ngValue]="null">All Shale Well</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.shell" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Develop mental/ Exploratory</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="135" class="form-control" name="devExp" [(ngModel)]='search.devExp' required [class.selected]="search.devExp != null">
+                                        <option [ngValue]="null">All Developmental / Exploratory</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.dev_Exp" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Shale Formation</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="138" class="form-control" name="shaleInformation" [(ngModel)]='search.shaleInformation' required [class.selected]="search.shaleInformation != null">
+                                        <option [ngValue]="null">All Shale Formation</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.shaleFormation" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Depth @ Loss</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="141" class="form-control" [(ngModel)]='search.lossDepth' type="text" decimalNumber name="lossDepth" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Depth Category</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="144" class="form-control" name="lossDepthCategory" [(ngModel)]='search.lossDepthCategory' required [class.selected]="search.lossDepthCategory != null">
+                                        <option [ngValue]="null">All Depth Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.depthCategory" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Proj. Total Depth</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="147" class="form-control" [(ngModel)]='search.ptd' type="text" decimalNumber name="ptd" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Number of days Outage</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="150" class="form-control" [(ngModel)]='search.outageDays' type="text" number name="outageDays" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Tow</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="153" class="form-control" name="tow" [(ngModel)]='search.tow' required [class.selected]="search.tow != null">
+                                        <option [ngValue]="null">All TOW</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.tow" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Rated WD ft</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="156" class="form-control" [(ngModel)]='search.ratedWd' type="text" decimalNumber name="ratedWd" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Generation</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="159" class="form-control" name="generation" [(ngModel)]='search.generation' required [class.selected]="search.generation != null">
+                                        <option [ngValue]="null">All Generation</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.generation" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Year Rebuilt</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="162" class="form-control" [(ngModel)]='search.rebuiltYear' maxlength="4" type="text" number name="rebuiltYear"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Product</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select tabindex="165" class="form-control" name="productInformation" [(ngModel)]='search.productInformation' required [class.selected]="search.productInformation != null">
+                                        <option [ngValue]="null">All Product information</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.productInfo" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>PD Actual Cost Cat.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- range pattern -->
+                                    <select tabindex="168" class="form-control" name="actualPDLiabCategory" [(ngModel)]='search.actualPDLiabCategory' required
+                                        [class.selected]="search.actualPDLiabCategory != null">
+                                        <option [ngValue]="null">All PD Actual Cost Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.costCategory" [ngValue]="{min:item.minValue,max:item.maxValue}">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>OEE Actual Cost Cat.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- range pattern -->
+                                    <select tabindex="171" class="form-control" name="actualOEECategory" [(ngModel)]='search.actualOEECategory' required [class.selected]="search.actualOEECategory != null">
+                                        <option [ngValue]="null">All OEE Actual Cost Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.costCategory" [ngValue]="{min:item.minValue,max:item.maxValue}">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Total Actual Cost Cat.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- range pattern -->
+                                    <select tabindex="174" class="form-control" name="actualTotalCategory" [(ngModel)]='search.actualTotalCategory' required [class.selected]="search.actualTotalCategory != null">
+                                        <option [ngValue]="null">All Total Actual Cost Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.costCategory" [ngValue]="{min:item.minValue,max:item.maxValue}">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>CTL/TL</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input tabindex="177" [(ngModel)]='search.ctl' type="checkbox" name="ctl" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="">
+
+                    <div class="col-md-12">
+                        <div class="form-group date">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>DOL (Date of Loss)</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- calendar control -->
+                                    <datepicker tabindex="103" datepickerId="dateOfLoss" name="dateOfLoss" (dateChange)="search.dateOfLoss = $event" [selectedDate]="search.dateOfLoss | date: 'dd-MMM-yyy'"></datepicker>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:8px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Source</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- autocomplete -->
+                                    <input class='form-control' tabindex="107" [(ngModel)]='search.source' type="text" name="source" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Adjuster</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input class='form-control' tabindex="111" [(ngModel)]='search.adjuster' type="text" name="adjuster" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--===============-->
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>PD Indexed Cost Cat.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- range pattern -->
+                                    <select class="form-control" tabindex="115" name="indexedPDLiabCategory" [(ngModel)]='search.indexedPDLiabCategory' required
+                                        [class.selected]="search.indexedPDLiabCategory != null">
+                                        <option [ngValue]="null">All PD Indexed Cost Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.costCategory" [ngValue]="{min:item.minValue,max:item.maxValue}">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>OEE Indexed Cost Cat.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- range pattern -->
+                                    <select class="form-control" tabindex="118" name="indexedOEECategory" [(ngModel)]='search.indexedOEECategory' required [class.selected]="search.indexedOEECategory != null">
+                                        <option [ngValue]="null">All OEE Indexed Cost Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.costCategory" [ngValue]="{min:item.minValue,max:item.maxValue}">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Total Indexed Cost Cat.</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <!-- range pattern -->
+                                    <select class="form-control" tabindex="121" name="indexedTotalCategory" [(ngModel)]='search.indexedTotalCategory' required
+                                        [class.selected]="search.indexedTotalCategory != null">
+                                        <option [ngValue]="null">All Total Indexed Cost Category</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.costCategory" [ngValue]="{min:item.minValue,max:item.maxValue}">
+                                            {{item.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>UP/ DOWN/ POWER</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="upDownPower" tabindex="124" [(ngModel)]='search.upDownPower' required [class.selected]="search.upDownPower != null">
+                                        <option [ngValue]="null">All UP/DOWN/POWER</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.operationalType" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Field/Unit</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="field" [(ngModel)]='search.field' tabindex="127" required [class.selected]="search.field != null">
+                                        <option [ngValue]="null">All Field/Unit</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.field" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>GOM Area</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="gomArea" [(ngModel)]='search.gomArea' required tabindex="130" [class.selected]="search.gomArea != null">
+                                        <option [ngValue]="null">All GOM Area</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.gomArea" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Adjuster Individual</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="adjusterIndividual" [(ngModel)]='search.adjusterIndividual' tabindex="133" required [class.selected]="search.adjusterIndividual != null">
+                                        <option [ngValue]="null">All Adjuster Individual</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.adjIndividual" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top: 2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Adjuster File Ref</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input class="form-control" [(ngModel)]='search.adjusterFileRef' type="text" name="adjusterFileRef" tabindex="136" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:10px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Closed</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input [(ngModel)]='search.close' type="checkbox" name="close" tabindex="139" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Transit</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input [(ngModel)]='search.transit' type="checkbox" name="transit" tabindex="142" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:12px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Willis</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="willis" #event="ngModel" [(ngModel)]='search.willis' tabindex="145" required [class.selected]="search.willis != null">
+                                        <option [ngValue]="null">Either</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.willis" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>OIL URN</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input class="form-control" [(ngModel)]='search.oilUrn' type="text" name="oilUrn" tabindex="148" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>OIL MULTI</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input [(ngModel)]='search.oilMulti' type="checkbox" name="oilMulti" tabindex="151" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:10px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Event</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="event" #event="ngModel" [(ngModel)]='search.event' tabindex="154" required [class.selected]="search.event != null">
+                                        <option [ngValue]="null">All Event</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.event" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Plant Year of Build</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input class="form-control" [(ngModel)]='search.plantBuildYear' maxlength="4" type="text" number tabindex="157" name="plantBuildYear"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Plant Capacity (MW)</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input class="form-control" [(ngModel)]='search.plantCapacity' type="text" name="plantCapacity" tabindex="160" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Equipment Type</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="equipmentType" #equipmentType="ngModel" [(ngModel)]='search.equipmentType' tabindex="163"
+                                        required [class.selected]="search.equipmentType != null">
+                                        <option [ngValue]="null">All Equipment Type</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.equipmentType" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>OEM Model</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="model" #model="ngModel" [(ngModel)]='search.model' required tabindex="166" [class.selected]="search.model != null">
+                                        <option [ngValue]="null">All OEM Model</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.model" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group" style="margin-top:2px;">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Year of Manufacture</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input class="form-control" [(ngModel)]='search.modelBuildYear' maxlength="4" type="text" number name="modelBuildYear" tabindex="169"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>OEM</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="model" #modelOEM="ngModel" [(ngModel)]='search.modelOEM' required tabindex="172" [class.selected]="search.modelOEM != null">
+                                        <option [ngValue]="null">All OEM</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.modelOEM" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Country of Manufacture</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" name="model" #countryManufacture="ngModel" [(ngModel)]='search.countryManufacture' tabindex="175"
+                                        required [class.selected]="search.countryManufacture != null">
+                                        <option [ngValue]="null">All Country of Manufacture</option>
+                                        <option *ngFor="let item of formLookUp.lossSubmission.countryManufactured" [ngValue]="{id:item.id,value:item.displayName}">
+                                            {{item.displayName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class='form-label'>Incomplete</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input [(ngModel)]='search.incomplete' type="checkbox" name="incomplete" tabindex="178" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>

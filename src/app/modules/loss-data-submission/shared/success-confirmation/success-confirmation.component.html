@@ -1,0 +1,38 @@
+<div class="col-md-12 margin-top">
+    <div class="modal fade search-modal" id='showConfirmationModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+                        <span ariahidden="true">&times;</span>
+                    </button> -->
+                    <h4 class="modal-title">Submission Message</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-md-12 p-top-bottom">
+                                    <div class="table-responsive addSubTableHeight table-container">
+                                        <table id='addSubTable' class="table">
+                                            <thead>
+                                                <th class='header-add-sub'>
+                                                   {{msg}}
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-mod" data-dismiss="modal" name="okButton" (click)="onYes()">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

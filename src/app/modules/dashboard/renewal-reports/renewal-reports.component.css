@@ -1,0 +1,22 @@
+.div-scroll{
+    height: 330px;
+    overflow-y: auto;
+}
+.table th {
+    border-top: 0px solid #eceeef;
+}
+tr.bottom-pad td {
+    padding-bottom:0px;
+}
+.tspan{
+    color: #333333;
+    font-size: 18px;
+    fill: #333333;
+    font-weight: 500;
+}
+.margin-top{
+    margin-top: 20px;
+}
+.margin-right{
+    margin-right: 5px;
+}

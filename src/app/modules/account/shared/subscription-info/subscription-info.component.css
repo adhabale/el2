@@ -1,0 +1,36 @@
+.table-bordered th,
+.table-bordered td {
+    border: 0px solid white !important;
+}
+
+.table th,
+.table td {
+    border-top: 0px solid white;
+}
+
+.table thead th {
+    border-bottom: 0px solid white;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.table td.td-bottom-padding {
+    padding-bottom: 35px;
+}
+
+.table th{
+    font-size: 14px;
+    font-weight: 400 !important; 
+}
+.table td {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.table.mob-pad th,
+.table.mob-pad td {
+    padding: 5px;
+    font-size: 14px;
+}

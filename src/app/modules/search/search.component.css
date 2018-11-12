@@ -1,0 +1,357 @@
+@import url('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+
+.btn-line-height{
+    line-height: 1.5;
+}
+.divClass-margin{
+    margin-left: 20px;
+}
+.none{
+    display: none;
+}
+.table thead th {
+    border-bottom: 0px solid #eceeef;
+}
+
+.table th,
+.table td {
+    border-top: 0px solid #eceeef;
+}
+
+.padding-button-footer {
+    /*padding-left: 20px;
+    padding-right: 20px;*/
+    padding-top: 20px !important;
+}
+
+.card-tabs .nav-link.active,
+.card-tabs .nav-link.active:focus,
+.card-tabs .nav-link.active:hover {
+    background-color: #009ed1;
+    border-color: #009ed1 #009ed1 transparent;
+}
+
+ .card-tabs .card-header {
+     border-bottom: none!important;
+} 
+
+.border-box{
+border: 1px solid #ccc !important;
+}
+/*Year loss css starts*/
+
+
+/*.wrapper {
+    width: 30%;
+    overflow: hidden;
+    margin: 30px auto 0;
+}*/
+
+
+/*section {
+    width: 46%;
+    float: left;
+    margin: 0 2%;
+}*/
+
+label.yearDate {
+    display: block;
+    padding: 5px 10px;
+    margin: 5px 0;
+    font: 14px/20px Arial, sans-serif;
+    background-color: #ccc;
+    border-radius: 2px;
+}
+
+label.yearDate:hover {
+    background-color: #009ed1;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    display: none;
+    position: relative;
+    top: 1px;
+}
+
+input[type="checkbox"]:checked {
+    display: none;
+}
+
+
+/*Year loss css ends*/
+
+/*Accordian*/
+.accordion .accordion-icon {
+left: 6rem;
+right: 0rem;
+}
+.accordion .card-header {
+    border-bottom-width: 0px!important;
+    background-color:#fff!important;
+    color: #585858;
+    margin-right: 0px;
+}
+.max-height {
+    max-height:250px;
+}
+.margin-bottom{
+   margin-bottom: 15px
+}
+.margin-left{
+   margin-left: -10%;
+}
+.summary{
+    height: 200px!important;
+    overflow-y: scroll;
+    border:1px solid #ccc;
+    
+}
+.margin-top{
+    margin-top: 20px;
+}
+.selected-value{
+    background-color: #ecedee;
+    padding-left:10px; 
+    /* padding-right:10px;  */
+    margin-right: 15px
+}
+#close {
+    display:inline-block;
+    padding:2px 5px;
+   
+}
+.chip-category {
+    display: inline-block;
+    /* padding: 0px 10px; */
+    height: 32px;
+    font-size: 1rem;
+    line-height: 25px;
+    background-color: white;
+    font-weight: bold;
+}
+.closebtn-category{
+    padding-left: 10px;
+    /* margin-top: -4px; */
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 1rem;
+    cursor: pointer;
+}
+b, strong {
+    font-weight: unset;
+    font-size: 14px;
+}
+.chip {
+    display: inline-block;
+    /* padding: 0px 10px; */
+    height: 32px;
+    font-size: 1rem;
+    line-height: 25px;
+    background-color: white;
+    margin:2px
+}
+
+.chip-inner {
+    padding: 0px 5px 0px 5px;
+    
+}
+.chip-i {
+    display: inline-block;
+    padding: 0px 3px;
+    height: 20px;
+    font-size: 1rem;
+    line-height: 20px;
+    background-color: white;
+    margin:3px
+    
+}
+.closebtn {
+    padding-left: 10px;
+    margin-top: -4px;
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.closebtn-i {
+    padding-left:4px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
+/* .accordion-toggle:after {
+    font-family: 'FontAwesome';
+    content: "\f078";    
+  
+}
+.accordion-opened .accordion-toggle:after {    
+    content: "\f077";    
+} */
+
+/*Accordian end */ 
+
+/* -Grids-*/
+.table-year td {
+     border: 10px #DDD solid;
+     padding: 20px;
+     cursor: pointer;
+     font-weight: 800;
+}
+.selected {
+     background-color: #444;
+     color: #FFF;
+}
+.inactive-button-class{
+    background-color: white;
+     color: #444;
+}
+.active-button-class{
+    background-color: #009ed1;
+     color: #FFF;
+}
+td.td-hover:hover{
+    background-color: black;
+    color: #FFF;
+}
+ .not-allowed {
+        cursor: not-allowed!important;
+    
+    }
+.btn-group button.btn {
+    background-color: #fff!important;
+    color: #585858;
+}
+/* Grids*/
+
+  /* Others */
+.top-margin{
+    margin-top: 20px
+}
+.top-margin-de{
+    margin-top: 20px
+}
+.btn-save{
+    float: right;
+    margin-right: 15px
+}
+.btn-search{
+    float: right
+}
+
+    /* Others */
+.margin-set-left {
+    margin-left: 6px !important;
+}
+
+.margin-set-right {
+    margin-right: 6px !important;
+}
+.top-margin{
+    margin-top: 20px
+}
+.btn-save{
+    float: right;
+    margin-right: 15px
+}
+.btn-search{
+    float: right
+}
+
+.disabled{
+    color: lightgray;
+}
+.card-header-tabs {
+    margin-left: -1.2rem;
+}
+.tag-margin-right{
+    margin-right:10px 
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.5em 0.4em;
+    font-size: 75%;
+    font-weight: 500;
+    line-height: 1;
+    color: #585858;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}
+
+.tag-info {
+    background-color: #f1f1f1;
+}
+.label{
+    font-weight: 600 !important;
+}
+
+/* Mobile CSS */
+.btn-mob-width{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.btn-width-half{
+    width: 50%;
+    margin-bottom: 20px;
+}
+.btn-shift-dropdown{
+    margin-left: 40px;
+}
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .btn-shift-dropdown {
+        margin-left: 0px;
+    }
+    .btn-margins{
+        margin-top: 10px;
+    }
+    .top-margin-de{
+        margin-top: 0px;
+    }
+}
+.active{
+    display: block;
+}
+.inactive{
+    display:none;
+}
+
+
+.caret-inverse{
+    margin-left: 12px;
+    border: solid #009ed1;
+    border-width: 0 2.3px 2.3px 0;
+    display: inline-block;
+    padding: 0rem 0.3rem 0.3rem 0rem;
+    background-position: 60.5% 57%;
+    transform: rotate(-135deg);
+    transition: transform 0.3s, -webkit-transform 0.3s;
+    -webkit-transform: rotate(-135deg);
+}
+.accordian-width{
+    width: 139px;
+}
+a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
+    color: white;
+    text-decoration: none;
+}
+.top-margin{
+    margin-top: 20px;
+}
+
+.expand_caret {
+    margin-left: 8px;
+    margin-top: -4px;
+}
+a[aria-expanded='true'] > .expand_caret {
+    transform: rotate(-180deg);
+}

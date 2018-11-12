@@ -1,0 +1,163 @@
+
+<div class="modal fade add-user edit-user" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arialabel="Close" (click)='onClose()'>
+                    <span ariahidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" *ngIf='isNewUser'>Add User</h4>
+                <h4 class="modal-title" *ngIf='!isNewUser'>Edit User</h4>
+            </div>
+            <div class="modal-body hidden-sm-down">
+                <div class="row modal-form-margin-top">
+                    <div class="col-md-3 col-sm-3">
+                        <label>User Profile</label>
+                    </div>
+                    <div class="col-md-5 col-sm-5">
+                        <select id='userProfile' class="form-control" [(ngModel)]='accountUser.roleId'>
+                            <option *ngFor='let role of userRoles' [value]="role.id">{{role.code}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-4"></div>
+                </div>
+                <div class="row modal-form-margin-top">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-4 modal-label">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-9 col-sm-8 modal-data">
+                                {{accountUser.displayName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 modal-label">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-9 col-sm-9 modal-data">
+                                {{accountUser.emailAddress}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-4 modal-label">
+                                <label>Company</label>
+                            </div>
+                            <div class="col-md-9 col-sm-8 modal-data" *ngIf='accountUser.accountUserInfo && accountUser.accountUserInfo.company '>
+                                {{accountUser.accountUserInfo.company}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 modal-label">
+                                <label>Country</label>
+                            </div>
+                            <div class="col-md-9 col-sm-9 modal-data" *ngIf='accountUser.accountUserInfo && accountUser.accountUserInfo.countryName '>
+                                {{accountUser.accountUserInfo.countryName}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3  bottom-padding">
+                                Internal User
+                            </div>
+                            <div class="col-md-2 col-sm-2  bottom-padding">
+                                <div class="switch-width switch-margin">
+                                    <app-switch [checked]="accountUser.isInternal" (checkedChange)="onChangeOfUserType($event)"></app-switch>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3">
+                                Is Active
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <div class="switch-width switch-margin">
+                                    <app-switch [checked]="accountUser.isActive" (checkedChange)="onChangeOfUserStatus($event)"></app-switch>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal-body hidden-md-up">
+                <div class="row modal-form-margin-top">
+                    <div class="col-sm-12">
+                        <div>
+                            <label class="th-new label-mob">User Profile</label>
+                        </div>
+                        <div>
+                            <select class="form-control" [(ngModel)]='accountUser.roleId'>
+                                <option *ngFor='let role of userRoles' [value]="role.id">{{role.code}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 modal-form-margin-top">
+                        <div class="table-responsive table-container">
+                            <table class="table table-modal">
+                                <tbody>
+                                    <tr>
+                                        <th class="th-new">Name</th>
+                                        <td class="td-new">{{accountUser.displayName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="th-new">Email</th>
+                                        <td class="td-new">{{accountUser.emailAddress}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="th-new">Company</th>
+                                        <td class="td-new" *ngIf='accountUser.accountUserInfo && accountUser.accountUserInfo.company '>{{accountUser.accountUserInfo.company}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="th-new">Country</th>
+                                        <td class="td-new" *ngIf='accountUser.accountUserInfo && accountUser.accountUserInfo.countryName '>{{accountUser.accountUserInfo.countryName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="th-new">Internal User</th>
+                                        <td class="td-new">
+                                            <div class="switch-width">
+                                                <app-switch [checked]="accountUser.isInternal" (checkedChange)="onChangeOfUserType($event)"></app-switch>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="th-new">Is Active</th>
+                                        <td class="td-new">
+                                            <div class="switch-width">
+                                                <app-switch [checked]="accountUser.isActive" (checkedChange)="onChangeOfUserStatus($event)"></app-switch>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer hidden-sm-down">
+                <button type="button" class="btn btn-secondary margin-set-right" data-dismiss="modal" name="cancelUserButton" (click)='onClose()'>Cancel</button>
+                <button type="button" class="btn btn-primary margin-set-left" [disabled]='accountUser.roleId == null || accountUser.roleId == undefined || accountUser.roleId.toString() == ""' (click)="onSave()" data-dismiss="modal" name="saveUserButton">Save</button>
+            </div>
+            <div class="modal-footer hidden-md-up">
+                <button type="button" class="btn btn-primary btn-block" [disabled]='accountUser.roleId == null || accountUser.roleId == undefined || accountUser.roleId.toString() == ""' (click)="onSave()" data-dismiss="modal" name="saveUserButton">Save</button>
+                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal" name="cancelUserButton" (click)='onClose()'>Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

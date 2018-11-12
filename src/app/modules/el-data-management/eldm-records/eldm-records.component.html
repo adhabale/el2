@@ -1,0 +1,32 @@
+<div class="position-padding">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well-report">
+                <div class="row">
+                    <div class="col-md-12 well-col">
+                        <h5 *ngIf="lossDataSubmissionData.incidentId.length > 0" class="extra-padding-top">{{lossDataSubmissionData.incidentId.length}} records found</h5>
+                        <h5 *ngIf="lossDataSubmissionData.incidentId.length == 0" class="extra-padding-top">No results found, try changing your search.</h5>
+                        <pager [allItems]="lossDataSubmissionData.incidentId" [pageSize]='1' (onPageChange)="onPageChange($event)" [currentPageIndex]="currentPageIndex"></pager>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top">
+        <div *ngIf="lossDataSubmission[0]">
+           <!--please check [selectedLossType]='lossDataSubmission[0].lossType'
+           [subscriptionId]='lossDataSubmission[0].subId'
+           [subscriptionStatus]='lossDataSubmission[0].Status' 
+           (onDeleteEvent)="showDeleteConfirmationModal()" -->
+           <validate-LossDataForm 
+            [incidentId]='lossDataSubmission[0]' 
+            [isEditOn]='isEditOn' 
+            [isELDMMode]='true' 
+            (onEditEvent)="onEdit()" 
+            (onDeleteEvent)="onDelete(lossDataSubmission[0])" 
+            (onCancelEvent)="onCancel()">
+            </validate-LossDataForm>
+       </div>
+    </div>
+
+</div>

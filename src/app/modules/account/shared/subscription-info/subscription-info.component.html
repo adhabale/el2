@@ -1,0 +1,103 @@
+<div class="col-md-6 hidden-sm-down" *ngIf="subscription">
+    <div class="table-responsive table-container">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Subscription Name</th>
+                    <td>{{subscription.displayName}}</td>
+                </tr>
+                <tr>
+                    <th>Default Currency</th>
+                    <td>{{subscription.defaultCurrency}}</td>
+                </tr>
+                <tr>
+                    <th>Primary Region</th>
+                    <td>{{subscription.primaryRegion}}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{subscription.description}}</td>
+                </tr>
+                <tr>
+                    <th>Allow Data Share</th>
+                    <td>{{subscription.allowDataShare}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-6 hidden-sm-down" *ngIf="subscription">
+    <div class="table-responsive table-container">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Subscription Owner Username</th>
+                    <td>{{subscription.ownerUsername}}</td>
+                </tr>
+                <tr>
+                    <th>Subscription Owner Email</th>
+                    <td>{{subscription.ownerEmail}}</td>
+                </tr>
+                <tr>
+                    <th>Primary Party ID</th>
+                    <td>{{subscription.primaryParty.partyId}}</td>
+                </tr>
+                <tr>
+                    <th>Primary Party Name</th>
+                    <td>{{subscription.primaryParty.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="hidden-md-up margin-top" *ngIf="subscription">
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Subscription Name</th>
+                    <td>{{subscription.displayName}}</td>
+                </tr>
+                <tr>
+                    <th>Default Currency</th>
+                    <td>{{subscription.defaultCurrency}}</td>
+                </tr>
+                <tr>
+                    <th>Primary Region</th>
+                    <td>{{subscription.primaryRegion}}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{subscription.description}}</td>
+                </tr>
+                <tr>
+                    <th>Allow Data Share</th>
+                    <td>{{subscription.allowDataShare}}</td>
+                </tr>
+                <tr>
+                    <th>Subscription Owner Username</th>
+                    <td>{{subscription.ownerUsername}}</td>
+                </tr>
+                <tr>
+                    <th>Subscription Owner Email</th>
+                    <td>{{subscription.ownerEmail}}</td>
+                </tr>
+                <tr>
+                    <th>Primary Party Id</th>
+                    <td>{{subscription.primaryParty.partyId}}</td>
+                </tr>
+                <tr>
+                    <th>Primary Party Name</th>
+                    <td>{{subscription.primaryParty.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-12">
+    <hr>
+</div>
+<div style="margin-top:20px;">
+    <button type="button" class="btn btn-primary pull-right hidden-sm-down" (click)='onContinue()' name="continueBtn">Continue</button>
+    <button type="button" class="btn btn-primary btn-block hidden-md-up" (click)='onContinue()' name="continueBtn">Continue</button>
+</div>

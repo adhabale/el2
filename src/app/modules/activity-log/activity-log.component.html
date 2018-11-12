@@ -1,0 +1,319 @@
+<div class="divClass row bg-software-gray-1 indexing-header">
+  <div class="col-md-12 col-sm-12">
+    <div class="p-1 hidden-sm-down">
+      <h2 class="display-1 left-pad">
+        Activity Logs</h2>
+    </div>
+    <div class="p-1 hidden-md-up">
+      <h2 class="display-3 left-pad">
+        Activity Logs</h2>
+    </div>
+  </div>
+</div>
+
+<div class="div-style hidden-sm-down ">
+  <div class="row divClassNew margin-top">
+    <div class="col-md-1">
+      <label for='searchUsers'>Username</label>
+    </div>
+    <div class="col-md-2 popover__wrapper">
+      <!--<span class="fa fa-search popover__title"></span>
+      <!-- <input id='searchUsers' [ngModel]='searchUserName' ngui-auto-complete [source]="userNames" [accept-user-input]="true" [open-on-focus]="false"
+        [auto-select-first-item]="false" [select-on-blur]="true" (ngModelChange)="callBack($event)" type="text" class="form-control"
+        placeholder="User Name"> 
+          <div class="push popover__content">
+        <div class="popover__message" >Selected User names</div>
+        <li *ngIf='!isSelected'>No User name selected</li>
+          <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let name of selectedUserNames">{{name.userName}} 
+             <a (click)="remove(name)">x</a> </span>
+          (onUserSelection)="selectedUsers($event)"
+          
+      </div> -->
+      <multi-autocomplete [list]="updatedList" [removedIndex]="removedIndex" (onSearch)="getUserNames($event)" (onUserSelection)="selectedUsers($event)"></multi-autocomplete>
+    </div>
+
+    <div class="col-md-1">
+      <label for='viewmodule'>View/ Module</label>
+    </div>
+    <div class="col-md-2">
+      <select class="form-control" id="viewmodule" [(ngModel)]="logData.moduleName">
+        <option [ngValue]='null'>All Modules</option>
+        <option *ngFor="let data of viewData" [value]="data">{{data}}</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <label for='action'>Action</label>
+    </div>
+    <div class="col-md-2">
+      <select class="form-control" id="action" [(ngModel)]="logData.action">
+        <option [ngValue]='null'>All Actions</option>
+        <option *ngFor="let data of actionData" [value]="data">{{data}}</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <label for='searchCriteria'>Search Criteria
+
+      </label>
+
+    </div>
+    <div class="col-md-2">
+      <!-- <span class="fa fa-search"></span> -->
+      <!-- <input id='searchCriteria' [ngModel]='searchCriteria' autocomplete
+        type="text" class="form-control custom-width" placeholder="Search Criteria"> -->
+
+      <!-- <autocomplete [list]="searchCriteriaList"></autocomplete> -->
+
+      <input id='searchCriteria' [(ngModel)]='logData.searchCriteria' type="text" class="form-control " placeholder="Search Criteria">
+
+    </div>
+
+
+  </div>
+
+  <div class="row divClassNew hidden-sm-down margin-top">
+    <div class="col-md-1">
+      <label for='searserverIpchCriteria'>Server/IP Details</label>
+    </div>
+    <div class="col-md-3">
+      <!-- <span class="fa fa-search icon"></span> -->
+      <!-- <input id='serverIp' [ngModel]='serverIp' ngui-auto-complete [source]="serverIpList" [accept-user-input]="true" [open-on-focus]="false"
+        [auto-select-first-item]="false" [select-on-blur]="true" (ngModelChange)="callBack($event)" type="text" class="form-control"
+        placeholder="Server Ip"> -->
+
+      <!-- <autocomplete class="server" [list]="serverIpList"></autocomplete> -->
+      <input id='serverIp' [(ngModel)]='logData.ipAddress' type="text" class="form-control" placeholder="Server Ip">
+    </div>
+    <div class="col-md-1">
+      <label for='from'>From</label>
+    </div>
+    <div class="col-md-3">
+      <datepicker datepickerId="fromDate" name="fromDate" isRequired='true' [selectedDate]="fromDate" (dateChange)="setfromDate($event)"
+        (dateFormatValidation)='checkfromDateFormat($event)'></datepicker>
+
+    </div>
+    <div class="col-md-1">
+      <label for='from'>To</label>
+    </div>
+    <div class="col-md-3">
+      <datepicker datepickerId="toDate" name="toDate" isRequired='true' [selectedDate]="toDate" (dateChange)="setToDate($event)"
+        (dateFormatValidation)='checktoDateFormat($event)'></datepicker>
+      <div *ngIf="checkDateValidation()" class="alert alert-danger">
+        From Date must be before to Date.
+      </div>
+    </div>
+  </div>
+  <div class="row divClassNew hidden-sm-down margin-top">
+    <div class="col-md-1">
+      <label for='from'>Selected Users:</label>
+    </div>
+    <div class="col-md-9">
+      <span *ngIf='!isSelected'>No User name selected</span>
+      <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let name of selectedUserNames">{{name.userName}}
+        <a (click)="remove(name)">x</a>
+      </span>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary float-xs-right btn-mob-width" (click)="onSearch()" [disabled]="checkDateValidation()">Search</button>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary float-xs-right btn-mob-width" (click)="onReset()">Reset</button>
+    </div>
+  </div>
+
+</div>
+
+  <!--mobile search criteria-->
+
+  <div class="row divClassNew hidden-sm-up margin-top">
+    <div class="col-md-1">
+      <label for='searchUsers'>Username</label>
+    </div>
+    <div class="col-md-2">
+      <span class="fa fa-search fa-mbl"></span>
+      <!-- <input id='searchUsers' [ngModel]='searchUserName' ngui-auto-complete [source]="userNames" [accept-user-input]="true" [open-on-focus]="false"
+      [auto-select-first-item]="false" [select-on-blur]="true" (ngModelChange)="callBack($event)" type="text" class="form-control"
+      placeholder="User Name"> -->
+
+      <!--(onUserSelection)="selectedUsers($event)"  -->
+
+
+      <multi-autocomplete [list]="updatedList" [removedIndex]="removedIndex" (onSearch)="getUserNames($event)" (onUserSelection)="selectedUsers($event)"></multi-autocomplete>
+    </div>
+    <div class="col-md-1">
+      <label for='viewmodule'>View/ Module</label>
+    </div>
+    <div class="col-md-2">
+      <select class="form-control" id="viewmodule" [(ngModel)]="logData.moduleName">
+
+        <option *ngFor="let data of viewData" [value]="data">{{data}}</option>
+        <!--  <option>OEE</option>
+      <option>Overall</option>
+      <option>Custom Report</option>
+      <option>Search</option>
+      <option>Subscription</option>
+      <option>Sub Dashboard</option>
+      <option>Home</option>
+      <option>ELDM</option>
+      <option>Reference Document</option>
+      <option>Announcement</option>
+      <option>Terms of Use</option> -->
+      </select>
+    </div>
+    <div class="col-md-1">
+      <label for='action'>Action</label>
+    </div>
+    <div class="col-md-2">
+      <select class="form-control" id="action" [(ngModel)]="logData.action">
+        <option *ngFor="let data of actionData" [value]="data">{{data}}</option>
+        <!--  <option>Add</option>
+      <option>Create</option>
+      <option>Download</option>
+      <option>Delete</option>
+      <option>Edit</option>
+      <option>Save</option>
+      <option>Submit</option>
+      <option>Search</option>
+      <option>View</option> -->
+      </select>
+    </div>
+    <div class="col-md-1">
+      <label for='searchCriteria'>Search Criteria</label>
+
+    </div>
+    <div class="col-md-2">
+      <!-- <span class="fa fa-search fa-mbl"></span> -->
+      <input id='searchCriteria' [(ngModel)]='logData.searchCriteria' type="text" class="form-control " placeholder="Search Criteria">
+      <!-- <autocomplete [list]="searchCriteriaList"></autocomplete> -->
+    </div>
+  </div>
+
+  <div class="row divClassNew hidden-sm-up margin-top">
+    <div class="col-md-1">
+      <label for='searserverIpchCriteria'>Server/IP Details</label>
+    </div>
+    <div class="col-md-3">
+      <!-- <span class="fa fa-search fa-mbl"></span> -->
+      <input id='serverIp' [(ngModel)]='logData.ipAddress' type="text" class="form-control" placeholder="Server Ip">
+
+      <!-- <autocomplete [list]="serverIpList"></autocomplete> -->
+    </div>
+    <div class="col-md-1">
+      <label for='from'>From</label>
+    </div>
+    <div class="col-md-3">
+      <datepicker datepickerId="fromDate" name="fromDate" isRequired='true' [selectedDate]="fromDate" (dateChange)="setfromDate($event)"
+        (dateFormatValidation)='checkfromDateFormat($event)'></datepicker>
+
+    </div>
+    <div class="col-md-1">
+      <label for='from'>To</label>
+    </div>
+    <div class="col-md-3">
+      <datepicker datepickerId="toDate" name="toDate" isRequired='true' [selectedDate]="toDate" (dateChange)="setToDate($event)"
+        (dateFormatValidation)='checktoDateFormat($event)'></datepicker>
+      <div *ngIf="checkDateValidation()" class="alert alert-danger">
+        From Date must be before to Date.
+      </div>
+    </div>
+  </div>
+  <div class="row divClassNew hidden-sm-up margin-top">
+    <div class="col-md-1">
+      <label for='from'>Selected Users:</label>
+    </div>
+    <div class="col-md-9">
+      <span *ngIf='!isSelected'>No User name selected</span>
+      <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let name of selectedUserNames">{{name.userName}}
+        <a (click)="remove(name)">x</a>
+      </span>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary float-xs-right btn-mob-width" (click)="onSearch()" [disabled]="checkDateValidation()">Search</button>
+    </div>
+    <div class="col-md-1">
+      <button class="btn btn-primary float-xs-right btn-mob-width" (click)="onReset()">Reset</button>
+    </div>
+  </div>
+
+
+
+
+  <div class="row divClassNew hidden-sm-down  margin-top">
+    <div class="col-md-4">
+      <h4 class='display-3 top-margin'>Access Count:{{count}}</h4>
+    </div>
+    <div class="col-md-8">
+      <button class="btn btn-primary float-xs-right btn-mob-width margin-39" (click)="onExport()">Export</button>
+    </div>
+  </div>
+  <div class="row divClassNew hidden-md-up">
+    <div class="col-sm-12">
+      <button class="btn btn-primary btn-top-margin btn-mob-width" (click)="onExport()">Export</button>
+    </div>
+  </div>
+  <div class="row divClassNew hidden-md-up">
+    <div class="col-sm-12">
+      <h4 class='display-3 announcement-bottom-margin'>Access Count:{{count}}</h4>
+    </div>
+  </div>
+  <div class="terms-border-docs" *ngIf="showResult">
+    <div class="col-md-12 col-sm-12 margin-top">
+      <div class="table-responsive table-striped">
+        <table class="table table-sm">
+          <tbody>
+            <tr>
+              <th (click)="sortByDate()" class="pointer">
+                <span>Date & Time</span>
+                <span class="caret" *ngIf="!dateFlag"></span>
+                <span class="caret caret-reversed" *ngIf="dateFlag"></span>
+              </th>
+              <th (click)="sortByUserName()" class="pointer">
+                <span>User Name</span>
+                <span class="caret" *ngIf="!userNameFlag"></span>
+                <span class="caret caret-reversed" *ngIf="userNameFlag"></span>
+              </th>
+              <th (click)="sortByViewModule()" class="pointer">
+                <span>View /Module</span>
+                <span class="caret" *ngIf="!viewModuleFlag"></span>
+                <span class="caret caret-reversed" *ngIf="viewModuleFlag"></span>
+              </th>
+              <th (click)="sortByAction()" class="pointer">
+                <span>Action</span>
+                <span class="caret" *ngIf="!actionFlag"></span>
+                <span class="caret caret-reversed" *ngIf="actionFlag"></span>
+              </th>
+              <th (click)="sortByDetails()" class="pointer">
+                <span>Details</span>
+                <span class="caret" *ngIf="!detailsFlag"></span>
+                <span class="caret caret-reversed" *ngIf="detailsFlag"></span>
+              </th>
+              <th (click)="sortBySearchCriteria()" class="pointer">
+                <span>Search Criteria</span>
+                <span class="caret" *ngIf="!scFlag"></span>
+                <span class="caret caret-reversed" *ngIf="scFlag"></span>
+              </th>
+              <th (click)="sortByServer()" class="pointer">
+                <span>Server /IP Details</span>
+                <span class="caret" *ngIf="!serverFlag"></span>
+                <span class="caret caret-reversed" *ngIf="serverFlag"></span>
+              </th>
+
+            </tr>
+            <tr *ngFor="let activityLog of activityLogs">
+              <td>{{activityLog.eventDateTime | date:'dd-MMM-yyyy h:mma'}}</td>
+              <td>{{activityLog.userName}}</td>
+              <td>{{activityLog.moduleName}}</td>
+              <td>{{activityLog.action}}</td>
+              <td style="width: 20%;word-break: break-all;">{{activityLog.details}}</td>
+              <td style="width: 20%;word-break: break-all;">{{activityLog.searchCriteria}}</td>
+              <td>
+                {{activityLog.applicationAddress}}</td>
+            </tr>
+            <!-- <pagination-controls (pageChange)="p =$event"></pagination-controls> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12" *ngIf="showResult">
+    <pagination [allItems]="activityLogs" [currentPageIndex]="logData.pageNumber" [pageSize]="100" [totalSize]="count" (onPageChange)="onPageChange($event)"
+      (setCurrentPageIndex)="fetchData($event)"></pagination>

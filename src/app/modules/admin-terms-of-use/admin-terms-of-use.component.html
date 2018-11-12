@@ -1,0 +1,69 @@
+<div class="divClass row bg-software-gray-1 indexing-header">
+  <div class="col-md-12 col-sm-12">
+    <div class="p-1 hidden-sm-down">
+      <h2 class="display-1 left-pad">
+        Terms of Use</h2>
+    </div>
+    <div class="p-1 hidden-md-up">
+      <h2 class="display-3 left-pad">
+        Terms of Use</h2>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="notificationMessage.successMessage" class="terms-top-margin">
+  <div class="col-md-12 col-sm-12">
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.successMessage=''">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span class="alert-text hidden-sm-down">{{notificationMessage.successMessage}}</span>
+      <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.successMessage}}</span>
+    </div>
+  </div>
+</div>
+<!-- <div *ngIf="notificationMessage.errorMessage">
+  <div class="divClassNew">
+    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.errorMessage=''">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span class="alert-text hidden-sm-down">{{notificationMessage.errorMessage}}</span>
+      <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.errorMessage}}</span>
+    </div>
+  </div>
+</div> -->
+<rich-text-editor [termsOfUse]="termsOfUse" [isLatest]="isLatest" (onEditEvent)='onEdit($event)' (onSaveEvent)="onSuccess($event)" (onCancelEvent)="onCancel()" (onCreateNewEvent)="onCreateNew()"></rich-text-editor>
+<div class="terms-border-docs">
+  <div class="row divClassNew">
+    <div class="col-md-4  hidden-sm-down">
+      <h4 class='display-3'>Version History</h4>
+    </div>
+  </div>
+  <div class="col-sm-12 hidden-md-up">
+    <h4 class='display-3 margin-top'>Version History</h4>
+  </div>
+
+  <div class="col-md-12 col-sm-12 margin-top">
+    <div class="table-responsive table-striped">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th width="20%" class="pointer">
+              Published On
+            </th>
+            <th width="80%">Description</th>
+          </tr>
+          <tr *ngFor="let terms of termsOfUseData">
+            <td>
+              {{terms.publishedOn | date: 'dd-MMM-yyy'}}
+            </td>
+            <td>
+              <a class="a-link" (click)="onEdit(terms)" [innerHtml]="innerHtmlText(terms)"></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

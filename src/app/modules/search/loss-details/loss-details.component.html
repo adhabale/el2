@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12 hidden-sm-down">
+            <p style="font-size:12px;">
+              <span>For multiple values, select the first value then hold the control key down while selecting additional values</span>
+            </p>
+          </div>
+      <div class="col-md-3">
+        <div class="form-group">
+
+          <label class="label-bold" for="category">Category 1</label>          
+          <multi-select [availableItems]="searchCriteria.masterSearchData.category1" [selectedItems]="searchCriteria.selectedSearchCriteria.category1"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.category1=$event"></multi-select>
+
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="subcategory">Category 2</label>          
+          <multi-select [availableItems]="searchCriteria.masterSearchData.category2" [selectedItems]="searchCriteria.selectedSearchCriteria.category2"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.category2=$event"></multi-select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="subcategory2">Category 3</label>          
+          <multi-select [availableItems]="searchCriteria.masterSearchData.category3" [selectedItems]="searchCriteria.selectedSearchCriteria.category3"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.category3=$event"></multi-select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="car/op">CAR/OP</label>          
+          <multi-select [availableItems]="searchCriteria.masterSearchData.car_op" [selectedItems]="searchCriteria.selectedSearchCriteria.car_op"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.car_op=$event"></multi-select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="losstype">Loss Type</label>          
+          <multi-select [availableItems]="searchCriteria.masterSearchData.lossType" [selectedItems]="searchCriteria.selectedSearchCriteria.lossType"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.lossType=$event"></multi-select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="cause">Cause</label>          
+          <multi-select [availableItems]="searchCriteria.masterSearchData.cause" [selectedItems]="searchCriteria.selectedSearchCriteria.cause"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.cause=$event"></multi-select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="updownpower">Up/Down/Power</label>
+          <multi-select [availableItems]="searchCriteria.masterSearchData.upDownPower" [selectedItems]="searchCriteria.selectedSearchCriteria.upDownPower"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.upDownPower=$event"></multi-select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="event">Event</label>          
+          <multi-select [availableItems]="searchCriteria.masterSearchData.event" [selectedItems]="searchCriteria.selectedSearchCriteria.event"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.event=$event"></multi-select>
+        </div>
+      </div>
+    </div>
+    <div class="row hidden-sm-down">
+      <div class="col-md-12">
+        <div class="padding-button-footer">
+          <button id="btnBackloss" type="button" class="btn btn-secondary pull-left hidden-sm-down " data-toggle="tab" (click)='onBack()'
+            href="#location">Back</button>
+          <button id="btnContinueloss" type="button" class="btn btn-primary pull-right hidden-sm-down " data-toggle="tab" (click)='onContinue()'
+            href="#claim">Continue</button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden-md-up">
+      <div class="padding-button-footer">
+        <button id="btnContinueloss" type="button" class="btn btn-primary btn-mob" (click)='onContinueMob()'>Continue</button>
+        <button id="btnBack" type="button" class="btn btn-secondary btn-mob-top" (click)='onBackMob()'>Back</button>
+      </div>
+    </div>
+  </div>
+</div>

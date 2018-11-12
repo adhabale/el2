@@ -1,0 +1,147 @@
+<div class="row bg-software-gray-1">
+    <div class="col-md-6 col-sm-12">
+        <div class="p-1 hidden-sm-down">
+            <h2 class="display-1 left-pad">
+                EL Data Management</h2>
+            <!-- <br> search in - {{search | json}} -->
+        </div>
+        <div class="p-1 left-padding hidden-md-up">
+            <h2 class="display-3  left-pad">
+                EL Data Management</h2>
+        </div>
+    </div>
+    <div class="col-md-5 hidden-sm-down col-sm-12">
+        <div class="btn-group pull-right margin-top-report" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle pull-right btn-line-height" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Export Report
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu" arialabelledby="btnGroupDrop1">
+                <div class="dropdown-submenu" *ngFor="let type of reportTypes">
+                    <a id="btn" class="menu-item">{{type.displayName}}</a>
+                    <ul class="dashed">
+                        <li *ngFor='let item of ["xls","pdf","csv"]'>
+                            <a class="dropdown-item highlightHover" (click)="downloadReport(type.reportParam,item)">{{item}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 hidden-md-up col-sm-12">
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop2" type="button" class="btn  left-padding dropdown-toggle btn-block btn-line-height" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Export Report
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu custom-dd" arialabelledby="btnGroupDrop2">
+                <div *ngFor="let type of reportTypes">
+                    <a id="btn" aria-haspopup="true" class="dropdown-item highlightHover">{{type.displayName}}</a>
+                    <!-- <li *ngFor='let item of ["xls","pdf","csv"]' class='padding-25'>
+                            <a class="dropdown-item highlightHover" (click)="downloadReport(type.reportParam,item)">{{item}}</a>
+                        </li> -->
+
+                    <span *ngFor='let item of ["xls","pdf","csv"]' class='padding-25'>
+                        <a class="dropdown-item highlightHover" (click)="downloadReport(type.reportParam,item)">- {{item}}</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row hidden-sm-down">
+    <div class="col-sm-12">
+        <div class="col-md-2 col-sm-12 margin-top">
+            <a id='sortRecords' class='label-filter text-primary' (click)='isSortToggle = !isSortToggle' data-toggle="collapse" data-target="#sorts">Sort Records
+                <!-- <span [ngClass]="isSortToggle?'caret':'caret-inverse'"></span> -->
+                <div class="expand_caret caret"></div>
+
+            </a>
+        </div>
+        <div class="col-md-2 col-sm-12 margin-top">
+            <a id='recordFilters' class='label-filter text-primary' (click)='isCaretToggle = !isCaretToggle' data-toggle="collapse" data-target="#filters">Search Records
+                <!-- <span [ngClass]="isCaretToggle?'caret':'caret-inverse'"></span> -->
+                <div class="expand_caret caret"></div>
+
+            </a>
+        </div>
+        <div class="col-md-6  margin-top">
+            <button tabindex="195" class="btn btn-primary float-xs-right" (click)='onSearch()'>Search</button>
+        </div>
+        <div class="col-md-1 margin-top">
+            <button tabindex="196" class="btn btn-secondary float-xs-left" (click)='onReset()'>Reset</button>
+        </div>
+    </div>
+</div>
+
+<div class="row hidden-md-up">
+    <div class="col-md-4 col-sm-12 margin-top">
+        <a class='label-filter text-primary' (click)='isSortToggle = !isSortToggle' data-toggle="collapse" data-target="#sorts">Sort Records
+            <span [ngClass]="isSortToggle?'caret':'caret-inverse'"></span>
+        </a>
+    </div>
+</div>
+<div class="row hidden-md-up">
+    <div class="col-md-4 col-sm-12 margin-top">
+        <a class='label-filter text-primary' (click)='isCaretToggle = !isCaretToggle' data-toggle="collapse" data-target="#filters">Search Records
+            <span [ngClass]="isCaretToggle?'caret':'caret-inverse'"></span>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-12 margin-top">
+        <div id="sorts" class="collapse col-sm-12 margin-top-filter">
+            <div class="row">
+                <div class="col-md-3 ">
+                    <label class='label-filter form-label'>Sort</label>
+                </div>
+                <div class="col-md-9">
+                    <select class='form-control' (change)="onChange($event)" [(ngModel)]='sortOrderList' multiple>
+                        <option *ngFor="let sortField of sortCriteria" [value]="sortField.value">
+                            {{sortField.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div *ngIf='true' class="col-md-12 margin-top-filter">
+        <eldm-filters [search]='search'></eldm-filters>
+    </div>
+</div>
+<div class="row hidden-md-up">
+    <div class="col-sm-12 col-md-4 margin-top">
+        <div class="row">
+            <div class="col-md-3 ">
+                <label class='label-filter form-label'>Sort</label>
+            </div>
+            <div class="col-md-9">
+                <select class='form-control' (change)="onChange($event)" [(ngModel)]='sortOrderList' multiple>
+                    <option *ngFor="let sortField of sortCriteria" [value]="sortField.value">
+                        {{sortField.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-6 hidden-md-up margin-top">
+        <button class="btn btn-primary btn-block" (click)='onSearch()'>Search</button>
+    </div>
+    <div class="col-md-6 col-xs-6 hidden-md-up margin-top">
+        <button class="btn btn-secondary btn-block" (click)='onReset()'>Reset</button>
+
+    </div>
+</div>
+
+<div class="row margin-top" *ngIf='isSearchOn'>
+    <eldm-records [lossDataSubmissionData]='searchOut' (onPageEvent)="pageEvent()"></eldm-records>
+</div>
+<button id='exportModal' hidden='true' data-toggle="modal" data-target="#exportReportModal" class="btn btn-primary  float-xs-right">Export</button>
+<div *ngIf='selectedReportName'>
+    <export-report [selectedReport]="selectedReportConfiguration" [sourceItems]="reportItems" [allTableItems]='allTableItems'
+        [reportType]="Overall" [customReportName]="selectedReportName"></export-report>
+</div>

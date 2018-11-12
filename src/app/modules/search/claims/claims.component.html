@@ -1,0 +1,300 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12 hidden-sm-down">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='5%'></th>
+              <th width='19%' data-toggle="tooltip" data-placement="top" title="Physical Damage">PD</th>
+              <th width='19%' data-toggle="tooltip" data-placement="top" title="Operators Extra Expense">OEE</th>
+              <th width='19%' data-toggle="tooltip" data-placement="top" title="Business Interruption">BI</th>
+              <th width='19%'>Total</th>
+              <th width='19%'>Total Indexed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Min</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.pdClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.pdClaim.min = formatInput(searchCriteria.selectedSearchCriteria.pdClaim.min)"
+                  type="text" class="form-control" id="pdclaimMin" decimalNum-val>
+              </td>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.oeeClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.oeeClaim.min = formatInput(searchCriteria.selectedSearchCriteria.oeeClaim.min)"
+                  type="text" class="form-control" id="oeeclaimMin" decimalNum-val>
+              </td>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.biClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.biClaim.min = formatInput(searchCriteria.selectedSearchCriteria.biClaim.min)"
+                  type="text" class="form-control" id="biclaimMin" decimalNum-val>
+              </td>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.totalClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.totalClaim.min = formatInput(searchCriteria.selectedSearchCriteria.totalClaim.min)"
+                  type="text" class="form-control" id="totalClaimMin" decimalNum-val>
+              </td>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.totalIndexedClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.totalIndexedClaim.min = formatInput(searchCriteria.selectedSearchCriteria.totalIndexedClaim.min)"
+                  type="text" class="form-control" id="totalIndexedClaimMin" decimalNum-val>
+              </td>
+            </tr>
+            <tr>
+              <th>Max</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.pdClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.pdClaim.max = formatInput(searchCriteria.selectedSearchCriteria.pdClaim.max)"
+                  type="text" class="form-control" id="pdclaimMax" decimalNum-val>
+              </td>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.oeeClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.oeeClaim.max = formatInput(searchCriteria.selectedSearchCriteria.oeeClaim.max)"
+                  type="text" class="form-control" id="oeeclaimMax" decimalNum-val>
+              </td>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.biClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.biClaim.max = formatInput(searchCriteria.selectedSearchCriteria.biClaim.max)"
+                  type="text" class="form-control" id="biclaimMax" decimalNum-val>
+              </td>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.totalClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.totalClaim.max = formatInput(searchCriteria.selectedSearchCriteria.totalClaim.max)"
+                  type="text" class="form-control" id="totalClaimMax" decimalNum-val>
+              </td>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.totalIndexedClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.totalIndexedClaim.max = formatInput(searchCriteria.selectedSearchCriteria.totalIndexedClaim.max)"
+                  type="text" class="form-control" id="totalIndexedClaimMax" decimalNum-val>
+              </td>
+            </tr>
+
+            <tr>
+              <th></th>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.pdClaim.min,searchCriteria.selectedSearchCriteria.pdClaim.max)">
+                  Maximum PD can not be Less than Minimum PD
+                </div>
+              </td>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.oeeClaim.min,searchCriteria.selectedSearchCriteria.oeeClaim.max)">
+                  Maximum OEE can not be Less than Minimum OEE
+                </div>
+              </td>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.biClaim.min, searchCriteria.selectedSearchCriteria.biClaim.max )">
+                  Maximum BI can not be Less than Minimum BI
+                </div>
+              </td>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.totalClaim.min, searchCriteria.selectedSearchCriteria.totalClaim.max)">
+                  Maximum Total can not be Less than Minimum Total
+                </div>
+              </td>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.totalIndexedClaim.min , searchCriteria.selectedSearchCriteria.totalIndexedClaim.max)">
+                  Maximum Total Indexed can not be Less than Minimum Total Indexed
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row hidden-md-up">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='5%'></th>
+              <th width='90%' data-toggle="tooltip" data-placement="top" title="Physical Damage">PD</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Min</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.pdClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.pdClaim.min = formatInput(searchCriteria.selectedSearchCriteria.pdClaim.min)"
+                  type="text" class="form-control" id="pdclaimMin" allowDecimalNumber>
+              </td>
+            </tr>
+            <tr>
+              <th>Max</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.pdClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.pdClaim.max = formatInput(searchCriteria.selectedSearchCriteria.pdClaim.max)"
+                  type="text" class="form-control" id="pdclaimMax" allowDecimalNumber>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.pdClaim.min,searchCriteria.selectedSearchCriteria.pdClaim.max) ">
+                  Maximum PD can not be Less than Minimum PD
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='5%'></th>
+              <th width='90%' data-toggle="tooltip" data-placement="top" title="Operators Extra Expense">OEE</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Min</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.oeeClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.oeeClaim.min = formatInput(searchCriteria.selectedSearchCriteria.oeeClaim.min)"
+                  type="text" class="form-control" id="oeeclaimMin" allowDecimalNumber>
+              </td>
+
+            </tr>
+            <tr>
+              <th>Max</th>
+
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.oeeClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.oeeClaim.max = formatInput(searchCriteria.selectedSearchCriteria.oeeClaim.max)"
+                  type="text" class="form-control" id="oeeclaimMax" allowDecimalNumber>
+              </td>
+
+            </tr>
+
+            <tr>
+              <th></th>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.oeeClaim.min,searchCriteria.selectedSearchCriteria.oeeClaim.max) ">
+                  Maximum OEE can not be Less than Minimum OEE
+                </div>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='5%'></th>
+              <th width='90%' data-toggle="tooltip" data-placement="top" title="Business Interruption">BI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Min</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.biClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.biClaim.min = formatInput(searchCriteria.selectedSearchCriteria.biClaim.min)"
+                  type="text" class="form-control" id="biclaimMin" allowDecimalNumber>
+              </td>
+            </tr>
+            <tr>
+              <th>Max</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.biClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.biClaim.max = formatInput(searchCriteria.selectedSearchCriteria.biClaim.max)"
+                  type="text" class="form-control" id="biclaimMax" allowDecimalNumber>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.biClaim.min, searchCriteria.selectedSearchCriteria.biClaim.max )">
+                  Maximum BI can not be Less than Minimum BI
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='5%'></th>
+              <th width='90%'>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Min</th>
+
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.totalClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.totalClaim.min = formatInput(searchCriteria.selectedSearchCriteria.totalClaim.min)"
+                  type="text" class="form-control" id="totalClaimMin" allowDecimalNumber>
+              </td>
+            </tr>
+            <tr>
+              <th>Max</th>
+
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.totalClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.totalClaim.max = formatInput(searchCriteria.selectedSearchCriteria.totalClaim.max)"
+                  type="text" class="form-control" id="totalClaimMax" allowDecimalNumber>
+              </td>
+            </tr>
+
+            <tr>
+              <th></th>
+
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.totalClaim.min, searchCriteria.selectedSearchCriteria.totalClaim.max)">
+                  Maximum Total can not be Less than Minimum Total
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th width='5%'></th>
+              <th width='90%'>Total Indexed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Min</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.totalIndexedClaim.min" (focusout)="searchCriteria.selectedSearchCriteria.totalIndexedClaim.min = formatInput(searchCriteria.selectedSearchCriteria.totalIndexedClaim.min)"
+                  type="text" class="form-control" id="totalIndexedClaimMin" allowDecimalNumber>
+              </td>
+            </tr>
+            <tr>
+              <th>Max</th>
+              <td>
+                <input [(ngModel)]="searchCriteria.selectedSearchCriteria.totalIndexedClaim.max" (focusout)="searchCriteria.selectedSearchCriteria.totalIndexedClaim.max = formatInput(searchCriteria.selectedSearchCriteria.totalIndexedClaim.max)"
+                  type="text" class="form-control" id="totalIndexedClaimMin" allowDecimalNumber>
+              </td>
+            </tr>
+
+            <tr>
+              <th></th>
+              <td>
+                <div class="alert alert-warning alert-dismissible fade in" role="alert" *ngIf="onValidate(searchCriteria.selectedSearchCriteria.totalIndexedClaim.min , searchCriteria.selectedSearchCriteria.totalIndexedClaim.max)">
+                  Maximum Total Indexed can not be Less than Minimum Total Indexed
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 hidden-sm-down">
+        <div class="padding-button-footer">
+          <button type="button" id="btnBackclaim" class="btn btn-secondary pull-left hidden-sm-down " (click)='onBack()' data-toggle="tab"
+            href="#lossOfDetails">Back</button>
+          <button type="button" id="btnContinueclaim" class="btn btn-primary pull-right hidden-sm-down " (click)='onContinue()' data-toggle="tab"
+            href="#well" [disabled]="onValidate(searchCriteria.selectedSearchCriteria.pdClaim.min,searchCriteria.selectedSearchCriteria.pdClaim.max) ||
+            onValidate(searchCriteria.selectedSearchCriteria.oeeClaim.min,searchCriteria.selectedSearchCriteria.oeeClaim.max) ||
+            onValidate(searchCriteria.selectedSearchCriteria.biClaim.min, searchCriteria.selectedSearchCriteria.biClaim.max ) ||
+            onValidate(searchCriteria.selectedSearchCriteria.totalClaim.min, searchCriteria.selectedSearchCriteria.totalClaim.max) ||
+            onValidate(searchCriteria.selectedSearchCriteria.totalIndexedClaim.min , searchCriteria.selectedSearchCriteria.totalIndexedClaim.max)">Continue</button>
+        </div>
+      </div>
+      <div class="col-sm-12 col-xs-12 hidden-md-up">
+        <div class="padding-button-footer">
+          <button type="button" id="btnContinueclaim" class="btn btn-primary btn-mob" (click)='onContinueMob()' [disabled]="onValidate(searchCriteria.selectedSearchCriteria.pdClaim.min,searchCriteria.selectedSearchCriteria.pdClaim.max) ||
+            onValidate(searchCriteria.selectedSearchCriteria.oeeClaim.min,searchCriteria.selectedSearchCriteria.oeeClaim.max) ||
+            onValidate(searchCriteria.selectedSearchCriteria.biClaim.min, searchCriteria.selectedSearchCriteria.biClaim.max ) ||
+            onValidate(searchCriteria.selectedSearchCriteria.totalClaim.min, searchCriteria.selectedSearchCriteria.totalClaim.max) ||
+            onValidate(searchCriteria.selectedSearchCriteria.totalIndexedClaim.min , searchCriteria.selectedSearchCriteria.totalIndexedClaim.max)">Continue</button>
+          <button type="button" id="btnBack" class="btn btn-secondary btn-mob-top" (click)='onBackMob()'>Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

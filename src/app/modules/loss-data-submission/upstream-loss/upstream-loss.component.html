@@ -1,0 +1,923 @@
+<div id="upstreamLossForm" *ngIf="!readOnlyFlag">
+    <form name='upstreamForm' #upstreamForm="ngForm" novalidate>
+        <div class="row divClassNew hidden-sm-down">
+            <div class="col-md-4">
+                <h4 class='display-3 top-margin'>Upstream Loss</h4>
+            </div>
+            <div class="col-md-8">
+                <button class="btn btn-secondary float-xs-right btn-top-margin" (click)="onBackToHistory()">Back to History</button>
+                <button class="btn btn-secondary float-xs-right btn-top-margin" (click)="onReset(upstreamForm)">Reset </button>
+            </div>
+        </div>
+        <div class="divClassNew hidden-md-up">
+            <div class="col-sm-12">
+                <button class="btn btn-secondary btn-top-margin btn-mob-width" (click)="onBackToHistory()">Back to History</button>
+                <button class="btn btn-secondary btn-mob-width" (click)="onReset(upstreamForm)">Reset</button>
+            </div>
+        </div>
+        <div class="row divClassNew hidden-md-up terms-bottom-margin">
+            <div class="col-sm-12 mob-shift">
+                <h4 class='display-3'>Upstream Loss</h4>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card card-block bg-software-gray-1">
+                <p class="card-text">
+                    Please use this form to provide new or updated information for the WTW Energy Losses Database. Only Losses in excess of $1,000,000
+                    from groundup qualify.
+                    <br>
+                    <br> NOTE: The name of the Assured and/or the facility (rig, platform, plant etc.) does not appear in
+                    the online database but is very helpful in avoiding duplications and is essential for windstorm losses.
+                    <br>
+                    <br>If the exact date of loss is not known, please select the nearest Date and month and also mention
+                    in the notes
+                </p>
+            </div>
+        </div>
+
+        <div class="div-border">
+            <div class="margin-top">
+                <div class="col-md-4">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+
+                                <tr>
+                                    <th>Loss Year
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <select tabindex="1" class="form-control" name='lyears' #lyears="ngModel" [(ngModel)]='year' (change)="getDays()" required>
+                                            <option *ngFor="let cat of dateData[0].year" [ngValue]='cat'>{{cat}}</option>
+                                        </select>
+                                        <div *ngIf="lyears.touched && lyears.invalid && lyears.errors?.required" class="alert alert-danger">
+                                            Loss Year is required.
+                                        </div>
+                                        <div *ngIf="checkDate() && months.touched" class="alert alert-danger">
+                                            You can not select future date.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hidden-md-up">
+                                    <th>Loss Month
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='months' #months="ngModel" [(ngModel)]='month' (change)="getDays()">
+                                            <option *ngFor="let cat of dateData[0].month" [ngValue]='cat'>{{cat}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                                <tr class="hidden-md-up">
+                                    <th>Day
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='days' #days="ngModel" [(ngModel)]='day'>
+                                            <option [ngValue]='null'></option>
+                                            <option *ngFor="let cat of dateData[0].day" [ngValue]="cat">{{cat}}</option>
+                                        </select>
+                                        <!-- <div *ngIf="days.touched && days.invalid && days.errors?.required" class="alert alert-danger">
+                                            Loss Date is required.
+                                        </div> -->
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Category 1
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='category1' #category1="ngModel" [(ngModel)]='lossData.incidentInvolvement.exposure.exposureCategoryId1'
+                                            required tabindex="4">
+
+                                            <option *ngFor="let cat of upStreamLossData.categories1" [ngValue]="cat.id">{{cat.displayName}}</option>
+                                        </select>
+                                        <div *ngIf="category1.touched && category1.invalid && category1.errors?.required" class="alert alert-danger">
+                                            Category 1 is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Land / Offshore
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" tabindex="7" name='land' #land="ngModel" [(ngModel)]='lossData.incidentInvolvement.exposure.onShoreInd'
+                                            required>
+                                            <option *ngFor="let land of upStreamLossData.land_Offshore" [ngValue]="land.id">{{land.displayName}}</option>
+                                        </select>
+                                        <div *ngIf="land.touched && land.invalid && land.errors?.required" class="alert alert-danger">
+                                            Land/Offshore is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Operational Status
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" tabindex="10" name='opeartionalStatus' #opeartionalStatus="ngModel" [(ngModel)]='lossData.incidentInvolvement.exposure.operationalStatusId'
+                                            required>
+                                            <option *ngFor="let os of upStreamLossData.opeartionalStatus" [ngValue]="os.id">{{os.displayName}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Assured & co-venturers
+                                        <!-- <span style='color:red;'> *</span> -->
+                                    </th>
+                                    <td>
+                                        <input id='assured' type="text" class="form-control" name='venture' #venture="ngModel" [(ngModel)]='lossData.incidentInvolvement.assuredCoVenture'
+                                            autocomplete="off" tabindex="13" />
+                                        <!-- <div *ngIf="venture.touched && venture.invalid && venture.errors?.required" class="alert alert-danger">
+                                            Assured & co-venturers is required.
+                                        </div> -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Loss Location
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <input id='location' type="text" class="form-control" name='location' #location="ngModel" [(ngModel)]="lossData.location.name"
+                                            autocomplete="off" required tabindex="15" />
+                                        <div *ngIf="location.touched && location.invalid && location.errors?.required" class="alert alert-danger">
+                                            Loss Location is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Area
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='area' tabindex="18" #area="ngModel" [(ngModel)]='lossData.location.areaId' required>
+                                            <option *ngFor="let area of upStreamLossData.area" [ngValue]="area.id">{{area.displayName}}</option>
+                                        </select>
+                                        <div *ngIf="area.touched && area.invalid && area.errors?.required" class="alert alert-danger">
+                                            Area is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Adjuster
+                                        <!-- <span style='color:red;'> *</span> -->
+                                    </th>
+                                    <td>
+                                        <input id='adjusterId' #adjuster="ngModel" tabindex="21" [(ngModel)]='lossData.incidentInvolvement.adjuster' type="text"
+                                            class="form-control" name='adjuster' autocomplete="off" />
+                                        <!-- <div *ngIf="adjuster.touched && adjuster.invalid && adjuster.errors?.required" class="alert alert-danger">
+                                            Adjuster is required.
+                                    </div> -->
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>Adj.&nbsp;&nbsp;File&nbsp;&nbsp;Ref&nbsp;&nbsp;</th>
+                                    <td>
+                                        <input id="adjfr" name='adjFileRef' #adjFileRef="ngModel" [(ngModel)]='lossData.incidentInvolvement.adjusterFileRef' type="text"
+                                            class="form-control" autocomplete="off" tabindex="23" />
+                                        <!-- <div *ngIf="adjFileRef.touched && adjFileRef.invalid && adjFileRef.errors?.required" class="alert alert-danger">
+                                                Adj. File Ref is required.
+                                            </div> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr class="hidden-sm-down">
+                                    <th width="46%">Month
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='months' #months="ngModel" tabindex="2" [(ngModel)]='month' (change)="getDays()">
+
+                                            <option *ngFor="let cat of dateData[0].month" [ngValue]='cat'>{{cat}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Category 2
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='category2' #category2="ngModel" tabindex="5" [(ngModel)]='lossData.incidentInvolvement.exposure.exposureCategoryId2'
+                                            required>
+
+                                            <option *ngFor="let cat of upStreamLossData.categories2" [ngValue]="cat.id">{{cat.displayName}}</option>
+                                        </select>
+                                        <div *ngIf="category2.touched && category2.invalid && category2.errors?.required" class="alert alert-danger">
+                                            Category 2 is required.
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Cause
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='cause' #cause="ngModel" tabindex="8" [(ngModel)]='lossData.causeId' required>
+                                            <option *ngFor="let cat of upStreamLossData.cause" [ngValue]="cat.id">{{cat.displayName}}</option>
+                                        </select>
+                                        <div *ngIf="cause.touched && cause.invalid && cause.errors?.required" class="alert alert-danger">
+                                            Cause is required.
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <th>Loss Details
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <textarea name='lossDetails' #lossDetails="ngModel" tabindex="11" [(ngModel)]='lossData.incidentInvolvement.exposure.lossDetails'
+                                            required rows="4" class="form-control" placeholder="Incl. Asset/Platform/MOPU/Rig AND Field Names"
+                                            required style="height: 102px;"></textarea>
+                                        <div *ngIf="lossDetails.touched && lossDetails.invalid && lossDetails.errors?.required" class="alert alert-danger">
+                                            Loss Details is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Country
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='country' #country="ngModel" tabindex="16" [(ngModel)]='lossData.location.countryId' required>
+                                            <option *ngFor="let country of upStreamLossData.country" [ngValue]="country.id">{{country.displayName}}</option>
+                                        </select>
+                                        <div *ngIf="country.touched && country.invalid && country.errors?.required" class="alert alert-danger">
+                                            Country is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Loss Type
+                                        <span style='color:red;'> *</span>
+                                    </th>
+                                    <td>
+                                        <multi-select [tabIn]="multiselectIndex" [availableItems]="upStreamLossData.lossType" [selectedItems]="selectedItems" (updateSelectedItems)="selectedLossType($event)"></multi-select>
+                                        <div class="col-md-12 custom-mg hidden-sm-down">
+                                            <p style="font-size:12px;">
+                                                <span>Hold on the Control key to select multiple values.</span>
+                                            </p>
+                                        </div>
+                                        <!--   <select class="form-control" multiple size="1" name="lType" [(ngModel)]="myVar">
+                                        <option *ngFor="let lt of upStreamLossData.lossType" [ngValue]="lt.id">{{lt.displayName}}</option>
+                                    </select> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr class="hidden-sm-down">
+                                    <th>Day
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='days' #days="ngModel" [(ngModel)]='day' tabindex="3">
+                                            <option [ngValue]='null'></option>
+                                            <option *ngFor="let cat of dateData[0].day" [ngValue]="cat">{{cat}}</option>
+                                        </select>
+                                        <!-- <div *ngIf="days.touched && days.invalid && days.errors?.required" class="alert alert-danger">
+                                                    Loss Date is required.
+                                                </div> -->
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <th>Category 3</th>
+                                    <td>
+                                        <select class="form-control" name='category3' #category3="ngModel" tabindex="6" [(ngModel)]='lossData.incidentInvolvement.exposure.exposureCategoryId3'>
+
+                                            <option *ngFor="let cat of upStreamLossData.categories3" [ngValue]="cat.id">{{cat.displayName}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Dynamically Positioned
+
+                                    </th>
+                                    <td>
+                                        <select class="form-control" tabindex="9" name='dynamicallyPositioned' #dynamicallyPositioned="ngModel"[(ngModel)]='lossData.incidentInvolvement.exposure.dynamicallyPositioned'>
+                                            <option *ngFor="let option of upStreamLossData.dynamicallyPositioned" [ngValue]="option.id">{{option.displayName}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr style="height:64px;">
+                                    <th>CTL/TL
+                                        <span style='color:white; display: none'>Extra space </span>
+                                        <span style='color:white; display:none' class="hidden-md-up">Extr</span>
+                                    </th>
+                                    <td>
+                                        <input class="form-control chk-size" name='ctls' #ctls="ngModel" tabindex="12" [(ngModel)]='lossData.loss.ctl' type="checkbox">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <tr>
+                                        <th width="44%">Approx.Ins.Val. US$ (not limit)
+
+                                        </th>
+                                        <td>
+                                            <input id='assured' type="text" decimalNum class="form-control" tabindex="14" (focusout)=" formatInput()" name='insValue'
+                                                #insValue="ngModel" [(ngModel)]='approxInsVal' autocomplete="off" />
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Year of Install.
+                                            <!-- <span style='color:red;'> *</span> -->
+                                        </th>
+                                        <td>
+                                            <input id='yearInstall' type="text" decimalNum class="form-control" tabindex="17" name='yearInstall' #yearInstall="ngModel"
+                                                autocomplete="off" pattern=".{4,}" [(ngModel)]='installationDate' />
+                                            <div *ngIf="yearInstall.touched && checkValidYear()" class="alert alert-danger">
+                                                Invalid year.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Water Depth (feet)
+
+                                        </th>
+                                        <td>
+                                            <input id='waterDepth' type="text" class="form-control" name='waterDepth' tabindex="20" #waterDepth="ngModel" autocomplete="off"
+                                                [(ngModel)]='lossData.incidentInvolvement.exposure.waterDepth' (change)="addCommaSeparator()"
+                                                decimalNum-val/>
+                                            <div *ngIf="waterDepth.touched && checkIfInputIsDecimal(lossData.incidentInvolvement.exposure.waterDepth)" class="alert alert-danger">
+                                                Please do not enter decimal figures.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Number of days outage
+
+                                        </th>
+                                        <td>
+                                            <input class="form-control" tabindex="22" type="text" decimalNum name="outage" #outage="ngModel" [(ngModel)]="lossData.loss.noOfDaysOutage">
+                                            <div *ngIf="outage.touched && checkIfInputIsDecimal(lossData.loss.noOfDaysOutage)" class="alert alert-danger">
+                                                Please do not enter decimal figures.
+                                            </div>
+                                        </td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="margin-top">
+                    <div class="col-md-4">
+                        <total-claim-calculator [readonlyFlag]="readOnlyFlag" [resetVal]="resetFlag" (inValidFlag)="totalFlag=$event" (biVal)="bi=$event"
+                            (oeeVal)="oee=$event" (pdVal)="pd=$event"></total-claim-calculator>
+                        <div style="margin-top: 0px; padding-top: 5px; padding-bottom: 5px;" *ngIf="claimPDFlag && (!pd || pd=='0')" class="alert alert-danger">
+                            <span style="font-size:14px;">Please enter PD/S&P amount.</span>
+                        </div>
+                        <div style="margin-top: 0px; padding-top: 5px; padding-bottom: 5px;" *ngIf="claimOEEFlag && (!oee || oee=='0')" class="alert alert-danger">
+                            <span style="font-size:14px;">Please enter OEE amount.</span>
+                        </div>
+                        <div style="margin-top: 0px; padding-top: 5px; padding-bottom: 5px;" *ngIf="claimBIFlag && (!bi || bi=='0')" class="alert alert-danger">
+                            <span style="font-size:14px;">Please enter BI/CBI amount.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card card-block bg-software-gray-1 card-height">
+                            <h4 class="card-title display-4">Well Information (For OEE only)</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr style="height:87px;">
+                                                    <th>Well Type
+
+                                                    </th>
+                                                    <td style="padding-top:14px;">
+                                                        <select tabindex="28" class="form-control" name='wellType' #wellType="ngModel" [(ngModel)]='lossData.incidentInvolvement.exposure.wellTypeId'>
+
+                                                            <option *ngFor="let wellType of upStreamLossData.wellType" [ngValue]="wellType.id">{{wellType.displayName}}</option>
+                                                        </select>
+
+                                                    </td>
+                                                </tr>
+                                                <tr style="height:87px;">
+                                                    <th width="45%">Developmental/ Exploratory
+
+                                                    </th>
+                                                    <td style="padding-top:14px;">
+                                                        <select tabindex="30" class="form-control" name='devexs' #devexs="ngModel" [(ngModel)]='lossData.incidentInvolvement.exposure.devlExpl'>
+                                                            <option *ngFor="let de of upStreamLossData.dev_Exp" [ngValue]="de.id">{{de.displayName}}</option>
+                                                        </select>
+
+                                                    </td>
+                                                </tr>
+                                                <tr style="height:87px;">
+                                                    <th>Shale Information
+
+                                                    </th>
+                                                    <td style="padding-top:14px;">
+                                                        <select class="form-control" tabindex="32" name='shale' #shale="ngModel" autocomplete="off" [(ngModel)]='lossData.incidentInvolvement.exposure.shaleFormation'>
+                                                            <option *ngFor="let de of upStreamLossData.shaleFormation" [ngValue]="de.id">{{de.displayName}}</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height:87px;">
+                                                    <th>Depth @ Loss (feet)
+
+                                                    </th>
+                                                    <td style="padding-top:14px;">
+                                                        <input type="text" class="form-control" tabindex="34" name='depth' #depth="ngModel" (change)="addCommaSeparator()" autocomplete="off"
+                                                            [(ngModel)]='lossData.loss.lossDepth' decimalNum-val>
+                                                        <div *ngIf="depth.touched && checkIfInputIsDecimal(lossData.loss.lossDepth)" class="alert alert-danger">
+                                                            Please do not enter decimal figures.
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr style="height:87px;">
+                                                    <th>Drilling Status
+
+                                                    </th>
+                                                    <td style="padding-top:14px;">
+                                                        <select tabindex="29" class="form-control" name='drillingStatus' #drillingStatus="ngModel" [(ngModel)]='lossData.incidentInvolvement.exposure.drillingStatusId'>
+                                                            <option *ngFor="let drillingStatus of upStreamLossData.drillingStatus" [ngValue]="drillingStatus.id">{{drillingStatus.displayName}}</option>
+                                                        </select>
+
+                                                    </td>
+                                                </tr>
+                                                <tr style="height:87px;">
+                                                    <th>Shale Well
+
+                                                    </th>
+                                                    <td style="padding-top:14px;">
+                                                        <select class="form-control" tabindex="31" name='shaleW' #shaleW="ngModel" [(ngModel)]='lossData.incidentInvolvement.exposure.shale'>
+                                                            <option *ngFor="let sw of upStreamLossData.shell" [ngValue]="sw.id">{{sw.displayName}}</option>
+
+                                                            <!-- <option *ngFor="let cat of upStreamLossData[0].shellWell">{{cat.name}}</option> -->
+                                                        </select>
+
+                                                    </td>
+                                                </tr>
+                                                <tr style="height:87px;">
+                                                    <th>U/G Blowout
+                                                    </th>
+                                                    <td style="padding-top:14px;">
+                                                        <select class="form-control" name='ugb' tabindex="33" #ugb="ngModel" [(ngModel)]='lossData.loss.ugbo'>
+                                                            <option *ngFor="let ugbo of upStreamLossData.ugbo" [ngValue]="ugbo.id">{{ugbo.displayName}}</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height:87px;">
+                                                    <th>Proj. Tot Depth (feet)
+                                                    </th>
+                                                    <td style="padding-top:14px;">
+                                                        <input type="text" class="form-control" name='totalDepth' tabindex="35" (change)="addCommaSeparator()" #totalDepth="ngModel"
+                                                            autocomplete="off" [(ngModel)]='lossData.incidentInvolvement.exposure.projectedTotalDepth'
+                                                            decimalNum-val>
+                                                        <div *ngIf="totalDepth.touched && checkIfInputIsDecimal(lossData.incidentInvolvement.exposure.projectedTotalDepth)" class="alert alert-danger">
+                                                            Please do not enter decimal figures.
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <p>Note- If a Shale Formation is not shown in the dropdown, please provide under Loss
+                                        Details.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                </div>
+                <div class="col-md-12 terms-bottom-margin hidden-sm-down">
+                    <button class="btn btn-primary float-xs-right margin-set-left" tabindex="36" (click)="onSubmit()" [disabled]="checkValidation(upstreamForm) || checkDate() || checkIfInputIsDecimal(lossData.incidentInvolvement.exposure.waterDepth) || checkIfInputIsDecimal(lossData.loss.lossDepth) || checkIfInputIsDecimal(lossData.incidentInvolvement.exposure.projectedTotalDepth) || checkIfInputIsDecimal(lossData.loss.noOfDaysOutage) || totalFlag">Submit</button>
+                    <button class="btn btn-secondary float-xs-right margin-set-right" tabindex="37" (click)="onBackToHistory()">Cancel</button>
+                </div>
+                <div class="col-md-12 terms-bottom-margin hidden-md-up">
+                    <button class="btn btn-primary btn-mob-width terms-bottom-margin" (click)="onSubmit()" [disabled]="checkValidation(upstreamForm) || checkDate() || checkIfInputIsDecimal(lossData.incidentInvolvement.exposure.waterDepth) || checkIfInputIsDecimal(lossData.loss.lossDepth) || checkIfInputIsDecimal(lossData.incidentInvolvement.exposure.projectedTotalDepth) || checkIfInputIsDecimal(lossData.loss.noOfDaysOutage) || totalFlag">Submit
+                    </button>
+                    <button class="btn btn-secondary btn-mob-width" (click)="onBackToHistory()">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12" style="display:none;">
+            <button type="button" id='successButton' class="btn btn-primary" data-toggle="modal" data-target="#showConfirmationModal">Open
+                Generate Modal</button>
+        </div>
+    </form>
+    <success-confirmation-modal [msg]="msg" (onYesEvent)="onBackToHistory()"></success-confirmation-modal>
+</div>
+
+<div id="upstreamLossData" *ngIf="readOnlyFlag">
+    <div class="row divClassNew hidden-sm-down">
+        <div class="col-md-12">
+            <button class="btn btn-secondary float-xs-right btn-top-margin" (click)="onBackToHistory()">Back to History</button>
+        </div>
+    </div>
+    <div class="divClassNew hidden-md-up">
+        <div class="col-md-12">
+            <button class="btn btn-secondary btn-top-margin btn-mob-width" (click)="onBackToHistory()">Back to History</button>
+        </div>
+    </div>
+    <div class="position-padding">
+        <div class="row" *ngIf="lossData.loss.lossClaim!=undefined">
+            <div class="col-md-12">
+                <div class="well-report well-border well-mob">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 well-col">
+                            <h6 class="extra-padding-top">Submission ID</h6>
+                            <h3>{{lossData.loss.submissionId}}</h3>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 well-col">
+                            <h6 class="extra-padding-top">Type of Loss Data</h6>
+                            <h3>Upstream</h3>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 well-col">
+                            <h6 class="extra-padding-top extra-adding-left">Status</h6>
+                            <span *ngIf="lossData.loss.lossClaim[0].status == 'Submitted'" class="tag tag-pill tag-info">
+                                <h4>{{lossData.loss.lossClaim[0].status}}</h4>
+                                <!-- <h4>Submitted</h4> -->
+                            </span>
+                            <span *ngIf="lossData.loss.lossClaim[0].status == 'OnHold'" class="tag tag-pill tag-warning">
+                                <h4>{{lossData.loss.lossClaim[0].status}}</h4>
+                                <!-- <h4>Submitted</h4> -->
+                            </span>
+                            <span *ngIf="lossData.loss.lossClaim[0].status == 'Rejected'" class="tag tag-pill tag-danger">
+                                <h4>{{lossData.loss.lossClaim[0].status}}</h4>
+                                <!-- <h4>Submitted</h4> -->
+                            </span>
+                            <span *ngIf="lossData.loss.lossClaim[0].status == 'Approved'" class="tag tag-pill tag-success">
+                                <h4>{{lossData.loss.lossClaim[0].status}}</h4>
+                                <!-- <h4>Submitted</h4> -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-border">
+        <div class="margin-top">
+            <div class="col-md-4">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th class="th-new">Loss Year
+                                </th>
+                                <td class="td-new">
+                                    {{year}}
+                                </td>
+                            </tr>
+                            <tr class="hidden-md-up">
+                                <th class="th-new">Loss Month
+                                </th>
+                                <td class="td-new">
+                                    {{month}}
+                                </td>
+                            </tr>
+                            <tr class="hidden-md-up">
+                                <th class="th-new">Loss Day
+
+                                </th>
+                                <td> {{day}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new" width="50%">Category 1
+
+                                </th>
+                                <td class="td-new">
+                                    {{category1}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Land / Offshore
+
+                                </th>
+                                <td class="td-new">
+                                    {{land}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Operational Status
+
+                                </th>
+                                <td class="td-new">
+                                    {{os}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Assured & co-venturers
+
+                                </th>
+                                <td class="td-new">
+                                    {{createIncidentInvolvement.assuredCoVenture}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Loss Location
+
+                                </th>
+                                <td class="td-new">
+                                    {{lossData.location.location}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Area
+
+                                </th>
+                                <td class="td-new">
+                                    {{area}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Adjuster
+
+                                </th>
+                                <td class="td-new">
+                                    {{createIncidentInvolvement.adjuster}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr class="hidden-sm-down">
+                                <th class="th-new">Month
+                                </th>
+                                <td class="td-new">
+                                    {{month}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new" width="50%">Category 2
+
+                                </th>
+                                <td class="td-new">
+                                    {{category2}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Cause
+
+                                </th>
+                                <td class="td-new">
+                                    {{cause}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Loss Details
+
+                                </th>
+                                <td class="td-new">
+                                    {{lossData.incidentInvolvement.exposure.lossDetails}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Country
+
+                                </th>
+                                <td class="td-new">
+                                    {{country}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Loss Type
+
+                                </th>
+                                <td class="td-new"> {{lossTypesName}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Adj. File Ref
+
+                                </th>
+                                <td class="td-new">
+                                    {{createIncidentInvolvement.adjusterFileRef}}
+                                </td>
+                            </tr>
+                            <tr>
+                                    <th class="th-new">Number of days outage
+    
+                                    </th>
+                                    <td class="td-new">
+                                        {{lossData.loss.outageDays}}
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr class="hidden-sm-down">
+                                <th class="th-new">Day
+
+                                </th>
+                                <td class="td-new">
+                                    {{day}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new" width="50%">Category 3
+
+                                </th>
+                                <td class="td-new">
+                                    {{category3}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Dynamically Positioned
+                                    <!-- {{lossData.incidentInvolvement.exposure.dynamicallyPositioned}} -->
+
+                                </th>
+                                <td class="td-new">
+                                    {{dynamicallyPositioned}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">CTL/TL
+                                </th>
+                                <td class="td-new">
+                                    <input class="form-control chk-size" name='ctls' #ctls="ngModel" [(ngModel)]='lossData.loss.ctl' type="checkbox" [disabled]="true">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Approx.Ins.Val. US$ (not limit)
+
+                                </th>
+                                <td class="td-new">
+                                    {{lossData.incidentInvolvement.exposure.approxInsVal}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Year of Install
+
+                                </th>
+                                <td class="td-new">
+                                    {{lossData.incidentInvolvement.exposure.installationDate}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="th-new">Water Depth (feet)
+
+                                </th>
+                                <td class="td-new">
+                                    {{lossData.incidentInvolvement.exposure.waterDepth}}
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <th class="th-new">Cause
+
+                                </th>
+                                <td class="td-new">
+                                    {{cause}}
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="margin-top">
+                <div class="col-md-4">
+                    <total-claim-calculator [pdLoss]="pd" [biLoss]="bi" [oeeLoss]="oee" [readonlyFlag]="readOnlyFlag"></total-claim-calculator>
+                    <div style="margin-top: 0px; padding-top: 5px; padding-bottom: 5px;" *ngIf="claimPDFlag && (!pd || pd=='0')" class="alert alert-danger">
+                        <span style="font-size:14px;">Please enter PD/S&P amount.</span>
+                    </div>
+                    <div style="margin-top: 0px; padding-top: 5px; padding-bottom: 5px;" *ngIf="claimOEEFlag && (!oee || oee=='0')" class="alert alert-danger">
+                        <span style="font-size:14px;">Please enter OEE amount.</span>
+                    </div>
+                    <div style="margin-top: 0px; padding-top: 5px; padding-bottom: 5px;" *ngIf="claimBIFlag && (!bi || bi=='0')" class="alert alert-danger">
+                        <span style="font-size:14px;">Please enter BI/CBI amount.</span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card card-block bg-software-gray-1 card-height">
+                        <h4 class="card-title display-4">Well Information (For OEE only)</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th class="th-new">Type
+                                                </th>
+                                                <td class="td-new">
+                                                    {{wellType}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th width="45%" class="th-new">Developmental/ Exploratory
+                                                </th>
+                                                <td class="td-new">
+                                                    {{devlExpl}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="th-new">Shale Information
+                                                </th>
+                                                <td class="td-new">
+                                                    {{shaleFormation}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="th-new">Depth @ Loss (feet)
+                                                </th>
+                                                <td class="td-new">
+                                                    {{lossData.loss.lossDepth}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th class="th-new">Drilling Status
+                                                </th>
+                                                <td class="td-new">
+                                                    {{dStatus}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="th-new">Shale Well
+                                                </th>
+                                                <td class="td-new">
+                                                    {{shale}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="th-new">U/G Blowout
+                                                </th>
+                                                <td class="td-new">
+                                                    {{ugbo}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="th-new">Project Total Depth (feet)
+
+                                                </th>
+                                                <td class="td-new">
+                                                    {{lossData.incidentInvolvement.exposure.projectedTotalDepth}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+
+
+            </div>
+        </div>
+    </div>
+</div>

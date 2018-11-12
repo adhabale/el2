@@ -1,0 +1,80 @@
+.custom-margin{
+    margin-top:30px;
+    margin-bottom: 50px;
+}
+
+
+@media screen and (max-width:1024px) and (min-width: 769px) {
+    .suggestions{
+        background-color:#f4f4f4;
+        position:absolute;
+        z-index: 3;
+        width:20%;
+            height: 200px;
+        overflow-y: scroll;
+    }
+}
+@media screen and (max-width:1260px) and (min-width: 1025px) {
+    .suggestions{
+        background-color:#f4f4f4;
+        position:absolute;
+        z-index: 3;
+        width:16%;
+            height: 200px;
+        overflow-y: scroll;
+    }
+}
+@media screen and (max-width:1350px) and (min-width: 1261px) {
+    .suggestions{
+        background-color:#f4f4f4;
+        position:absolute;
+        z-index: 3;
+        width:16%;
+            height: 200px;
+        overflow-y: scroll;
+    }
+}
+@media screen and (max-width:1500px) and (min-width: 1351px) {
+    .suggestions{
+        background-color:#f4f4f4;
+        position:absolute;
+        z-index: 3;
+        width:14%;
+            height: 200px;
+        overflow-y: scroll;
+    }
+}
+.filter-input{
+    width: 168px
+}
+.none li{
+   list-style-type: none;
+   white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+.none{
+    padding-left: 5px!important;
+}
+.suggestions-mbl{
+    background-color:#f4f4f4;
+    position:absolute;
+    z-index: 3;
+width:91%;
+ height: 200px;
+    overflow-y: scroll;
+}
+.table td {
+    border-top: 0px solid #eceeef;
+}
+.btn-width-mob{
+    width: 100%;
+    margin-top: 20px;
+}
+.margin-top{
+    margin-top: 10px;
+}
+.margin-radio-top{
+    margin-top: 5px;
+}

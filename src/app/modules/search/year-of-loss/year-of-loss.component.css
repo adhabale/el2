@@ -1,0 +1,67 @@
+.btn-mob-top{
+    width: 100%;
+    margin-bottom: 0px;
+}
+.btn-mob{
+    width: 100%;
+    margin-bottom: 20px;
+}
+/* -Grids-*/
+.table-year td {
+    border: 10px #DDD solid;
+    padding: 20px;
+    cursor: pointer;
+    font-weight: 800;
+}
+.selectedClass {
+    background-color: #444;
+    color: #FFF;
+}
+.notSelectedClass {
+    background-color: #FFF;
+    color: #444;
+}
+.inactive-button-class{
+   background-color: white;
+    color: #444;
+}
+.active-button-class{
+   background-color: #009ed1;
+    color: #FFF;
+}
+td.td-hover:hover{
+   background-color: black;
+   color: #FFF;
+}
+.not-allowed {
+       cursor: not-allowed!important;
+   
+   }
+.btn-group button.btn {
+   background-color: #fff!important;
+   color: #585858;
+}
+/* Grids*/
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    table { border-collapse: collapse; }
+    tr { display: block; float: left; }
+    th, td { display: block;}
+}
+@media screen and (max-width: 375px) and (min-width: 320px) {
+    .table-year td {
+        border: 2px #DDD solid;
+        padding: 10px;
+    }
+}
+@media screen and (max-width: 415px) and (min-width: 375px) {
+    .table-year td {
+        border: 4px #DDD solid;
+        padding: 14px;
+    }
+}
+@media screen and (max-width: 768px) and (min-width: 415px) {
+    .table-year td {
+        border: 5px #DDD solid;
+        padding: 17px;
+    }
+}

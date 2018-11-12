@@ -1,0 +1,27 @@
+<!--Modal Delete User-->
+<div class="modal fade delete-user" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+                        <span ariahidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Delete User</h4>
+                </div>
+                <div class="modal-body hidden-sm-down">
+                   <div class="row">
+                       <div class="col-md-12">Are you sure you want to delete user {{accountUser.displayName}}?</div>
+                   </div>
+                </div>
+    
+                <div class="modal-footer hidden-sm-down">
+                    <button type="button" class="btn btn-secondary margin-set-right" data-dismiss="modal" name="cancelUserButton">No</button>
+                    <button type="button" class="btn btn-primary margin-set-left" (click)="onDelete()" data-dismiss="modal" name="deleteUserButton">Yes</button>
+                </div>
+                <div class="modal-footer hidden-md-up">
+                    <button type="button" class="btn btn-primary btn-block" (click)="onDelete()" data-dismiss="modal" name="deleteUserButton">Yes</button>
+                    <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal" name="cancelUserButton" >No</button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,28 @@
+<div id="confirmUpdatedDate" class="modal fade" data-backdrop="static" role="dialog">
+    <div class="modal-dialog bd-example-modal-sm">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="col-sm-6 modal-title">Confirmation Alert</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body scroll-css">
+                <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                    <div class="checkbox pull-left">
+                        <p class="bot-margin">
+                            Do you want to set 'Updated Date' to today's date?
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal" (click)="onNo()">No</button>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                    <button type="button" class="btn btn-primary pull-left" data-dismiss="modal" (click)="onYes()">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

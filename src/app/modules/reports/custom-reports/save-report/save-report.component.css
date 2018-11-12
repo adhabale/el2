@@ -1,0 +1,82 @@
+.margin-set-left {
+    margin-left: 6px;
+}
+
+.margin-set-right {
+    margin-right: 6px;
+}
+
+.margin-set {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+.margin-top{
+    margin-top: 20px;
+}
+.btn-group button.btn {
+    background-color: white;
+    color: #585858;
+}
+.margin-top-moveUp{
+    margin-top: 90px;
+}
+.moveUp-btn-width{
+    width:121px
+}
+.margin-top-moveDown{
+    margin-top: 20px;
+}
+.btn-group>.btn:first-child {
+    margin-left: 25px;
+}
+.addButton-cls{
+    margin-top: 50px;
+    margin-left: 50px
+}
+.removeButton-cls{
+    margin-top: 140px;
+    margin-left: -40px
+}
+
+.btn-shift-dropdown{
+    margin-left: 40px;
+}
+.table thead th {
+    border-bottom: 0px solid #eceeef;
+}
+
+.table th,
+.table td {
+    border-top: 0px solid #eceeef;
+}
+/* CSS Mobile */
+.p-1-mob{
+    padding: 1rem 0rem;
+}
+/* End */
+.success-mob{
+    margin-left: -20px
+}
+.btn-mob-width{
+    width: 100%;
+    margin-bottom:20px;
+}
+.btn-mob-width-half{
+    width: 50%;
+    margin-bottom:20px;
+}
+.shift-mob-add{
+    margin-top: 0%;
+    margin-right: 20%;
+    margin-left: 50%;
+}
+.shift-mob-remove{
+    margin-top: 0%;
+    /* margin-bottom: 10%; */
+    margin-left: -35%;
+}
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    label {
+        font-size: 16px
+    }
+}

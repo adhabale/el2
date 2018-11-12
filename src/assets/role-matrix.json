@@ -1,0 +1,388 @@
+{
+  "roleMatrix": {
+    "pageAccessLevels": [
+      {
+        "pageName": "home",
+        "allowedRoles": "Admin|Subscriber|SME",
+        "accessLevels": [
+        ]
+      },
+      {
+        "pageName": "search",
+        "allowedRoles": "Admin|Subscriber|SME",
+        "accessLevels": [
+          {
+            "feature": "isRunSearchAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isSaveSearchCriteriaAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isViewSearchResultAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isDownloadSearchResultAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isResetResultAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "overall-losses",
+        "allowedRoles": "Admin|Subscriber|SME",
+        "accessLevels": [
+          {
+            "feature": "isRunReportAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isDownloadReportAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          }
+
+        ]
+      },
+      {
+        "pageName": "oee-losses",
+        "allowedRoles": "Admin|Subscriber|SME",
+        "accessLevels": [
+          {
+            "feature": "isRunReportAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isDownloadReportAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          }
+
+        ]
+      },
+      {
+        "pageName": "custom",
+        "allowedRoles": "Admin|Subscriber|SME",
+        "accessLevels": [
+          {
+            "feature": "isRunReportAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isResetCustomeReportCriteriaAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isDownloadReportAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isSaveReportCriteriaAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          }
+        ]
+      },
+     
+      {
+        "pageName": "subscription-dashboard",
+        "allowedRoles": "Admin|SME",
+        "accessLevels": [
+          {
+            "feature": "isViewDashBoardAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "Generate-On-demand-Renewal-Report-Allowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "Download-Past-Renewal-ReportsAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "loss-data-dashboard",
+        "allowedRoles": "Admin|Subscriber|SME",
+        "accessLevels": [
+        ]
+      },
+      {
+        "pageName": "loss-details",
+        "allowedRoles": "Admin|SME|Subscriber",
+        "accessLevels": [
+        ]
+      },
+      {
+        "pageName": "accounts",
+        "allowedRoles": "Admin|SME",
+        "accessLevels": [
+          {
+            "feature": "isSearchSubscriptionAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isCreateSubscriptionAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isEditSubscriptionAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isSearchUserAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isAddUserAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isEditUserAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isRemoveUserAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isSaveSubscriptionAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "ValidateUserAcccessAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "ConfigureUserAcccessAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "AddSharedDocumentsAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "RemoveSharedDocumentsAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "user-aduit-logs",
+        "allowedRoles": "Admin|SME",
+        "accessLevels": [
+          {
+            "feature": "isViewLogsAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "isDownloadLogsAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "announcements",
+        "allowedRoles": "Admin|SME|Subscriber",
+        "accessLevels": [
+          {
+            "feature": "ViewAnnouncementAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "AddAnnouncementAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "EditAnnouncementAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "RemoveAnnouncementAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "reference-document",
+        "allowedRoles": "Admin|SME|Subscriber",
+        "accessLevels": [
+          {
+            "feature": "ViewDocumentsAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "AddDocumentsAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "RemoveDocumentsAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "contact-us",
+        "allowedRoles": "Admin|SME|Subscriber",
+        "accessLevels": [
+          {
+            "feature": "ViewContactUsAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          }
+        ]
+      },
+     
+      {
+        "pageName": "loss-data-submission",
+        "allowedRoles": "SME|Subscriber",
+        "accessLevels": [
+          {
+            "feature": "UpstreamLossDataSubmissionAllowed",
+            "deniedRoles": "Admin",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "DownstreamLossDataSubmissionAllowed",
+            "deniedRoles": "Admin",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "PowerLossDataSubmissionAllowed",
+            "deniedRoles": "Admin",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "ValidateLossDatSubmissionAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "HistoryLossDatSubmissionAllowed",
+            "deniedRoles": "Admin",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "eldm",
+        "allowedRoles": "Admin|SME",
+        "accessLevels": [
+          {
+            "feature": "UpdateIndexFileAllowed",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "EnergyLossparameterValueManagementAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "ELDMReportsAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "SortRecordsAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "FindLossDataRecordsAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "EditLossDataRecordsAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "DeleteLossDataRecordsAllowed",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "terms-of-use",
+        "allowedRoles": "Admin|SME|Subscriber",
+        "accessLevels": [
+          {
+            "feature": "ViewAndAcceptTermsOfUseAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "CreateTermsofUse",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "UpdateTermsofUse",
+            "deniedRoles": "Admin|Subscriber",
+            "denyAction": "hide"
+          },
+          {
+            "feature": "VerifyAcceptanceofTermsofUse",
+            "deniedRoles": "Subscriber",
+            "denyAction": "hide"
+          }
+        ]
+      },
+      {
+        "pageName": "training-material",
+        "allowedRoles": "Admin|SME|Subscriber",
+        "accessLevels": [
+          {
+            "feature": "AccessToTrainingMaterialAllowed",
+            "deniedRoles": "",
+            "denyAction": "hide"
+          }
+        ]
+      }
+
+        ]
+      }
+}

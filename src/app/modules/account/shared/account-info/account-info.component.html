@@ -1,0 +1,600 @@
+<div *ngIf='!isNewSubscription && account'>
+
+    <div class="col-md-12 hidden-sm-down margin-top" *ngIf="!isFormEditable">
+        <div class="col-md-5">
+            <div class="col-md-12">
+                <div>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Client Name </th>
+                                <td>{{account.customerName}}</td>
+                            </tr>
+                            <tr>
+                                <th>Subscription Start Date </th>
+                                <td>{{account.startDate | date:'dd-MMM-yyyy'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Subscription End Date </th>
+                                <td>{{account.endDate | date:'dd-MMM-yyyy'}}</td>
+                            </tr>
+                            <tr>
+                                <th>Invoice Status </th>
+                                <td>{{account.invoiceStatus}}</td>
+                            </tr>
+                            <tr>
+                                <th>Supress Subscription Notification</th>
+                                <td>
+                                    <div class="switch-width">
+                                        <app-switch [checked]="account.isNotificationSuppressed" disabled="true"></app-switch>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Subscription Active</th>
+                                <td>
+                                    <div class="switch-width">
+                                        <app-switch [checked]="account.subscriptionStatus" disabled="true"></app-switch>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="col-md-10">
+                <div>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Key Contact Name </th>
+                                <td>{{account.accountContact.name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Company Legal Name </th>
+                                <td>{{account.accountContact.companyName}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{account.accountContact.email}}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>{{account.accountContact.phone}}</td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td>{{account.accountContact.address}}</td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>{{account.accountContact.city}}</td>
+                            </tr>
+                            <tr>
+                                <th>Country</th>
+                                <td>{{account.accountContact.country}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-2 button-top hidden-sm-down">
+                <button type="button" class="btn btn-secondary float-xs-right" name="editButton" (click)="onEdit()">Edit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-md-up margin-top" *ngIf="!isFormEditable">
+        <div>
+            <div>
+                <button type="button" class="btn btn-secondary btn-block" name="editButton" (click)="onEdit()">Edit</button>
+            </div>
+        </div>
+        <div>
+            <div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Client Name </th>
+                            <td>{{account.customerName}}</td>
+                        </tr>
+                        <tr>
+                            <th>Subscription Start Date </th>
+                            <td>{{account.startDate | date:'dd-MMM-yyyy'}}</td>
+                        </tr>
+                        <tr>
+                            <th>Subscription End Date </th>
+                            <td>{{account.endDate | date:'dd-MMM-yyyy'}}</td>
+                        </tr>
+                        <tr>
+                            <th>Invoice Status </th>
+                            <td>{{account.invoiceStatus}}</td>
+                        </tr>
+                        <tr>
+                            <th>Supress Subscription Notification</th>
+                            <td>
+                                <div class="switch-width">
+                                    <app-switch [checked]="account.isNotificationSuppressed" disabled="true"></app-switch>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Subscription Active</th>
+                            <td>
+                                <div class="switch-width">
+                                    <app-switch [checked]="account.subscriptionStatus" disabled="true"></app-switch>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Key Contact Name </th>
+                            <td>{{account.accountContact.name}}</td>
+                        </tr>
+                        <tr>
+                            <th>Company Legal Name </th>
+                            <td>{{account.accountContact.companyName}}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{account.accountContact.email}}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{account.accountContact.phone}}</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>{{account.accountContact.address}}</td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td>{{account.accountContact.city}}</td>
+                        </tr>
+                        <tr>
+                            <th>Country</th>
+                            <td>{{account.accountContact.country}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<form name='accountInfo' #accountInfoForm="ngForm" novalidate>
+
+    <div class="col-md-12 hidden-sm-down margin-top" *ngIf="isFormEditable">
+        <div class="col-md-12">
+            <p class='text-xs-right'>
+                <span style='color:red;'>*</span>Required field</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Client Name
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <input type="text" class="form-control" name='customerName' #customerName="ngModel" autocomplete="off" [(ngModel)]='account.customerName'
+                                            required />
+                                        <div *ngIf="customerName.touched && customerName.invalid && customerName.errors?.required" class="alert alert-danger">
+                                            Client Name is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Subscription Start Date
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <div class="form-group">
+                                             datepickerId="startDate" name="startDate" isRequired='true' [selectedDate]="account.startDate | date: 'dd-MMM-yyy'"
+                                                (dateChange)="setStartDate($event)" (dateFormatValidation)='checkStartDateFormat($event)'></datepicker>
+                                            <div *ngIf="isStartDateInvalid " class="alert alert-danger">
+                                                Start Date is invalid.
+                                            </div>
+                                            <!-- <div *ngIf="startDate.touched && startDate.invalid && startDate.errors?.required " class="alert alert-danger">
+                                                Start Date is required.
+                                            </div> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Subscription End Date
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <div class="form-group">
+                                            <datepicker datepickerId="endDate" name="endDate" isRequired='true' [selectedDate]="account.endDate | date: 'dd-MMM-yyy'"
+                                                (dateChange)="setEndDate($event)" (dateFormatValidation)='checkEndDateFormat($event)'></datepicker>
+                                            <div *ngIf="isEndDateInvalid " class="alert alert-danger">
+                                                End Date is invalid.
+                                            </div>
+                                            <div *ngIf="checkDateValidation()" class="alert alert-danger">
+                                                Subscription Start Date must be before Subscription Expiry Date.
+                                            </div>
+                                            <!-- <div *ngIf="endDate.touched && endDate.invalid && endDate.errors?.required" class="alert alert-danger">
+                                                End Date is required.
+                                            </div> -->
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>Invoice Status
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='invoiceStatus' #invoiceStatus="ngModel" [(ngModel)]='account.invoiceStatus' required>
+                                            <option value="NA">NA</option>
+                                            <option value="Paid">Paid</option>
+                                            <option value="Pending">Pending</option>
+                                        </select>
+                                        <div *ngIf="invoiceStatus.touched && invoiceStatus.invalid && invoiceStatus.errors?.required" class="alert alert-danger">
+                                            Invoice Status is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Supress Subscription Notification</th>
+                                    <td>
+                                        <div class="switch-width">
+                                            <app-switch [checked]="account.isNotificationSuppressed" (checkedChange)="onChangeOfNotificationSuppressed($event)"></app-switch>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="!isNewSubscription">
+                                    <th>Subscription Active</th>
+                                    <td>
+                                        <div class="switch-width">
+                                            <app-switch [checked]="account.subscriptionStatus" (checkedChange)="onChangeOfSubscriptionStatus($event)"></app-switch>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Key Contact Name
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <input type="text" class="form-control" autocomplete="off" name='name' #name="ngModel" [(ngModel)]='account.accountContact.name'
+                                            required/>
+
+                                        <div *ngIf="name.touched && name.invalid && name.errors?.required" class="alert alert-danger">
+                                            Key Contact Name is required.
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>Company Legal Name
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <input type="text" class="form-control" autocomplete="off" name='companyName' #companyName="ngModel" [(ngModel)]='account.accountContact.companyName'
+                                            required />
+                                        <div *ngIf="companyName.touched && companyName.invalid && companyName.errors?.required" class="alert alert-danger">
+                                            Company Legal Name is required.
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>Email
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <input type="email" class="form-control" autocomplete="off" name='email' #email="ngModel" [(ngModel)]='account.accountContact.email'
+                                            required email/>
+                                        <div *ngIf="email.touched && email.invalid && email.errors?.required" class="alert alert-danger">
+                                            Email ID is a required.
+                                        </div>
+                                        <div *ngIf="email.touched && email.invalid && email.errors?.email" class="alert alert-danger">
+                                            Email is not valid.
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>Phone
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <input type="text" class="form-control" autocomplete="off" name='phone' #phone="ngModel" [(ngModel)]='account.accountContact.phone'
+                                            required/>
+                                        <div *ngIf="phone.touched && phone.invalid && phone.errors?.required" class="alert alert-danger">
+                                            Phone is required.
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>Address
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <textarea rows="3" class="form-control" name='address' #address="ngModel" [(ngModel)]='account.accountContact.address' required></textarea>
+                                        <div *ngIf="address.touched && address.invalid && address.errors?.required" class="alert alert-danger">
+                                            Address is required.
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Country
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <select class="form-control" name='country' #country="ngModel" [(ngModel)]='account.accountContact.country' (ngModelChange)="onCountryChange(account.accountContact.country)" (ngModelChange)="onCountryChange(account.accountContact.country)" required>
+                                            <option value=''></option>
+                                            <option *ngFor='let country of countryList' [ngValue]="country.name">{{country.name}}</option>
+                                        </select>
+
+                                        <div *ngIf="country.touched && country.invalid && country.errors?.required" class="alert alert-danger">
+                                            Country is required.
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>City
+                                        <span style='color:red;'>*</span>
+                                    </th>
+                                    <td>
+                                        <auto-complete [items]="cityList" [selected]="account.accountContact.city" (onItemSelect)="onCitySelect($event)" (onSearchItem)="getCityList($event)"></auto-complete>
+                                        <!-- <div *ngIf="cityEmpty" class="alert alert-danger">
+                                            City is required.
+                                        </div> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12" *ngIf="!isNewSubscription">
+                        <button type="button" class="btn btn-secondary pull-right" name="cancelButton" (click)="onCancel()">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden-md-up margin-top" *ngIf="isFormEditable">
+
+        <div>
+            <div>
+                <button type="button" class="btn btn-secondary btn-block" name="cancelButton" (click)="onCancel()">Cancel</button>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <p class='text-xs-right'>
+                <span style='color:red;'>*</span>Required field</p>
+        </div>
+        <div class="row">
+            <div>
+
+                <div>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Client Name
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" name='customerName' autocomplete="off" #customerNameMob="ngModel" [(ngModel)]='account.customerName'
+                                        required />
+                                    <div *ngIf="customerNameMob.touched && customerNameMob.invalid && customerNameMob.errors?.required" class="alert alert-danger">
+                                        Client Name is required.
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>Subscription Start Date
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <div class="form-group">
+                                        <datepicker datepickerId="startDate" name="startDate" isRequired='true' [selectedDate]="account.startDate | date: 'dd-MMM-yyy'"
+                                            (dateChange)="setStartDate($event)" (dateFormatValidation)='checkStartDateFormat($event)'></datepicker>
+                                        <div *ngIf="isStartDateInvalid " class="alert alert-danger">
+                                            Start Date is invalid.
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>Subscription End Date
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <div class="form-group">
+                                        <datepicker datepickerId="endDate" name="endDate" isRequired='true' [selectedDate]="account.endDate | date: 'dd-MMM-yyy'"
+                                            (dateChange)="setEndDate($event)" (dateFormatValidation)='checkEndDateFormat($event)'></datepicker>
+                                        <div *ngIf="isEndDateInvalid " class="alert alert-danger">
+                                            End Date is invalid.
+                                        </div>
+                                        <div *ngIf="checkDateValidation()" class="alert alert-danger">
+                                            Subscription Start Date must be before Subscription Expiry Date.
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>Invoice Status
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <select class="form-control" name='invoiceStatus' #invoiceStatusMob="ngModel" [(ngModel)]='account.invoiceStatus' required>
+                                        <option value="NA">NA</option>
+                                        <option value="Paid">Paid</option>
+                                        <option value="Pending">Pending</option>
+                                    </select>
+                                    <div *ngIf="invoiceStatusMob.touched && invoiceStatusMob.invalid && invoiceStatusMob.errors?.required" class="alert alert-danger">
+                                        Invoice Status is required.
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Supress Subscription Notification</th>
+                                <td>
+                                    <div class="switch-width">
+                                        <app-switch [checked]="account.isNotificationSuppressed" (checkedChange)="onChangeOfNotificationSuppressed($event)"></app-switch>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr *ngIf="!isNewSubscription">
+                                <th>Subscription Active</th>
+                                <td>
+                                    <div class="switch-width">
+                                        <app-switch [checked]="account.subscriptionStatus" (checkedChange)="onChangeOfSubscriptionStatus($event)"></app-switch>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Key Contact Name
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" name='name' autocomplete="off" #nameMob="ngModel" [(ngModel)]='account.accountContact.name'
+                                        required/>
+
+                                    <div *ngIf="nameMob.touched && nameMob.invalid && nameMob.errors?.required" class="alert alert-danger">
+                                        Key Contact Name is required.
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>Company Legal Name
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" name='companyName' autocomplete="off" #companyNameMob="ngModel" [(ngModel)]='account.accountContact.companyName'
+                                        required />
+                                    <div *ngIf="companyNameMob.touched && companyNameMob.invalid && companyNameMob.errors?.required" class="alert alert-danger">
+                                        Company Legal Name is required.
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>Email
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <input type="email" class="form-control" name='email' autocomplete="off" #emailMob="ngModel" [(ngModel)]='account.accountContact.email'
+                                        required email />
+                                    <div *ngIf="emailMob.touched && emailMob.invalid && emailMob.errors?.required" class="alert alert-danger">
+                                        Email ID is a required.
+                                    </div>
+                                    <div *ngIf="emailMob.touched && emailMob.invalid && emailMob.errors?.email" class="alert alert-danger">
+                                        Email is not valid.
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    Phone
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <input type="text" class="form-control" name='phone' autocomplete="off" #phoneMob="ngModel" [(ngModel)]='account.accountContact.phone'
+                                        required />
+                                    <div *ngIf="phoneMob.touched && phoneMob.invalid && phoneMob.errors?.required" class="alert alert-danger">
+                                        Phone is required.
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    Address
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <textarea rows='3' class="form-control" name='address' #addressMob="ngModel" [(ngModel)]='account.accountContact.address'
+                                        required></textarea>
+                                    <div *ngIf="addressMob.touched && addressMob.invalid && addressMob.errors?.required" class="alert alert-danger">
+                                        Address is required.
+                                    </div>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Country
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <select class="form-control" name='country' #country="ngModel" [(ngModel)]='account.accountContact.country' (ngModelChange)="onCountryChange(account.accountContact.country)" (ngModelChange)="onCountryChange(account.accountContact.country)" required>
+                                        <option value=''></option>
+                                        <option *ngFor='let country of countryList' [ngValue]="country.name">{{country.name}}</option>
+                                    </select>
+                                    <div *ngIf="country.touched && country.invalid && country.errors?.required" class="alert alert-danger">
+                                        Country is required.
+                                    </div>
+                            </tr>
+                            <tr>
+                                <th>
+                                    City
+                                    <span style='color:red;'>*</span>
+                                </th>
+                                <td>
+                                    <!-- <select type="text" class="form-control" name='city' autocomplete="off" #cityMob='ngModel' [(ngModel)]='account.accountContact.city' required>
+                      <option value=''></option>
+                      <option *ngFor='let city of cityList' [ngValue]="city.name">{{city.name}}</option>
+                    </select> -->
+                                    <auto-complete [items]="cityList" [selected]="account.accountContact.city" (onItemSelect)="onCitySelect($event)" (onSearchItem)="getCityList($event)"></auto-complete>
+                                    <!-- <div *ngIf="cityMob.touched && cityMob.invalid && cityMob.errors?.required" class="alert alert-danger">
+                      City is required.
+                    </div> -->
+                                   <!--  <div *ngIf="cityEmpty" class="alert alert-danger">
+                                        City is required.
+                                    </div> -->
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top:20px;">
+        <hr>
+    </div>
+
+    <div class="hidden-sm-down">
+        <div>
+            <button type="button" class="btn btn-secondary float-xs-left" [disabled]="isContinueButtonDisabled(accountInfoForm) || checkDateValidation() || isStartDateInvalid || isEndDateInvalid" (click)='onBack()' name="backButton">Back</button>
+            <button type="button" #continueBtn class="btn btn-primary aa float-xs-right" (click)='onContinue(accountInfoForm)' [disabled]="isContinueButtonDisabled(accountInfoForm) || checkDateValidation() || isStartDateInvalid || isEndDateInvalid"
+                name="continueButton">Save and Continue</button>
+        </div>
+    </div>
+    <div class="hidden-md-up">
+        <div>
+            <button type="button" class="btn btn-primary btn-block" (click)='onContinue(accountInfoForm)' [disabled]="isContinueButtonDisabled(accountInfoForm) || checkDateValidation() || isStartDateInvalid || isEndDateInvalid"
+                name="continueButton">Save and Continue</button>
+            <button type="button" class="btn btn-secondary btn-block" (click)='onBack()' name="backButton" [disabled]="isContinueButtonDisabled(accountInfoForm) || checkDateValidation() || isStartDateInvalid || isEndDateInvalid">Back</button>
+        </div>
+    </div>
+</form>

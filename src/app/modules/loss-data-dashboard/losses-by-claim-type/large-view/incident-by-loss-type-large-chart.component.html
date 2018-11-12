@@ -1,0 +1,136 @@
+<div class="hidden-sm-down">
+    <div class="row custom-margin">
+        <div class="table-responsivetable-container">
+            <table class="table">
+                <tr>
+                    <td>
+                        <label class="label-filter">From&nbsp;</label>
+                    </td>
+                    <td>
+                        <select class="form-control" name='fromYear' [(ngModel)]='chartFilter.fromYear' (change)="onYearChangeFrom(chartFilter.fromYear)">
+                            <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="chartFilter.fromYear > chartFilter.toYear">{{year}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label class="label-filter">To&nbsp;</label>
+                    </td>
+                    <td>
+                        <select class="form-control" name='toYear' [(ngModel)]='chartFilter.toYear' (change)="onYearChangeTo(chartFilter.toYear)">
+                            <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="year < chartFilter.fromYear">{{year}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label class="label-filter">Up/Down/Power&nbsp;</label>
+                    </td>
+                    <td style="width: 218px">
+                        <multi-select-auto-completer [items]="chartLookup.upDownPowerStream" [selectedItems]="selectedItems" (onItemSelect)="onUpDownItemSelect($event)"
+                            (onItemRemove)="onUpDownItemRemove($event)">
+                        </multi-select-auto-completer>
+                    </td>
+                    <td>
+                        <label class="label-filter">Area&nbsp;</label>
+                    </td>
+                    <td style="width: 218px">
+                        <multi-select-auto-completer [items]="chartLookup.areas" [selectedItems]="selectedItems" (onItemSelect)="onAreaItemSelect($event)"
+                            (onItemRemove)="onAreaItemRemove($event)">
+                        </multi-select-auto-completer>
+                    </td>
+                    <td>
+                        <label class="label-filter">Major Losses&nbsp;</label>
+                    </td>
+                    <td>
+                        <select class="form-control" name='majorLosses' [(ngModel)]='chartFilter.majorIncidentLossValue' (change)="onLossValueChange(chartFilter.majorIncidentLossValue)">
+                            <option class="dropdown-item highlightHover" *ngFor="let contentValue of chartLookup.majorIncidentLossValue" [value]="contentValue">{{contentValue}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary float-xs-right" (click)="exportGraph()">Export</button>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <div id="chart-incidents-by-loss-type">
+            <ng-template [ngIf]="chartData">
+                <stacked-column-chart [columnColors]="columnColor" [showLegend]="false" [chartData]="chartData"></stacked-column-chart>
+            </ng-template>
+        </div>
+        <div class="col-md-12">
+                <label class="label-filter">
+                        Selected Criteria : Year from {{fromYearPrev}} to {{toYearPrev}}; Up/Down/Power = {{upDownPowerValue}} ; Area =  {{areasSelected}};  Major Losses = {{this.majorLosses}}
+                </label>
+            </div>
+    </div>
+</div>
+
+<div *ngIf="false" class="hidden-md-up">
+    <div class="col-sm-12 col-xs-12">
+        <hr>
+        <h5>Major Losses by Year</h5>
+    </div>
+    <div>
+        <div class="col-sm-6 col-xs-6">
+            <label class="label-filter">From&nbsp;</label>
+            <div class="" role="group">
+                <select class="form-control" name='fromYear' [(ngModel)]='chartFilter.fromYear' (change)="onYearChangeFrom(chartFilter.fromYear)">
+                    <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="chartFilter.fromYear > chartFilter.toYear">{{year}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xs-6">
+            <label class="label-filter">To&nbsp;</label>
+            <div class="" role="group">
+                <select class="form-control" name='toYear' [(ngModel)]='chartFilter.toYear' (change)="onYearChangeTo(chartFilter.toYear)">
+                    <option class="dropdown-item highlightHover" *ngFor="let year of chartLookup.yearOfLoss" [ngValue]="year" [disabled]="year < chartFilter.fromYear">{{year}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-sm-12 col-xs-12 margin-top">
+                <label class="label-filter">Up/Down/Power&nbsp;</label>
+            </div>
+            <div class="col-sm-12 col-xs-12">
+                <multi-select-auto-completer [items]="chartLookup.upDownPowerStream" [selectedItems]="selectedItems" (onItemSelect)="onUpDownItemSelect($event)"
+                    (onItemRemove)="onUpDownItemRemove($event)">
+                </multi-select-auto-completer>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-sm-12 col-xs-12 margin-top">
+                <label class="label-filter">Area&nbsp;</label>
+            </div>
+            <div class="col-sm-12 col-xs-12">
+                <multi-select-auto-completer [items]="chartLookup.areas" [selectedItems]="selectedItems" (onItemSelect)="onAreaItemSelect($event)"
+                    (onItemRemove)="onAreaItemRemove($event)">
+                </multi-select-auto-completer>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-xs-6">
+            <label class="label-filter">Major Losses&nbsp;</label>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+            <select class="form-control" name='majorLosses' [(ngModel)]='chartFilter.majorIncidentLossValue' (change)="onLossValueChange(chartFilter.majorIncidentLossValue)">
+                <option class="dropdown-item highlightHover" *ngFor="let contentValue of chartLookup.majorIncidentLossValue" [value]="contentValue">{{contentValue}}</option>
+            </select>
+        </div>
+        <div id="stacked-column-chart-mob margin-top">
+            <div id="chart-incidents-by-loss-type">
+                <ng-template [ngIf]="chartData">
+                    <stacked-column-chart [columnColors]="columnColor" [showLegend]="false" [chartData]="chartData"></stacked-column-chart>
+                </ng-template>
+            </div>
+        </div>
+        <div class="col-md-12">
+                <label class="label-filter">
+                        Selected Criteria : Year from {{fromYearPrev}} to {{toYearPrev}}; Up/Down/Power = {{upDownPowerValue}} ; Area =  {{areasSelected}};  Major Losses = {{this.majorLosses}}
+                </label>
+            </div>
+        <div class="col-sm-12 col-xs-12">
+                <button class="btn btn-primary btn-mob-width" (click)="exportGraph()">Export</button>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,237 @@
+// @import "../../../scss/global/vars";
+$date-icon-size: 18;
+//WTW Color Variables
+
+//Primary Color Palette
+$violet: #702082;
+$black: #000000;
+$white: #ffffff;
+
+//Core Tertiary Color Palette
+$blue-light: #01a0d2;
+$blue-medium: #007fa7;
+$blue-dark: #00607d;
+
+$green-lightest: #b0f7e0;
+$green-light: #6eedbf;
+$green: #00c389;
+$green-darker: #009966;
+$green-darkest: #14eba3;
+
+$magenta-lightest: #ecb7e2;
+$magenta-light: #d764c1;
+$magenta: #c111a0;
+$magenta-darker: #9a0d80;
+$magenta-darkest: #6a0858;
+
+$gold-lightest: #ffeab9;
+$gold-light: #ffd16b;
+$gold: #ffb81c;
+$gold-darker: #cc9315;
+$gold-darkest: #8c650f;
+
+//Extended Tertiary Pallete for Data Visualizations
+$orange-lightest: #ffdab2;
+$orange-light: #ffb059;
+$orange: #ff8500;
+$orange-darker: #cc6a01;
+$orange-darkest: #8c4900;
+
+$pink-lightest: #fbc8d0;
+$pink-light: #f7899b;
+$pink: #f24965;
+$pink-darker: #c23a51;
+$pink-darkest: #852837;
+
+$plum-lightest: #ddb3cb;
+$plum-light: #b55a90;
+$plum: #8e0255;
+$plum-darker: #720144;
+$plum-darkest: #4e002f;
+
+$midnight-lightest: #c0c2d8;
+$midnight-light: #787baa;
+$midnight: #30347d;
+$midnight-darker: #252a64;
+$midnight-darkest: #1b1d45;
+
+$indigo-lightest: #ced0f2;
+$indigo-light: #9699e2;
+$indigo: #5d63d3;
+$indigo-dark: #4a4fa9;
+$indigo-darkest: #333674;
+
+$royal-lightest: #b2c4fd;
+$royal-light: #597ffa;
+$royal: #003bf7;
+$royal-dark: #002fc6;
+$royal-darkest: #002088;
+
+$sky-lightest: #c7eff7;
+$sky-light: #86dcef;
+$sky: #45cae6;
+$ky-dark: #37a2b8;
+$sky-darkest: #266f7e;
+
+$emerald-lightest: #b2d6d4;
+$emerald-light: #59a6a2;
+$emerald: #007771;
+$emerald-dark: #005f5a;
+$emerald-darkest: #00413e;
+
+$forest-lightest: #dbe2b5;
+$forest-light: #b2c060;
+$forest: #889e0a;
+$forest-dark: #6d7e08;
+$forest-darkest: #4b5705;
+
+$lime-lightest: #eaf7b2;
+$lime-light: #d1ee59;
+$lime: #b9e500;
+$lime-dark: #98bc00;
+$lime-darkest: #779300;
+
+//Validation Colors
+$error-light: #fff5f5;
+$error: #a31e22;
+$error-dark: #8c1515;
+
+$warning-light: #fff6ee;
+$warning: #de7400;
+$warning-dark: #d66b00;
+
+$success-light: #f3fffb;
+$success: #009865;
+$success-dark: #00915d;
+
+//Grays for Utility and Text
+$gray: #63666a;
+$gray-one: #f4f4f4;
+$gray-two: #ecedee;
+$gray-three: #e4e4e4;
+$gray-four: #d8d8d8;
+$gray-five: #c5c5c5;
+$gray-six: #979797;
+$gray-seven: #707070;
+$gray-eight: #585858;
+$gray-nine: #444;
+$gray-disabled: #bfc1c1; //used in toolkit for disabled buttons
+
+//Expressive Icon Backgrounds
+$expressive: #C8D7DF;
+
+
+
+// Layout
+// Breakpoints: 600px, 800px, 1024px, 1200px
+$grid-breakpoints: (
+    small: 35.5em,
+    medium: 50em,
+    large: 60em,
+    x-large: 75em
+);
+.datepicker, .datepicker-input {
+    position: relative;
+}
+
+.icon-date {
+    background-image: url('../../../assets/images/icons8-calendar.svg');
+    background-repeat: no-repeat;
+    width: $date-icon-size + 10px;
+    height: $date-icon-size + 10px;
+    fill: $blue-light;
+    position: absolute;
+    top: 50%;
+    right: .75rem;
+    margin-top: -16px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.datepicker-calendar {
+    background-color: #fff;
+    border: 1px solid #d8d8d8;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    min-width: 15rem;
+}
+
+.datepicker-controls {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.datepicker-rows {
+    text-align: center;
+    width: 100%;
+
+    th, td {
+        text-align: center;
+        padding: 0.5rem 0.25rem;
+    }
+
+    td {
+        cursor: pointer;
+
+        &:hover {
+            // background: $blue-light;
+            background: $gray;
+            color: $white;
+        }
+    }
+}
+
+.offset {
+    color: #d8d8d8;
+}
+
+.chevron {
+    display: inline-block;
+    color: #009ed1;
+
+    &:before {
+        border-style: solid;
+        border-width: 0.2em 0.2em 0 0;
+        content: '';
+        display: inline-block;
+        height: 0.75em;
+        margin: 0 0 0 0.5rem;
+        transform: rotate(-135deg);
+        width: 0.75em;
+    }
+
+    &.right {
+        margin: 0 0.5rem 0 0;
+        transform: rotate(180deg);
+    }
+}
+
+.active {
+    background-color:$gray;
+    color: #fff;
+}
+
+.bottomRed {
+    border-color: $error;
+    border-bottom-width: 2px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+table th {
+    font-weight: 400;
+}
+th.new-th {
+    border-color: white;
+}
+td.new-td {
+    border-color: white;
+}

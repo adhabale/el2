@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1342px" height="62px" viewBox="0 0 1342 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Context-Switcher---Custom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-49.000000, -144.000000)">
+        <g id="Group-2" transform="translate(50.000000, 145.000000)">
+            <polygon id="Fill-4" stroke="#C5C5C5" fill="#F4F4F4" points="0 60 1340 60 1340 0 0 0"></polygon>
+            <text id="Client-Name" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="20" font-weight="500" fill="#444444">
+                <tspan x="54" y="37">Client Name</tspan>
+            </text>
+            <path d="M31.7788578,22 C28.3503845,22 25.5577157,24.792669 25.5577157,28.2211422 C25.5577157,29.7110995 26.0796389,31.0754681 26.9574727,32.1482382 L22,37.1057108 L22.8942892,38 L27.8517618,33.0425273 C28.9245319,33.920361 30.2889005,34.4422843 31.7788578,34.4422843 C35.2073311,34.4422843 38,31.6496155 38,28.2211422 C38,24.792669 35.2073311,22 31.7788578,22 Z M31.7788578,23.2442284 C34.5349003,23.2442284 36.7557716,25.4650999 36.7557716,28.2211422 C36.7557716,30.9771847 34.5349003,33.1980559 31.7788578,33.1980559 C29.0228153,33.1980559 26.8019441,30.9771847 26.8019441,28.2211422 C26.8019441,25.4650999 29.0228153,23.2442284 31.7788578,23.2442284 Z" id="Shape" fill="#00A0D2" fill-rule="nonzero" transform="translate(30.000000, 30.000000) scale(-1, 1) translate(-30.000000, -30.000000) "></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,33 @@
+/*Pagination CSS */
+.page-link {
+    cursor: pointer;
+}
+
+.page-link:hover {
+    color: black;
+    background-color: white;
+}
+.custom-width{
+    width:80px ;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+.pagination-margin{
+    margin-top: 10px;
+}
+.custom-select{
+    line-height: 1!important;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 35.8px!important;
+    font-size: 13px!important;
+
+}

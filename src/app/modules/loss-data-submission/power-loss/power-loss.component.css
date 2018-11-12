@@ -1,0 +1,282 @@
+/* Banner CSS */
+.position-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .well-report {
+    background-color: rgb(242,242,242);
+  }
+  
+  .well-border {
+    border-bottom: 2px solid rgb(112,32,130);
+    margin-bottom: 10px;
+  }
+  
+  .well-col {
+    padding-left: 45px;
+  }
+  
+  .well-col h3 {
+    font-size: 28px;
+    font-weight: 600;
+  }
+  
+  .well-report-headers {
+    padding-top: 6px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+  }
+
+  .extra-padding-top {
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .extra-adding-left{
+      margin-left: 10%;
+  }
+  .tag-pill {
+    padding-right: 0.8em;
+    padding-left: 0.8em;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+.tag-width{
+    width: 50%;
+}
+/*Banner CSS */
+.th-new{
+    font-size: 14px;
+    font-weight: 400 !important; 
+}
+.td-new{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+hr {
+    border-top: 1px solid white;
+}
+.text-area-white{
+    background-color: white
+}
+.mob-shift{
+    margin-left: 15px;
+    margin-top: 20px;
+}
+.shift-checkbox{
+    margin-left: -45%;
+}
+.card-text:first-of-type {
+    margin-top: 0rem;
+}
+.input-group .form-control {
+    width: 103%;
+}
+.card-text {
+    color: #585858;
+    font-size: 0.9rem;
+}
+.card-text-note {
+    color: #585858;
+    font-size: 0.76rem;
+}
+.card-block-new{
+    padding: 4.8px;
+    margin-top: 5px;
+}
+.table th, .table td {
+    border-top: 0px solid white;
+}
+.pointer{
+    cursor: pointer;
+}
+.default{
+    cursor: default;
+}
+.tag-width{
+    width: 65px;
+    /* padding-right: 15px; */
+}
+.tag{
+    font-size: 85%;
+}
+.text-area-shift{
+    margin-left: 10px;
+}
+.btn-invisible {
+    visibility: hidden;
+}
+.margin-top{
+    margin-top: 20px;
+}
+.margin-set-right{
+    margin-right: 6px;
+}
+.margin-set-left{
+    margin-left: 6px;
+}
+.btn-top-margin{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.top-margin {
+    margin-top: 20px;
+    padding-top: 10px;
+}
+.terms-bottom-margin {
+    margin-bottom: 20px;
+}
+.div-border {
+    border: 0px solid rgba(0, 0, 0, 0.125);
+}
+/* CSS FOR Correct Positioning */
+@media screen and (max-width: 768px) and (min-width: 320px) {
+    .btn-mob-width{
+        width: 100%;
+    }
+    .btn-margin{
+        margin-top: 20px;
+    }
+    .table {
+        margin-bottom: 0rem;
+    }
+}
+
+@media screen and (max-width: 1023px) and (min-width: 769px) {
+    .divClassNew {
+        padding-left: 50px;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+@media screen and (max-width: 1440px) and (min-width: 1024px) {
+    .divClassNew {
+        padding-left: 20px;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 806px) and (min-width: 769px) {
+    .left-pad {
+        padding-left: 30px;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+    .divClass {
+        padding-left: 50px;
+        padding-right: 10px;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 1380px) and (min-width: 1025px) {
+    .col-md-1 {
+        width: 7.3%;
+    }
+    .col-md-11 {
+        width: 92.7%;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 1399px) and (min-width: 1381px) {
+    .col-md-1 {
+        width: 7.0%;
+    }
+    .col-md-11 {
+        width: 93.0%;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 1599px) and (min-width: 1399px) {
+    .col-md-1 {
+        width: 6.4%;
+    }
+    .col-md-11 {
+        width: 93.6%;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 1699px) and (min-width: 1600px) {
+    .col-md-1 {
+        width: 5.8%;
+    }
+    .col-md-11 {
+        width: 94.2%;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 1850px) and (min-width: 1700px) {
+    .col-md-1 {
+        width: 5.5%;
+    }
+    .col-md-11 {
+        width: 94.5%;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 2299px) and (min-width: 1851px) {
+    .col-md-1 {
+        width: 4.5%;
+    }
+    .col-md-11 {
+        width: 95.5%;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (max-width: 2900px) and (min-width: 2300px) {
+    .col-md-1 {
+        width: 3.8%;
+    }
+    .col-md-11 {
+        width: 96.2%;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+@media screen and (min-width: 2901px) {
+    .col-md-1 {
+        width: 3.2%;
+    }
+    .col-md-11 {
+        width: 96.8%;
+    }
+    .card-height{
+        height: 432px;
+    }
+}
+
+.custom-mg{
+    padding-top: 5px;
+     }

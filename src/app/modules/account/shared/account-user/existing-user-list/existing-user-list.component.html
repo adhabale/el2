@@ -1,0 +1,127 @@
+<div *ngIf="notificationMessage.successMessage">
+    <div>
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.successMessage=''">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="alert-text hidden-sm-down">{{notificationMessage.successMessage}}</span>
+            <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.successMessage}}</span>
+        </div>
+    </div>
+</div>
+<div *ngIf="notificationMessage.errorMessage">
+    <div>
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.errorMessage=''">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="alert-text hidden-sm-down">{{notificationMessage.errorMessage}}</span>
+            <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.errorMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-11  push-md-1 margin-top padding-top-bottom  bg-software-gray-1">
+    <h4>Existing Users</h4>
+    <!-- <label> Edit existing users to the subscription by searching below</label> -->
+    <div class="row">
+        <div class="col-md-3 form-group">
+            <label for='userProfile'>User Profile</label>
+            <select id='userProfile' class="form-control" [(ngModel)]='userSearchParams.roleId'>
+                <option value="0">All</option>
+                <option *ngFor='let role of userRoles' [value]="role.id">{{role.code}}</option>
+            </select>
+        </div>
+        <div class="col-md-3 form-group">
+            <label for='searchUsers'>Search Users</label>
+            <input id='searchUsers' [(ngModel)]='userSearchParams.searchText' type="text" class="form-control" placeholder="User Display Name"
+                onkeydown="if (event.keyCode == 13) document.getElementById('searchUserButton').click()" />
+        </div>
+        <div class="col-md-3 form-group">
+            <label for='userType'>User Type</label>
+            <select id='userType' class="form-control" [(ngModel)]='userSearchParams.userType'>
+                <option value=''>All</option>
+                <option value='true'>Internal</option>
+                <option value='false'>External</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button id="searchUserButton" type="button" class="btn btn-primary btn-desktop-margin float-xs-left hidden-sm-down" name="searchUserButton"
+                [disabled]='isSearchBtnDisabled()' (click)="onSearch()">Search</button>
+            <button type="button" class="btn btn-secondary btn-desktop-margin float-xs-left hidden-sm-down" name="resetUserButton" (click)="onReset()">Reset</button>
+
+            <button id="searchUserButton" type="button" class="btn btn-primary btn-block hidden-md-up margin-top" name="searchUserButton"
+                [disabled]='isSearchBtnDisabled()' (click)="onSearch()">Search</button>
+            <button type="button" class="btn btn-secondary btn-block hidden-md-up margin-top" name="resetUserButton" (click)="onReset()">Reset</button>
+        </div>
+    </div>
+</div>
+<div class="col-md-10  push-md-1 margin-top padding-top-bottom">
+    <div class="row" *ngIf='userList!=null && userList.length>0'>
+        <div class="col-md-12 col-sm-12 margin-top">
+            <div class="table-responsive table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width='17%'>Display Name</th>
+                            <th width='27%'>Email</th>
+                            <th width='15%'>User Profile</th>
+                            <th width='10%'>User Type</th>
+                            <th width='10%'>Active</th>
+                            <th width="15%">Terms Of Use</th>
+                            <th width='3%'></th>
+                            <th width='3%'></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor='let user of userList;let i = index'>
+                        <tr id="{{'Id'+i}}">
+                            <td>{{user.displayName}}</td>
+                            <td>{{user.emailAddress}}</td>
+                            <td>{{getRoleName(user.roleId)}}</td>
+                            <td *ngIf="user.isInternal">Internal</td>
+                            <td *ngIf="!user.isInternal">External</td>
+                            <td>
+                                <div class="switch-width">
+                                    <app-switch [checked]="user.isActive" [disabled]="true"></app-switch>
+                                </div>
+                            </td>
+                            <td *ngIf="user.lastAcceptedDate!=undefined">
+                                <pre>Accepted 
+{{user.lastAcceptedDate | date: 'dd-MMM-yyy'}}</pre>
+                            </td>
+                            <td *ngIf="user.lastAcceptedDate==undefined"></td>
+                            <td>
+                                <a data-toggle="modal" data-target=".edit-user" (click)="onEdit(user)">
+                                    <img class='img-responsive' height="25px" src="./assets/images/icons8-edit.svg" alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a data-toggle="modal" data-target=".delete-user" (click)="onDelete(user)">
+                                    <img class='img-responsive' height="25px" src="./assets/images/icons8-trash.svg" alt="">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf='isUserListEmpty'>
+        <div class="col-md-12 col-sm-12">
+            <p class='text-xs-center'>No results found, try changing your search.</p>
+        </div>
+    </div>
+</div>
+
+<!--Modal Edit User-->
+<div *ngIf="selectedUser">
+    <user-details [accountUser]='selectedUser' [isNewSubscription]='!isNewSubscription' (onCloseEvent)='onClose()' (onSuccessEvent)='onSuccess($event)'
+        (onErrorEvent)='onError($event)'>
+    </user-details>
+</div>
+
+<!-- Modal Delete User -->
+<div *ngIf="selectedUser">
+    <delete-user [accountUser]='selectedUser' (onDeleteEvent)='onRemove($event)'>
+    </delete-user>
+</div>

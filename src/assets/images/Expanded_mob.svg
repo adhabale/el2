@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="321px" height="277px" viewBox="0 0 321 277" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Context-Switcher---Custom" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-52.000000, -1434.000000)">
+        <g id="Group-4" transform="translate(52.000000, 1434.000000)">
+            <polygon id="Fill-1-Copy" fill="#F4F4F4" points="0 277 320 277 320 39 0 39"></polygon>
+            <text id="Client-One-Copy" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="16" font-weight="500" fill="#000000">
+                <tspan x="38" y="70">Client One</tspan>
+            </text>
+            <text id="Client-Two-Copy" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="16" font-weight="500" fill="#000000">
+                <tspan x="38" y="105">Client Two</tspan>
+            </text>
+            <text id="Client-Three-Copy" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="16" font-weight="500" fill="#000000">
+                <tspan x="38" y="140">Client Three</tspan>
+            </text>
+            <text id="Client-Four-Copy" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="16" font-weight="500" fill="#000000">
+                <tspan x="38" y="175">Client Four</tspan>
+            </text>
+            <path d="M0,196 L321,196" id="Path-4-Copy-3" stroke="#C5C5C5"></path>
+            <g id="Group-Copy" transform="translate(1.000000, 0.000000)">
+                <polygon id="Fill-4" fill="#F4F4F4" points="0 38 320 38 320 0 0 0"></polygon>
+                <text id="Client-Name" font-family="NHaasGroteskTXStd-55Rg, Neue Haas Grotesk Text Std" font-size="16" font-weight="normal" fill="#444444">
+                    <tspan x="37" y="25">Client Name</tspan>
+                </text>
+                <path d="M320,38 L0,38 L320,38 Z" id="Stroke-2" stroke="#00A0D2"></path>
+                <g id="Zoom-Out" transform="translate(18.500000, 19.000000) scale(-1, 1) translate(-18.500000, -19.000000) translate(11.000000, 11.000000)" fill="#00A0D2" fill-rule="nonzero">
+                    <path d="M9.11374935,0 C5.91846346,0 3.31573783,2.76245982 3.31573783,6.15384615 C3.31573783,7.62768615 3.80216247,8.977296 4.62029042,10.0384615 L0,14.9423077 L0.833464155,15.8269231 L5.45375458,10.9230769 C6.45356021,11.7914148 7.72513139,12.3076923 9.11374935,12.3076923 C12.3090352,12.3076923 14.9117609,9.54523262 14.9117609,6.15384615 C14.9117609,2.76245982 12.3090352,0 9.11374935,0 Z M9.11374935,1.23076923 C11.6823398,1.23076923 13.7521586,3.42761686 13.7521586,6.15384615 C13.7521586,8.88007569 11.6823398,11.0769231 9.11374935,11.0769231 C6.54515893,11.0769231 4.47534014,8.88007569 4.47534014,6.15384615 C4.47534014,3.42761686 6.54515893,1.23076923 9.11374935,1.23076923 Z" id="Shape"></path>
+                </g>
+            </g>
+            <g id="Group-5-Copy" transform="translate(1.000000, 213.000000)">
+                <polygon id="Fill-2" fill-opacity="0.7" fill="#00A0D2" points="0 48 320 48 320 0 0 0"></polygon>
+                <g id="Group-3" transform="translate(37.000000, 14.000000)" fill="#FFFFFF">
+                    <text id="Add-New-Subscription" font-family="NHaasGroteskDSPro-55Rg, Neue Haas Grotesk Display Pro" font-size="16" font-weight="500">
+                        <tspan x="40" y="18">Add New Subscription</tspan>
+                    </text>
+                    <path d="M12,0 C5.38351652,0 0,5.38351652 0,12 C0,18.6164834 5.38351652,24 12,24 C18.6164834,24 24,18.6164834 24,12 C24,5.38351652 18.6164834,0 12,0 Z M12,2 C17.5336155,2 22,6.46638464 22,12 C22,17.5336155 17.5336155,22 12,22 C6.46638464,22 2,17.5336155 2,12 C2,6.46638464 6.46638464,2 12,2 Z M10.6,7 L10.6,10.6 L7,10.6 L7,12.4 L10.6,12.4 L10.6,16 L12.4,16 L12.4,12.4 L16,12.4 L16,10.6 L12.4,10.6 L12.4,7 L10.6,7 Z" id="Shape" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

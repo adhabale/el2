@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12 hidden-sm-down">
+        <p style="font-size:12px;">
+          <span>For multiple values, select the first value then hold the control key down while selecting additional values</span>
+        </p>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="area">Area</label>
+          <multi-select [availableItems]="searchCriteria.masterSearchData.area" [selectedItems]="searchCriteria.selectedSearchCriteria.area"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.area=$event"></multi-select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="label-bold" for="country">Country</label>
+          <multi-select [availableItems]="searchCriteria.masterSearchData.country" [selectedItems]="searchCriteria.selectedSearchCriteria.country"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.country=$event"></multi-select>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+
+          <label class="label-bold" for="location">Location</label>
+          <input type="text" [(ngModel)]="searchCriteria.selectedSearchCriteria.location" class="form-control" id="txtLocation" placeholder="Search Location"
+            onkeydown="if (event.keyCode == 13) document.getElementById('btnContinue').click()" />
+
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+
+          <label class="label-bold" for="gom">GOM Area</label>
+          <multi-select [availableItems]="searchCriteria.masterSearchData.gomArea" [selectedItems]="searchCriteria.selectedSearchCriteria.gomArea"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.gomArea=$event"></multi-select>
+
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+
+          <label class="label-bold" for="uslc">US Location Code</label>
+          <multi-select [availableItems]="searchCriteria.masterSearchData.usLocationCode" [selectedItems]="searchCriteria.selectedSearchCriteria.usLocationCode"
+            (updateSelectedItems)="searchCriteria.selectedSearchCriteria.usLocationCode=$event"></multi-select>
+
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group ">
+
+          <label class="label-bold" for="Land/OffShore">Land/Offshore</label>
+
+          <div *ngFor="let option of searchCriteria.masterSearchData.landOffShore">
+            <input type="radio" [value]="option.id" [id]="option.displayName" [checked]="searchCriteria.selectedSearchCriteria.landOffShore.displayName === option.displayName"
+              name="landOffshore" (change)="onLandOffshoreChange(option)" />
+            <label [attr.for]="option.displayName" class="control-label">{{option.displayName}}</label>
+          </div>       
+        </div>
+      </div>
+    </div>
+    <div class="row hidden-sm-down">
+      <div class="col-md-12">
+        <div class="padding-button-footer">
+          <button type="button" class="btn btn-secondary pull-left" (click)='onBack()' data-toggle="tab" href="#yearOfLoss" id="btnBack">Back</button>
+          <button type="button" id="btnContinuelocation" class="btn btn-primary pull-right" (click)='onContinue()' data-toggle="tab" href="#lossOfDetails">Continue</button>
+        </div>
+      </div>
+    </div>
+    <div class="padding-button-footer hidden-md-up">
+      <div>
+        <button type="button" class="btn btn-primary btn-mob" (click)='onContinueMob()' id="btnContinuelocation">Continue</button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-secondary btn-mob-top" (click)='onBackMob()' id="btnBack">Back</button>
+      </div>
+    </div>
+  </div>
+</div>

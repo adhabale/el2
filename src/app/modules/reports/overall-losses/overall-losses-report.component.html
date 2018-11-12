@@ -1,0 +1,112 @@
+<div class="divClass row bg-software-gray-1 ">
+  <div class="col-md-12 col-sm-12">
+    <div class="p-1">
+      <h2 class="display-1 left-pad hidden-sm-down">
+        Overall Losses - {{selectedReportName}}
+      </h2>
+      <h2 class="display-3 left-pad hidden-md-up">
+        Overall Losses - {{selectedReportName}}
+      </h2>
+    </div>
+  </div>
+</div>
+<div class="hidden-md-up">
+  <div class="row top-margin">
+    <div class="col-md-1 col-sm-2 col-xs-3 no-padding-right">
+      <label class="label-filter">View By &nbsp;</label>
+    </div>
+    <div class="col-md-11 col-sm-10 col-xs-9 no-padding-left">
+      <div class="" role="group">
+        <select class="form-control" name='reportType' [(ngModel)]='selectedReportName' (change)="onReportTypeChange($event.target.value)">
+          <optgroup *ngFor="let reportType of reportTypes" class="dropdown-header" [attr.label]="reportType.type">
+            <option class="dropdown-item highlightHover" *ngFor="let reportTypeGroup of reportType.groups" [value]="reportTypeGroup.value">{{reportTypeGroup.displayName}}</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row divClass">
+  <div class="col-md-12 col-sm-12 top-margin">
+    <div class="col-md-2">
+      <div id="summary" class="accordion accordian-width" role="tablist" ariamultiselectable="true">
+        <div class="">
+          <a id="summaryHeading" class="card-header collapsed" role="tab" data-toggle="collapse" data-parent="#summary" href="#summaryCollapse"
+            aria-expanded="false" aria-controls="summaryCollapse" (click)="caretToggle()">
+            Summary
+            <span [ngClass]="isCaretToggle?'caret':'caret-inverse'" ></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-1 hidden-sm-down no-padding-right-view">
+      <label class="label-filter pull-right">View By &nbsp;</label>
+    </div>
+
+    <div class="col-md-2 hidden-sm-down no-padding-left">
+      <div class="" role="group">
+        <select class="form-control" name='reportType' [(ngModel)]='selectedReportName' (change)="onReportTypeChange($event.target.value)">
+          <optgroup *ngFor="let reportType of reportTypes" class="dropdown-header" [attr.label]="reportType.type">
+            <option class="dropdown-item highlightHover" *ngFor="let reportTypeGroup of reportType.groups" [value]="reportTypeGroup.value">{{reportTypeGroup.displayName}}</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-7 hidden-sm-down export-margin">
+      <button data-toggle="modal" data-target="#exportReportModal" class="btn btn-primary export-btn pull-right">Export</button>
+    </div>
+  </div>
+  <div class="col-md-12 summary-margin">
+    <search-summary></search-summary>
+  </div>
+  <!-- <div class="hidden-sm-down">
+      <div class="bg-software-gray-1 ">
+        <div class="col-md-12 col-sm-12">
+          <div class="left-margin">
+            <h2 class="display-3 left-pad">
+              {{selectedReportName}}
+              </h2>
+    </div>
+  </div>
+  </div>
+  </div> -->
+  <div class="hidden-md-up">
+    <div class="top-margin bottom-margin">
+      <div class="col-sm-12 col-xs-12 export-margin">
+        <button data-toggle="modal" data-target="#exportReportModal" class="btn btn-primary  btn-mob-width">Export</button>
+      </div>
+      <!-- <div class="col-sm-12 col-xs-12">
+        <h2 class="display-3 left-pad">
+            {{selectedReportName}}
+          </h2>
+      </div> -->
+    </div>
+  </div>
+  <div class='report-mob'>
+    <report-viewer [sourceItems]="reportItems" [customReportName]='selectedReportName' [selectedReport]="selectedReport" reportType="Overall"></report-viewer>
+  </div>
+  <div class="hidden-sm-down">
+    <div class="col-md-12 col-sm-12">
+      <div class="col-md-12">
+        <p>Please note that the entries in this database have been obtained from a variety of sources. Willis Limited does not
+          accept any responsibility for the accuracy or completeness of the information contained herein.</p>
+        <span class="pull-right">Produced: {{ currentDate | date: 'dd-MMM-yyy'}}</span>
+        <button class="btn btn-secondary float-xs-left" name="backSearchButton" type="button" (click)='redirectToSearchPage()'>Back To Search</button>
+      </div>
+    </div>
+  </div>
+
+  <div class='row hidden-md-up'>
+    <div class="col-md-12 col-sm-12">
+      <div class="col-md-12 col-sm-12">
+        <p>Please note that the entries in this database have been obtained from a variety of sources. Willis Limited does not
+          accept any responsibility for the accuracy or completeness of the information contained herein.</p>
+        <span class="pull-right">Produced: {{ currentDate | date: 'dd-MMM-yyy'}}</span>
+        <button class="btn btn-secondary btn-block top-margin" name="backSearchButton" type="button" (click)='redirectToSearchPage()'>Back To Search</button>
+      </div>
+    </div>
+  </div>
+</div>

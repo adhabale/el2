@@ -1,0 +1,45 @@
+<div class="row">
+        <div class="col-md-9">
+            <span class="tspan">Past Renewal Reports</span>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                    <button id="generateButton" type="button" class="btn btn-primary btn-desktop-margin float-xs-right hidden-sm-down" name="generateButton"
+                    (click)="onGenerate()">Generate Report</button>
+                    <button id="generatemobileButton" type="button" class="btn btn-primary btn-block hidden-md-up" name="generateButton"
+                    (click)="onGenerate()">Generate Report</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row margin-right">
+            <div class="col-md-12 col-sm-12 margin-top div-scroll">
+                    <div class="table-responsive table-container">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th width='70%' *ngIf="sortDirection == 'asc'">Generation Date <span class="caret" (click)='onSorted("desc")' ></span>
+                                </th>
+                                    <th width='70%' *ngIf="sortDirection == 'desc'">Generation Date <span class="caret-inverse" (click)='onSorted("asc")' ></span>
+                                </th>
+                                    <!-- <th width='70%'></th> -->
+                                    <th width='30%'></th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor='let report of reportList;let i = index'>
+                                <tr class='bottom-pad' id="{{'report'+i}}">
+                                    <td width="90%">{{report.createdDate | date:'dd-MMM-yyyy'}}</td>
+                                    <td><a><img class="img-responsive pull-right" src="./assets/images/icons8-download.svg" alt="" (click)="downloadReport(report)" height="30px"></a></td>
+                                </tr>
+                            </tbody> 
+                            <!-- <tbody *ngFor='let report of reportDataList;let i = index'>
+                                    <tr class='bottom-pad' id="{{'report'+i}}">
+                                        <td width="90%">{{report.createdDate | date:'dd-MMM-yyyy'}}</td>
+                                       <td><a><img class="img-responsive pull-right" src="./assets/images/icons8-download.svg" alt="" (click)="downloadReport(report)" height="30px"></a></td>
+                                    </tr>
+                                </tbody> -->
+                        </table>
+                    </div>
+                    <!-- <pager [allItems]="reportData" [pageSize]='5' (onPageChange)="onPageChange($event)" [currentPageIndex]="currentPageIndex"></pager> -->
+                </div>
+    </div>

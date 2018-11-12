@@ -1,0 +1,311 @@
+<!--Hidden Button For SearchModal-->
+<div class="col-md-12 col-sm-12" style="display:none;">
+    <button type="button" id='openSaveCriteriaFirstModal' class="btn btn-primary" data-toggle="modal" data-target="#showSearchModal">Open First Save Modal</button>
+</div>
+<!--Hidden Button For SaveModal-->
+<div class="col-md-12 col-sm-12" style="display:none;">
+    <button type="button" id='openSaveCriteriaSecondModal' class="btn btn-primary" data-toggle="modal" data-target="#showSaveCriteriaModal">Open Save Criteria Second Modal</button>
+</div>
+<!--Hidden Button For Delet Confirmation-->
+<div class="col-md-12 col-sm-12" style="display:none;">
+    <button type="button" id='openDeleteModal' class="btn btn-primary" data-toggle="modal" data-target="#showDeleteModal">Open Delete Modal</button>
+</div>
+<!--Delete Confirmation Modal-->
+<div class="modal fade search-modal" id='showDeleteModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+                    <span ariahidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Delete Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12 p-top-bottom">
+                                <div class="table-responsive addSubTableHeight table-container">
+                                    <!-- <table id='addSubTable' class="table">
+                                        <thead>
+                                            <th class='header-add-sub'>Are you sure you want to delete the selected search criteria ?</th>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table> -->
+                                    <h6>Are you sure you want to delete saved search criteria {{selectedSearchName}} ?</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="noDelBtn" class="btn btn-secondary margin-set-left" style="margin-right:6px" data-dismiss="modal"
+                    name="noButton">No</button>
+                <button type="button" id="yesDelBtn" class="btn btn-primary margin-set-right" style="margin-right:6px" data-dismiss="modal"
+                    name="yesButton" (click)="deleteSearchCriteria()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Subscription Search Modal-->
+<div class="modal fade search-modal" id='showSearchModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+                    <span ariahidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Save Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12 p-top-bottom">
+                                <div class="table-responsive addSubTableHeight table-container">
+                                    <table id='addSubTable' class="table">
+                                        <thead>
+                                            <th class='header-add-sub'>Would you like to save the selected search criteria ?</th>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="noBtn" class="btn btn-secondary margin-set-left" style="margin-right:6px" data-dismiss="modal"
+                    name="noButton" (click)="search()">No</button>
+                <button type="button" id="yesBtn" class="btn btn-primary margin-set-right" style="margin-right:6px" data-dismiss="modal"
+                    name="yesButton" (click)="openSaveCriteriaSecondModal()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Subscription Save Modal-->
+<div class="modal fade search-modal" id='showSaveCriteriaModal' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+                    <span ariahidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Save Search</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12 p-top-bottom">
+                                <div class="table-responsive addSubTableHeight table-container">
+                                    <label>Search Criteria Name</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control input-width" required name="searchTemplateName" autofocus placeholder="Search Criteria Name"
+                                            id="searchTemplateName" [(ngModel)]="searchTemplateName">
+                                    </div>
+                                    <div *ngIf="notificationMessage.errorMessage">
+                                        <div>
+                                            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.errorMessage=''">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <span class="alert-text hidden-sm-down">{{notificationMessage.errorMessage}}</span>
+                                                <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.errorMessage}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancelBtn" class="btn btn-secondary margin-set-left" style="margin-right:6px" data-dismiss="modal"
+                    name="cancelButton" (click)="this.searchTemplateName='';this.notificationMessage.errorMessage=''">Cancel</button>
+                <button type="button" id="saveBtn2" class="btn btn-primary margin-set-right" style="margin-right:6px" name="saveButton" (click)="onSaveSearchCriteria()"
+                    [disabled]="isSaveDisabled()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divClass row bg-software-gray-1 indexing-header">
+    <div class="col-md-12 col-sm-12">
+        <div class="p-1 hidden-sm-down">
+            <h2 class="display-1 left-pad">
+                Search
+            </h2>
+        </div>
+        <div class="p-1 hidden-md-up">
+            <h2 class="display-3 left-pad">
+                Search
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="top-margin" *ngIf="isSaveSuccess">
+    <div class="col-md-12 col-sm-12">
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="!saveSuccess">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="alert-text">Search Criteria : {{selectedSearchName}} Saved successfully</span>
+        </div>
+    </div>
+</div>
+<div class="top-margin" *ngIf="isDeleteSuccess">
+    <div class="col-md-12 col-sm-12">
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="!isError">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="alert-text">Search Criteria : {{deletedCriteriaName}} deleted successfully</span>
+        </div>
+    </div>
+</div>
+<div class="">
+    <div class="row top-margin-de">
+        <div class="col-md-2">
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-line-height" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Saved Searches
+                    <span class="caret"></span>
+                </button>
+                <div class="dropdown-menu" arialabelledby="btnGroupDrop1" style="margin-left: 10px">
+                    <div *ngFor="let searchCriteria of searchCriteriaResult">
+                        <a class="dropdown-item highlightHover" (click)="loadSearchPageTabs(searchCriteria)">{{searchCriteria.templateName}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div  id="summary"  class="accordion accordian-width"  role="tablist"  ariamultiselectable="true">
+                <div  class="">
+                    <a  id="summaryHeading"  class="card-header collapsed"  role="tab"  data-toggle="collapse"  data-parent="#summary"  href="#summaryCollapse"
+                        aria-expanded="false"  aria-controls="summaryCollapse">
+                        Summary
+                        <div class="expand_caret caret"></div>
+                        <!-- <span [ngClass]="isCaretToggle?'caret':'caret-inverse'"></span> -->
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-7 hidden-sm-down">
+            <button id="searchBtn" class="btn btn-primary btn-search" (click)="search()">Search</button>
+            <button id="saveBtn" class="btn btn-primary btn-save" (click)="openSaveCriteriaFirstModal()" [disabled]="isCriteriaSaveDisabled()">Save</button>
+            <button id="resetBtn" class="btn btn-secondary btn-save" (click)="reset()">Reset</button>
+            <button id="deleteBtn" class="btn btn-secondary btn-save" (click)="deleteConfirmation()" [disabled]="isDeleteDisabled()">Delete</button>
+        </div>
+    </div>
+    <div class="col-md-12 top-margin-de" *ngIf="searchCriteria">
+        <search-summary [searchCriteria]="searchCriteria" (onRemoveYearEvent)="onRemoveYearEvent()"></search-summary>
+    </div>
+    <!-- Modals Positions-->
+    <div class="row hidden-sm-down">
+        <div class="col-md-12">
+            <div class="card card-tabs divClass-margin">
+                <h5>{{selectedSearchName}}</h5>
+                <div class="card-header margin-top">
+                    <ul class="nav nav-tabs card-header-tabs float-xs-left">
+                        <li class="nav-item">
+                            <a id='yearOfLossTab' class="nav-link active" data-toggle="tab" href="#yearOfLoss">Year of Loss</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id='locationTab' class="nav-link" data-toggle="tab" href="#location">Location</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a id='lossOfDetailsTab' class="nav-link" data-toggle="tab" href="#lossOfDetails">Loss Details</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a id='claimTab' class="nav-link" data-toggle="tab" href="#claim">Claim US$</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a id='wellTab' class="nav-link" data-toggle="tab" href="#wellDetails">Well Details</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a id='costCategoryTab' class="nav-link" data-toggle="tab" href="#costCategory">Cost Categories</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content card-block border-box">
+                    <div id="yearOfLoss" class="tab-pane fade in active card-text" *ngIf="searchCriteria.masterSearchData.yearOfLoss && searchCriteria.masterSearchData.yearOfLoss.decades">
+                        <search-year-of-loss [searchCriteria]='searchCriteria' [isModified]="isModified"></search-year-of-loss>
+                    </div>
+                    <div id="location" class="tab-pane fade card-text">
+                        <search-location [searchCriteria]='searchCriteria'></search-location>
+                    </div>
+                    <div id="lossOfDetails" class="tab-pane fade card-text">
+                        <search-loss-details [searchCriteria]="searchCriteria"></search-loss-details>
+                    </div>
+                    <div id="claim" class="tab-pane fade card-text">
+                        <search-claims [searchCriteria]="searchCriteria"></search-claims>
+                    </div>
+                    <div id="wellDetails" class="tab-pane fade card-text">
+                        <search-well-details [searchCriteria]="searchCriteria"></search-well-details>
+                    </div>
+                    <div id="costCategory" class="tab-pane fade card-text">
+                        <search-cost-category [searchCriteria]="searchCriteria"></search-cost-category>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hidden-md-up">
+    <div class="row top-margin">
+        <div class="col-sm-12 col-xs-12">
+            <button id="searchBtn" class="btn btn-primary btn-mob-width" (click)="search()">Search</button>
+        </div>
+        <div class="col-sm-12 col-xs-12">
+            <button id="resetBtn" class="btn btn-secondary btn-mob-width" (click)="reset()">Reset</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <select class="form-control" (change)="onMenuSelection(searchTabMob)" [(ngModel)]="searchTabMob">
+                            <option value="yearOfLoss" class="active">Year of Loss</option>
+                            <option value="location">Location</option>
+                            <option value="lossDetails">Loss Details</option>
+                            <option value="claims">Claim US $</option>
+                            <option value="wellDetails">Well Details</option>
+                            <option value="costCategories">Cost Categories</option>
+                        </select>
+                    </div>
+                </div>
+                <div *ngIf='searchCriteria' class="top-margin">
+                    <div class="active" id="yearOflossMob" *ngIf="searchCriteria.masterSearchData.yearOfLoss && searchCriteria.masterSearchData.yearOfLoss.decades">
+                        <search-year-of-loss [searchCriteria]='searchCriteria' [isModified]="isModified" (onContinueEvent)="onSelectedTab($event)"></search-year-of-loss>
+                    </div>
+                    <div class="inactive" id="locationMob">
+                        <search-location [searchCriteria]='searchCriteria' (onContinueEvent)="onSelectedTab($event)" (onBackEvent)="onSelectedTab($event)"></search-location>
+                    </div>
+                    <div class="inactive" id="lossOfDetailsMob">
+                        <search-loss-details [searchCriteria]="searchCriteria" (onContinueEvent)="onSelectedTab($event)" (onBackEvent)="onSelectedTab($event)"></search-loss-details>
+                    </div>
+                    <div class="inactive" id="claimMob">
+                        <search-claims [searchCriteria]='searchCriteria' (onContinueEvent)="onSelectedTab($event)" (onBackEvent)="onSelectedTab($event)"></search-claims>
+                    </div>
+                    <div class="inactive" id="wellMob">
+                        <search-well-details [searchCriteria]="searchCriteria" (onContinueEvent)="onSelectedTab($event)" (onBackEvent)="onSelectedTab($event)"></search-well-details>
+                    </div>
+                    <div class="inactive" id="costCategoryMob">
+                        <search-cost-category [searchCriteria]="searchCriteria" (onBackEvent)="onSelectedTab($event)"></search-cost-category>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

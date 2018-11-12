@@ -1,0 +1,19 @@
+.m-list{    
+    list-style: none;
+    height: 130px !important;
+    min-height: 130px !important;
+    overflow-y: auto;
+    background: #f4f4f4 !important;
+    padding: 0px !important;
+}
+.m-list li {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+    cursor: pointer;
+}
+.option-selected{
+    background: lightgray !important;
+}

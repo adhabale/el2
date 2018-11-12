@@ -1,0 +1,38 @@
+.margin-20{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.btn-float{
+    float:right
+}
+.custom-12{
+    width: 11.4%!important;
+    margin-left: 12px;
+}
+.btn-margin{
+    margin-right: 15px;
+}
+.btn-width{
+    width: 100%
+}
+.margin-10{
+    margin-top: 10px
+}
+.margin-58{
+    margin-left: 52px;
+}
+
+.padding-right{
+padding-right: 0px!important
+}
+.padding-left{
+    padding-left: 0px!important
+    }
+
+    .table-new th, .table-new td {
+        border-top: 0px solid #eceeef;
+   }
+   .editor{
+       height: 100px;
+       overflow-y: auto
+   }

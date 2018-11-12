@@ -1,0 +1,21 @@
+.well{
+    background-color: #f4f4f4 !important;
+  }
+  
+  .display-1 {
+      font-size: 36px;
+      font-weight: 300;
+      color: #757575;
+      padding: 1rem;
+  }
+  
+  .top-padding
+  {
+    padding-top: 20px;
+  }
+
+  .upload-btn
+  {
+    min-height: 42px;
+  }
+  

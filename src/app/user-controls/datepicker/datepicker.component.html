@@ -1,0 +1,71 @@
+<div [id]="datepickerId" class="datepicker">
+        <div class="form-group" [class.has-danger]="isDateValid === false"> 
+            <!-- <label for="example-text-input">
+                    {{ label }}<span class="required"
+                    *ngIf="isRequired == true"> &#42;</span>
+                    <span class="required"
+                    *ngIf="isSubmitForApproval == true"> &#42;&#42;</span>
+            </label> -->
+            <div class="datepicker-input">
+                <input type="text" class="form-control" [class.form-control-danger]="isDateValid === false" placeholder="dd-mmm-yyyy"
+                    [name]="name"
+                    [(ngModel)]="selectedDate"
+                    (focus)="showDatepicker()"
+                    (keydown.Tab)="hideDatepicker($event, true)"
+                    (change)="validateDate($event, dateInput.value)" 
+                    onkeydown="return false" #dateInput>
+                    <svg *ngIf="isDateValid" (click)="showDatepickerToggle()" class="icon icon-date"><use xlink:href="#icon-date"></use></svg>
+            </div>
+                
+            <div class="datepicker-calendar"
+                [hidden]="isDatepickerActive === false">
+                <header class="datepicker-controls">
+                    <span class="chevron" role="button"
+                        (click)="previousMonth()">
+                        <span class="sr-only">Previous Month</span>
+                    </span>
+                    <span>
+                        {{ currentMonth }} {{ currentYear }}
+                    </span>
+                    <span class="chevron right" role="button"
+                        (click)="nextMonth()">
+                        <span class="sr-only">Next Month</span>
+                    </span>
+                </header>
+                <table class="datepicker-rows">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let header of calendarHeaders" class="new-th">
+                                {{ header.day }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of calendarRows">
+                            <td *ngFor="let week of row" class="new-td"
+                                [title]="week.dateString"
+                                [ngClass]="{
+                                    'offset': currentMonth !== week.monthLabel,
+                                    'active': selectedDate === week.dateString
+                                }"
+                                (click)="selectDate({
+                                    year: week.year,
+                                    monthLabel: week.monthLabel,
+                                    month: week.month,
+                                    monthIndex: week.monthIndex,
+                                    day: week.day,
+                                    date: week.date
+                                }, $event)">
+                                {{ week.date }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div *ngIf="isDateValid === false">
+                <div class="form-control-feedback">{{ labelPolicy.incorrectDateFormat }}</div>
+                <small class="form-text text-muted">{{ labelPolicy.dateFormatExample }}</small>
+            </div> -->
+        </div>
+    </div>
+    

@@ -1,0 +1,50 @@
+<div class="col-md-12 margin-top">
+    <div class="modal fade search-modal" id='successValidateLossData' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" arialabel="Close">
+                        <span ariahidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Save Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-md-12 p-top-bottom">
+                                    <div class="table-responsive addSubTableHeight table-container">
+                                        <table id='addSubTable' class="table">
+                                            <thead *ngIf="statusName !=='put on hold,'">
+                                                <th class='header-add-sub'>
+                                                    Are you sure you want to {{statusName}} the selected Loss Data Submission?
+                                            </thead>
+                                            <thead *ngIf="statusName =='put on hold,'">
+                                                    <th class='header-add-sub'>
+                                                        Are you sure you want to put the selected Loss Data Submission on hold?
+                                                </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer hidden-sm-down">
+                    <button type="button" class="btn btn-secondary float-xs-left btn-desk-width" data-dismiss="modal" name="noButton" >No</button>
+                    <button type="button" class="btn btn-primary float-xs-right btn-desk-width" data-dismiss="modal" name="yesButton"  (click)="onYes()">Yes</button>
+                </div>
+                <div class="modal-footer hidden-md-up">
+                    <button type="button" class="btn btn-primary btn-mob-width" data-dismiss="modal" name="yesButton" (click)="onYes()">Yes</button>
+                    <button type="button" class="btn btn-secondary btn-mob-width" data-dismiss="modal" name="noButton"  >No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

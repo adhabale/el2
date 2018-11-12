@@ -1,0 +1,118 @@
+<div *ngIf="notificationMessage.successMessage">
+    <div>
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.successMessage=''">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="alert-text hidden-sm-down">{{notificationMessage.successMessage}}</span>
+            <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.successMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="notificationMessage.errorMessage">
+    <div>
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.errorMessage=''">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <span class="alert-text hidden-sm-down">{{notificationMessage.errorMessage}}</span>
+            <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.errorMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-11  push-md-1 margin-top padding-top-bottom  bg-software-gray-1">
+    <h4>Add Users</h4>
+    <label> Add new users to the subscription by searching below</label>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 form-group">
+            <label for='userProfile'>User Profile</label>
+            <select id='userProfile' class="form-control" [(ngModel)]='userSearchParams.roleId'>
+                    <option  value=""></option>
+                <option *ngFor='let role of userRoles' [value]="role.id">{{role.code}}</option>
+            </select>
+        </div>
+        <div class="col-md-4 col-sm-12 form-group">
+            <label for='searchUsers'>Search Users</label>
+            <input id='searchUsers' [(ngModel)]='userSearchParams.searchText' type="text" class="form-control" placeholder="User Display Name"  onkeydown = "if (event.keyCode == 13) document.getElementById('searchUserButton').click()"
+            />
+        </div>
+        <div class="col-md-4 col-sm-12 form-group">
+            <button id="searchUserButton" type="button" class="btn btn-primary float-xs-left btn-desktop-margin hidden-sm-down" name="searchUserButton" [disabled]='isSearchBtnDisabled()'
+                (click)="onSearch()">Search</button>
+            <button type="button" class="btn btn-secondary btn-desktop-margin float-xs-left hidden-sm-down" name="resetUserButton" (click)="onReset()">Reset</button>
+
+            <button id="searchUserButton" type="button" class="btn btn-primary btn-block hidden-md-up margin-top" name="searchUserButton" [disabled]='isSearchBtnDisabled()'
+                (click)="onSearch()">Search</button>
+            <button type="button" class="btn btn-secondary btn-block hidden-md-up margin-top" name="resetUserButton" (click)="onReset()">Reset</button>
+        </div>
+    </div>
+</div>
+<div class="col-md-11  push-md-1 margin-top padding-top-bottom">
+    <div class="row" *ngIf='userList!=null && userList.length>0'>
+        <div class="col-md-12 col-sm-12 margin-top">
+            <div class="table-responsive table-container addSubTableHeight">
+                <table class="table acc">
+                    <thead>
+                        <tr>
+                            <th>Display Name</th>
+                            <th >Email</th>
+                            <th ></th>
+                            <th ></th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor='let user of userList;let i = index'>
+                        <tr id="{{'Id'+i}}">
+                            <td>{{user.displayName}}</td>
+                            <td> {{user.emailAddress}} </td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add-user" (click)='onAdd(user)' name="addUserButton">Add User</button>
+                            </td>
+                            <td>
+                                <a data-toggle="collapse" [attr.data-target]="'#'+i" class="expandLink clickable" (click)="getUserDetails(user)">More Details
+                                    <span class='caret' [class.caret-inverse]="false"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='hiddenRow' colspan="4">
+                                <div [id]='i' class=" table-responsive table-container collapse">
+                                  <table class="table acc-open" *ngIf="user.accountUserInfo">
+                                    <tbody>
+                                      <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Company</th>
+                                        <th>Country</th>
+                                        <th></th>
+                                      </tr>
+                                      <tr>
+                                        <td>{{user.accountUserInfo.firstName || ""}}</td>
+                                        <td>{{user.accountUserInfo.lastName || ""}}</td>
+                                        <td>{{user.accountUserInfo.company || ""}}</td>
+                                        <td>{{user.accountUserInfo.countryName || ""}}</td>
+                                        <td></td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf='isUserListEmpty'>
+        <div class="col-md-12 col-sm-12">
+            <p class='text-xs-center'>No results found, try changing your search.</p>
+        </div>
+    </div>
+</div>
+
+<!--Modal Add User-->
+<div *ngIf="selectedUser">
+    <user-details [accountUser]='selectedUser' [isNewUser]="isNewUser" [isNewSubscription]='isNewSubscription' (onCloseEvent)='onClose()' (onSuccessEvent)='onSuccess($event)'
+        (onErrorEvent)='onError($event)'></user-details>
+</div>

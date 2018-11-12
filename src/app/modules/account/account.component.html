@@ -1,0 +1,179 @@
+<!-- Subscription Desktop -->
+<div class="row switcher-div hidden-sm-down">
+    <div class="subscription-switcher">
+        <div class="lookup">
+            <div class="lookup-container">
+                <div style="margin-left:30px;">
+                    <!-- <input type="text" class="form-control lookup-input switcher-input" required name="searchText" autofocus [(ngModel)]='searchValue'
+                        placeholder="Search Subscription"> -->
+                    <input type="text" class="form-control lookup-input switcher-input" name="searchText" autofocus autocomplete="off" [(ngModel)]="searchParams.searchText"
+                        placeholder="Search Subscription" onkeydown = "if (event.keyCode == 13) document.getElementById('btnSearch').click()">
+                    <span>
+                        <!-- <button type="button" class="btn btn-secondary hidden-sm-down float-xs-right margin-set btn-switcher" (click)='reset()'>Reset</button> -->
+                        <button type="button" class="btn btn-secondary float-xs-right margin-set btn-switcher" (click)="onReset()">Reset</button>
+                    </span>
+                    <span>
+                        <!-- <button type="button" [disabled]='searchValue.length==0' class="btn btn-primary hidden-sm-down float-xs-right btn-switcher margin-set-right"
+                            (click)='searchSubscriptions()'>Search</button> -->
+                        <button id="btnSearch" type="button" (click)="onSearch(searchParams.searchText)" [disabled]="searchParams.searchText == null || searchParams.searchText == undefined || searchParams.searchText.trim().length == 0"
+                            class="btn btn-primary float-xs-right btn-switcher margin-set-right">Search</button>
+                    </span>
+                </div>
+            </div>
+            <div class="lookup-results-container">
+                <div class="add-new-subscription" (click)="onAddSubscription()">
+                    <span class="new-sub-link">
+                        <i class="fa fa-plus-circle"> </i>&nbsp; Add New Subscription
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Subscription Desktop End -->
+<!-- Subscription Mobile -->
+<div class="row switcher-div hidden-md-up">
+    <div class="subscription-switcher">
+        <div class="lookup">
+            <div class="lookup-container">
+                <div class="col-sm-12">
+                    <!-- <input type="text" class="form-control lookup-input switcher-input" required name="searchText" autofocus [(ngModel)]='searchValue'
+                        placeholder="Search Subscription"> -->
+                    <input type="text" class="form-control input-width" name="searchText" autofocus autocomplete="off" [(ngModel)]="searchParams.searchText" placeholder="Search Subscription">
+                </div>
+                <div class="col-sm-12">
+                    <!-- <button type="button" [disabled]='searchValue.length==0' class="btn btn-primary btn-mob btn-switcher" (click)='searchSubscriptions()'>Search</button> -->
+                    <button type="button" (click)="onSearch(searchParams.searchText)" [disabled]="searchParams.searchText == null || searchParams.searchText == undefined || searchParams.searchText.trim().length == 0"
+                        class="btn btn-primary btn-mob btn-switcher">Search</button>
+                    <button type="button" class="btn btn-secondary btn-mob btn-switcher" (click)="onReset()">Reset</button>
+                    <!-- <button type="button" class="btn btn-secondary btn-mob btn-switcher" (click)='reset()'>Reset</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row switcher-div hidden-md-up">
+    <div class="subscription-switcher">
+        <div class="lookup">
+            <div class="lookup-results-container">
+                <div class="add-new-subscription" (click)="onAddSubscription()">
+                    <span class="new-sub-link">
+                        <i class="fa fa-plus-circle"> </i>&nbsp; Add New Subscription
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Subscription Mobile End -->
+
+<!-- <div class="row bg-software-gray-1">
+    <div class="col-md-12 col-sm-12" *ngIf='searchView'>
+        <div class="p-11 hidden-sm-down" (click)='toggleSearchView()'>
+            <h3 class="display-1 left-pad">
+                <a>
+                    <img src="../../../../assets/images/search-magnifier.PNG" width="50px" height="50px">{{selectedSubscriptionName}}</a>
+            </h3>
+
+        </div>
+        <div class="p-11 hidden-md-up" (click)='toggleSearchView()'>
+            <h3 class="display-1 left-pad">
+                <a>
+                    <img src="../../../../assets/images/search-magnifier.PNG" width="50px" height="50px">{{selectedSubscriptionName}}</a>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="row bg-software-gray-1">
+    <div class="col-md-12 col-sm-12" *ngIf='!searchView'>
+        <div class="p-11 hidden-sm-down">
+            <h2 class="display-1 left-pad reduce-bottom">
+                <div class="row">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">
+                            <a (click)='toggleSearchView()' style="margin-left:10px;">
+                                <img src="../../../../assets/images/search-magnifier.PNG" width="50px" height="50px">
+                            </a>
+                        </span>
+                        <input type="text" class="form-control" [ngModel]='searchParams.searchText' (input)="onSearch($event.target.value)" autofocus
+                            name="searchText" placeholder="Search Subscription" />
+                    </div>
+                </div>
+            </h2>
+        </div>
+        <div class="p-11 hidden-md-up">
+            <h2 class="display-3 left-pad reduce-bottom">
+                <div class="row">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">
+                            <a (click)='toggleSearchView()'>
+                                <img src="../../../../assets/images/search-magnifier.PNG" width="50px" height="50px">
+                            </a>
+                        </span>
+                        <input type="text" class="form-control" [ngModel]='searchParams.searchText' (input)="onSearch()" autofocus name="searchText"
+                            placeholder="Search Subscription" />
+                    </div>
+                </div>
+            </h2>
+        </div>
+    </div>
+</div> -->
+<!-- <div class="row hidden-sm-down sub-add-btn" *ngIf='!searchView'>
+    <div class="col-md-12 col-sm-12">
+        <div class="">
+            <h2 class="display-3 left-pad">
+                <div class="row">
+                    <div class="col-md-11 col-sm-11 col-xs-11 pad-left">
+                        <a (click)='onAddSubscription()'>
+                            <i class="fa fa-plus-circle"> &nbsp; Add New Subscription</i>
+                        </a>
+                    </div>
+                </div>
+            </h2>
+        </div>
+    </div>
+</div>
+<div class="row hidden-md-up sub-add-btn-mob" *ngIf='!searchView'>
+    <div class="col-md-12 col-sm-12">
+        <div class="">
+            <h2 class="display-3 left-pad">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 pad-left">
+                        <a (click)='onAddSubscription()'>
+                            <i class="fa fa-plus-circle"> &nbsp; Add New Subscription</i>
+                        </a>
+                    </div>
+                </div>
+            </h2>
+        </div>
+    </div>
+</div> -->
+
+
+<!--Hidden Button For Modal-->
+<div class="col-md-12 col-sm-12 btn-invisible">
+    <button type="button" id='accountSearchModalBtn' class="btn btn-primary" data-toggle="modal" data-target="#accountSearchModal"
+        data-backdrop="static" data-keyboard="false"></button>
+    <button type="button" id='subscriptionSearchModalBtn' class="btn btn-primary" data-toggle="modal" data-target="#subscriptionSearchModal"
+        data-backdrop="static" data-keyboard="false"></button>
+</div>
+
+<!--Account Search Modal-->
+<!-- <div *ngIf="accountList !=undefined || accountList !=null">
+    <account-search (onContinueEvent)="navigateToSubscriptionInfoByAccountId($event)" [accountList]="accountList"></account-search>
+</div> -->
+<account-search (onContinueEvent)="navigateToSubscriptionInfoByAccountId($event)" (onCloseEvent)="onCloseModal()"></account-search>
+
+<!-- Subscription Search modal-->
+<subscription-search (onContinueEvent)="navigateToSubscriptionInfoBySubscriptionId()" (onCloseEvent)="onCloseModal()"></subscription-search>
+
+<!-- Account Routing Area-->
+<div class="row">
+    <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12">
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

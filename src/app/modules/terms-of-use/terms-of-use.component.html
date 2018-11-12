@@ -1,0 +1,60 @@
+<button type="button" class= "btn-invisible" data-toggle="modal" data-target="#termsOfUSeModal" id="termsOfUses">Open Modal</button>
+<button type="button" class= "btn-invisible" data-toggle="modal" data-target="#footerModal" id="termsOfUsesFooter">Open Modal</button>
+
+<div id="termsOfUSeModal" class="modal fade" data-backdrop="static" role="dialog">
+        <div class="modal-dialog modal-lg">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close btn-invisible" data-dismiss="modal" id="termsOfUsesClose">&times;</button>
+              <h4 class="modal-title">Disclaimer and Terms of Use</h4>
+            </div>
+            <div class="modal-body scroll-css">
+              <div [innerHtml]="termsOfUse.termsOfUseText"></div>
+              <label class="alert-text" *ngIf="isError">Unable to accept Terms of Use.. Try again</label>
+            </div>
+            <div class="modal-footer">
+              <hr>
+              <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                  <div class="checkbox pull-left">
+                      <label><input type="checkbox" name="accept" [(ngModel)]="isAccepted" value=""><label class="left-padding">I have read the Terms of Use</label></label>
+                    </div>
+
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                
+                  <button type="button" class="btn btn-default pull-left" (click)="onDeclineLatestTermsOfUse()">Decline</button>
+                 
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+
+                  
+                  <button type="button" class="btn btn-primary pull-right" (click)="onAcceptLatestTermsOfUse()" [disabled]="!isAccepted">I Accept</button>
+
+              </div>
+              
+            </div>
+          </div>      
+        </div>
+</div>
+
+<!-- Modal Footer Terms Of Use -->
+
+<div id="footerModal" class="modal fade" data-backdrop="static" role="dialog">
+    <div class="modal-dialog modal-lg">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" id="termsOfUsesClose">&times;</button>
+          <h4 class="modal-title">Disclaimer and Terms of Use</h4>
+        </div>
+        <div class="modal-body scroll-css">
+            <div [innerHtml]="termsOfUse.termsOfUseText"></div>
+        </div>
+      </div>      
+    </div>
+</div>
+ 
+      

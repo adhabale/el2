@@ -1,0 +1,51 @@
+<div>
+    <div class="col-md-12">
+            <span class="tspan">Subscription Notifications</span>
+
+    </div>
+    <div class="col-md-5 margin-top">
+        <div class="row">
+            <div class="col-md-9">
+                <div>
+                        <input id='searchCustomerInput' type="text" class="form-control" [(ngModel)]='searchText' placeholder="Search Client" onkeydown = "if (event.keyCode == 13) document.getElementById('searchUserButton').click()"/>
+                </div>
+            </div>
+            <div class="col-md-3 float-xs-left">
+                <div class="form-group">
+                        <button id="searchUserButton" type="button" class="btn btn-primary btn-desktop-margin float-xs-right hidden-sm-down" name="searchUserButton"
+                        (click)="onSearch()">Search</button>
+                        <button id="searchUserMobileButton" type="button" class="btn btn-primary btn-block btn-margin hidden-md-up" name="searchUserButton"
+                        (click)="onSearch()">Search</button>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+        <div class="col-md-12 col-sm-12 margin-top">
+                <div class="table-responsive table-container">
+                    <table sortable-table (sorted)="onSorted($event)" class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th  sortable-displayName='Client Name ' sortable-column="clientName" sort-direction="asc" width='20%'></th>
+                                <th  sortable-displayName='Renewal Expiry ' sortable-column="expiryDate" sort-direction="asc" width='20%'></th>
+                                <th  width='20%'>Key Contact Person</th>
+                                <th  width='25%'>Email</th>
+                                <th  sortable-displayName='Sent Date ' sortable-column="sentDate" sort-direction="desc" width='15%'></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor='let notification of notificationList;let i = index'>
+                            <tr class='bottom-pad' id="{{'Id'+i}}">
+                                <td>{{notification.clientName}}</td>
+                                <td>{{notification.expiryDate | date:'dd-MMM-yyyy'}}</td>
+                                <td>{{notification.keyContact}}</td>
+                                <td >{{notification.email}}</td>
+                                <td>{{notification.sentDate | date:'dd-MMM-yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <pager [allItems]="notificationData" [pageSize]='5' (onPageChange)="onPageChange($event)" ></pager>
+            </div>
+</div>

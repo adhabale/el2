@@ -1,0 +1,351 @@
+<div id="impactedRowsModal" class="modal fade" data-backdrop="static" role="dialog">
+  <div class="modal-dialog bd-example-modal-sm">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="col-sm-6 modal-title">Edit Alert</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body scroll-css">
+        <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+          <div class="checkbox pull-left">
+            <p class="bot-margin">
+              This change will update the dropdowns on the application and a total number of '{{impactedRows}}' approved records on EL
+              database. Records with Submitted/On-Hold status currently will be updated as well. Do you wish to continue?
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+          <button type="button" class="btn btn-default pull-left" (click)="allowUpdate(true)">Yes</button>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+          <button type="button" class="btn btn-primary pull-right" (click)="allowUpdate(false)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="confirmUpdateModal" class="modal fade" data-backdrop="static" role="dialog">
+  <div class="modal-dialog bd-example-modal-sm">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="col-sm-6 modal-title">Confirmation Alert</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body scroll-css">
+        <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+          <div class="checkbox pull-left">
+            <p class="bot-margin">
+              {{impactedRows}} record(s) updated. Do you want to set record as ‘Updated’?
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+          <button type="button" class="btn btn-default pull-left" (click)="completeUpdate(true)">Yes</button>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+          <button type="button" class="btn btn-primary pull-right" (click)="completeUpdate(false)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divClass row bg-software-gray-1 indexing-header">
+  <div class="col-md-12 col-sm-12">
+    <div class="p-1 hidden-sm-down">
+      <h2 class="display-1 left-pad">
+        Parameter Value Management
+      </h2>
+    </div>
+    <div class="p-1 hidden-md-up">
+      <h2 class="display-3 left-pad">
+        Parameter Value Management
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div class="top-buffer-30">
+</div>
+<div class="row margin-30">
+  <div class="col-md-12 bg-div">
+    <p class="font-wt"> Select a parameter from the list below to perform add or edit functions:</p>
+    <p>Examples:</p>
+    <p>1) Introduce new or change existing dropdown value (e.g. a new 'Category 1' value)</p>
+    <p>2) Add or change selection ranges for a parameter (e.g. Cost Category - A: 0 - 2.5M)</p>
+    <p>3) Adding or changing a range of values - (e.g. Water Depth in ft. ranges 0-100, 100-200, 200-300 etc.)</p>
+  </div>
+</div>
+<div class="top-buffer-30">
+</div>
+<div class="margin-30" *ngIf="notificationMessage.successMessage!=undefined">
+  <div class="divClassNew">
+    <div class="alert alert-success alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.successMessage=undefined">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span class="alert-text">{{notificationMessage.successMessage}}</span>
+      <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.successMessage}}</span>
+    </div>
+  </div>
+</div>
+<div class="margin-30" *ngIf="notificationMessage.errorMessage!=undefined">
+  <div class="divClassNew">
+    <div class="alert alert-warning alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="notificationMessage.errorMessage=undefined">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span class="alert-text">{{notificationMessage.errorMessage}}</span>
+      <span class="alert-text alert-text-mb hidden-md-up">{{notificationMessage.errorMessage}}</span>
+    </div>
+  </div>
+</div>
+<div class="row margin-10">
+  <div class="col-md-4">
+    <p class="heading">Parameters</p>
+  </div>
+  <div class="col-md-4" *ngIf="list.length!=0">
+    <p class="heading">{{selectedValue.displayName}}</p>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<div class="top-buffer-m">
+</div>
+<div class="row margin-15">
+  <div class="col-md-4">
+    <select class="form-control" size="20" [(ngModel)]="selectedValue" (change)="onSelect()">
+      <option *ngFor="let parameter of paramLookUp" [ngValue]="parameter">{{parameter.displayName}}</option>
+    </select>
+    <!-- <select class="form-control" size="20" (change)="onSelect($event.target.value)">
+        <option *ngFor="let parameter of parameters" [value]="parameter.type">{{parameter.name}}</option>
+    </select> -->
+  </div>
+  <div class="top-buffer-m">
+  </div>
+  <div class="col-md-4" *ngIf="list.length>0 && !isCostCategory && !isSplitted">
+    <div class="row">
+      <div class="col-md-8 margin-input">
+        <input class="form-control" type="text" [(ngModel)]="newValue" [disabled]="disableInput(selectedValue)">
+      </div>
+      <div class="col-md-4 margin-input">
+        <button class="btn btn-primary" (click)="onAdd(newValue)" [disabled]="!newValue || !(newValue.trim())">Add</button>
+      </div>
+    </div>
+    <div class="table-responsive" [ngClass]="selectedValue.name == 'UpDownStream'?'':' custom-height'">
+      <table class="table font-td">
+        <tr *ngFor='let item of pageGeneralParamList; let i=index'>
+          <td width="0%" *ngIf="i1!=i || !isUpdate">
+            {{item.name}}
+          </td>
+          <td width="70%" *ngIf="isUpdate && i1==i">
+            <input type="text" class="form-control" [(ngModel)]="editValue">
+          </td>
+          <td width="30%" *ngIf="i1!=i || !isUpdate">
+            <a (click)="onEdit(item)" [ngStyle]="disableEditButton(item)">
+              <img class='img-responsive' height="25px" src="./assets/images/icons8-edit.svg" alt="Edit">
+            </a>
+          </td>
+          <td width="20%" *ngIf="isUpdate && i1==i">
+            <button class="btn btn-primary" (click)="confirmUpdate(item,i,editValue)" [disabled]="!editValue">Update</button>
+          </td>
+          <td width="10%" *ngIf="isUpdate && i1==i">
+            <button type="button" class="close margin-5" (click)="cancel()" arialabel="Close">
+              <span ariahidden="true">&times;</span>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="margin-5" *ngIf="selectedValue.name == 'UpDownStream'">
+      <div class="divClassNew">
+        <div class="alert alert-warning alert-dismissible fade in margin" role="alert">
+          <span class="alert-text small-text">Note*:These values cannot be changed here, please raise a support request for the same.</span>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="divClass col-md-12 col-sm-12">
+      <pager [pageSize]="10" [allItems]="generalParamList" (onPageChange)="onPageChange1($event)"></pager>
+    </div> -->
+  </div>
+
+  <!--Splitted part view-->
+  <div class="col-md-4" *ngIf="isSplitted && !isCostCategory ">
+    <div class="table-responsive custom-height">
+      <table class="table font-td">
+        <tr *ngFor='let item of operationType; let i=index'>
+          <td width="80%" (click)="selectedUsp = item.name; selectedOperationType = item.unprotectedId; onSubSelect(item);" [ngClass]="{'active-upstream': selectedUsp == item.name}">
+            <span>{{item.name}}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="top-buffer-m">
+
+  </div>
+  <!--Sub part of upstream-->
+  <div class="col-md-4" *ngIf="isUpstream">
+    <div class="row">
+      <div class="col-md-8 margin-input">
+        <input class="form-control" type="text" [(ngModel)]="newupstream">
+      </div>
+      <div class="col-md-4 margin-input">
+        <button class="btn btn-primary" (click)="onAddSub(newupstream)" [disabled]="!newupstream || !(newupstream.trim())">Add</button>
+      </div>
+    </div>
+    <div class="table-responsive custom-height">
+      <table class="table font-td" *ngIf="subTypeList.length!=0">
+        <tr *ngFor='let item of pageSubTypeList; let i=index'>
+          <td width="70%" *ngIf="i1!=i || !isUpdate">
+            {{item.name}}
+          </td>
+          <td width="70%" *ngIf="isUpdate && i1==i ">
+            <input type="text" class="form-control" [(ngModel)]="editSubValue">
+          </td>
+          <td width="30%" *ngIf="i1!=i || !isUpdate">
+            <a (click)="onEditSub(item)">
+              <img class='img-responsive' height="25px" src="./assets/images/icons8-edit.svg" alt="Edit">
+            </a>
+          </td>
+          <td width="20%" *ngIf="isUpdate && i1==i">
+            <button class="btn btn-primary" (click)="confirmUpdate(item,i,editSubValue)" [disabled]="!editSubValue">Update</button>
+          </td>
+          <td width="10%" *ngIf="isUpdate && i1==i">
+            <button type="button" class="close margin-5" (click)="cancel()" arialabel="Close">
+              <span ariahidden="true">&times;</span>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- <div class="divClass col-md-12 col-sm-12">
+      <pager [pageSize]="10" [allItems]="subTypeList" (onPageChange)="onPageChange2($event)"></pager>
+    </div> -->
+  </div>
+  <div class="col-md-4" *ngIf="list && !isCostCategory && !isSplitted"></div>
+  <div class="top-buffer-m">
+
+  </div>
+  <!-- Range view -->
+  <div class="col-md-8" *ngIf="list && isCostCategory && !isSplitted">
+    <div class="row">
+
+      <div class="col-md-1">
+        <label class="">Category:</label>
+      </div>
+      <div class="col-md-2 margin-input">
+        <input class="form-control" type="text" [(ngModel)]="categoryName">
+      </div>
+
+      <div class="col-md-1">
+        <label class="">Range:</label>
+      </div>
+
+      <div class="col-md-4 margin-input">
+        <input #inputrang (keyup)="_range('insert',inputrang)" name="range" class="form-control" type="text" [(ngModel)]="range">
+        <span class="text-danger" *ngIf="range && insertRangeError">Invalid range format</span>
+
+      </div>
+
+      <div class="col-md-4">
+        <button class="btn btn-primary" [disabled]="insertRangeError || (!categoryName || !(categoryName.trim())) || (!range || !(range.trim()))"
+          (click)="onAddCostCategory(categoryName,range)">Add</button>
+      </div>
+
+      <div class="col-md-12 table-responsive custom-height-cat">
+        <table class="table font-td font-th margin-th">
+          <tr>
+            <th width="40%">Category</th>
+            <th width="40%">Range</th>
+            <th width="20%"></th>
+          </tr>
+          <tr *ngFor='let item of pageOperationType; let i=index'>
+            <td width="40%" *ngIf="(i1!=i  || !isUpdateCostCategory)">
+              <span *ngIf="selectedValue.name == 'Cost Category'">
+                {{item.name | range:1:'category'}}
+              </span>
+              <span *ngIf="selectedValue.name == 'Depth Category'">
+                {{item.category}}
+              </span>
+              <span *ngIf="selectedValue.name == 'Platform Asset Category'">
+                {{item.name | range:3:'category'}}
+              </span>
+            </td>
+            <td width="40%" *ngIf="(i1==i && isUpdateCostCategory)">
+              <input type="text" class="form-control" [(ngModel)]="editCategoryName">
+            </td>
+            <td width="40%" *ngIf="i1!=i  || !isUpdateCostCategory">
+              <span *ngIf="selectedValue.name == 'Cost Category'">
+                {{item.name | range:1:'range'}}
+              </span>
+              <span *ngIf="selectedValue.name == 'Depth Category'">
+                {{item.name}}
+              </span>
+              <span *ngIf="selectedValue.name == 'Platform Asset Category'">
+                {{item.name | range:3:'range'}}
+              </span>
+            </td>
+            <td width="40%" *ngIf="isUpdateCostCategory && i1==i">
+              <input #updaterang (keyup)="_range('update',updaterang)" type="text" class="form-control" [(ngModel)]="editRange">
+              <span class="text-danger" *ngIf="editRange && updateRangeError">Invalid range format</span>
+            </td>
+
+            <td width="20%" *ngIf="i1!=i || !isUpdateCostCategory">
+              <a (click)="onEditCostCategory(item)" [ngStyle]="disableEditButton(item)">
+                <img class='img-responsive ' height="25px" src="./assets/images/icons8-edit.svg" alt="Edit">
+              </a>
+            </td>
+            <td width="20%" *ngIf="isUpdateCostCategory && i1==i">
+              <button class="btn btn-primary" [disabled]="updateRangeError || !editCategoryName || !editRange" (click)="confirmUpdate(item,i,editRange,editCategoryName)">Update</button>
+            </td>
+            <td width="10%" *ngIf="isUpdateCostCategory && i1==i">
+              <button type="button" class="close margin-5" (click)="cancelCostCat()" arialabel="Close">
+                <span ariahidden="true">&times;</span>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- <div class="divClass col-md-12 col-sm-12">
+        <pager [pageSize]="5" [allItems]="operationType" (onPageChange)="onPageChange3($event)"></pager>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- <div class="row" *ngIf='isudp'>
+  <div class="col-md-12">
+      <div class="margin-5">
+          <div class="divClassNew">
+            <div class="alert alert-warning alert-dismissible fade in margin" role="alert">
+              <span class="alert-text small-text">Note*: If these values needs to be changed, it should be re-directed from the Support team </span>
+            </div>
+          </div>
+        </div>
+  </div>
+
+</div> -->
+<div class='row'>
+  <div class="col-md-4"></div>
+  <div class="col-md-8" *ngIf="list.length>0 && !isCostCategory && !isSplitted">
+    <pager [pageSize]="10" [allItems]="generalParamList" (onPageChange)="onPageChange1($event)"></pager>
+  </div>
+
+  <div *ngIf="isUpstream">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <pager [pageSize]="10" [allItems]="subTypeList" (onPageChange)="onPageChange2($event)"></pager>
+    </div>
+  </div>
+
+
+  <div class="col-md-8" *ngIf="list && isCostCategory && !isSplitted">
+    <pager [pageSize]="5" [allItems]="operationType" (onPageChange)="onPageChange3($event)"></pager>
+  </div>
+
+</div>

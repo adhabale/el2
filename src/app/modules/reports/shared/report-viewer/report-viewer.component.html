@@ -1,0 +1,123 @@
+<div class="col-md-12 col-sm-12" *ngIf="pageItems && pageItems.tableRows">
+
+    <div class="col-md-12 col-sm-12 ">
+
+        <button *ngIf="!isExpandAll && pageItems.tableRows.length>0 && selectedReport.showExpandAndCollapseAllRowBtn" class="btn btn-secondary hidden-sm-down pull-right bottom-margin"
+            (click)="isExpandAll=!isExpandAll;expandAllRow()">
+            Expand All
+            <img alt="Expand All" class="img-responsive pull-right" height="20" width="20" src="./assets/images/icons8-plus-math.svg">
+        </button>
+        <button *ngIf="!isExpandAll && pageItems.tableRows.length>0 && selectedReport.showExpandAndCollapseAllRowBtn" class="btn btn-secondary hidden-md-up btn-block margin-top bottom-margin"
+            (click)="isExpandAll=!isExpandAll;expandAllRow()">
+            Expand All
+            <img alt="Expand All" class="img-responsive pull-right" height="20" width="20" src="./assets/images/icons8-plus-math.svg">
+        </button>
+
+        <button *ngIf="isExpandAll && pageItems.tableRows.length>0 && selectedReport.showExpandAndCollapseAllRowBtn" class="btn btn-secondary hidden-sm-down pull-right bottom-margin"
+            (click)="isExpandAll=!isExpandAll;collapseAllRow()">
+            Collapse All
+            <img alt="Collapse All" class="img-responsive pull-right" height="20" width="20" src="./assets/images/icons8-subtract.svg">
+        </button>
+        <button *ngIf="isExpandAll && pageItems.tableRows.length>0 && selectedReport.showExpandAndCollapseAllRowBtn" class="btn btn-secondary hidden-md-up btn-block margin-top bottom-margin"
+            (click)="isExpandAll=!isExpandAll;collapseAllRow()">
+            Collapse All
+            <img alt="Collapse All" class="img-responsive pull-right" height="20" width="20" src="./assets/images/icons8-subtract.svg">
+        </button>
+
+        <div class="table-responsive">
+
+            <table class="table-sm tableBodyScroll table-font" id="table">
+                <thead class="border">
+                    <tr>
+                        <th *ngFor="let column of pageItems.tableColumns" [ngClass]="{'heading-left':checkHeading(column)==true,'heading-right':checkHeading(column)==false}">{{column}}</th>
+                    </tr>
+                </thead>
+
+                <ng-template [ngIf]="pageItems.tableRows.length>0">
+
+                    <tbody *ngFor="let tableRow of pageItems.tableRows;" [ngClass]="{'bg-software-gray-1 border-total total':tableRow.rowType=='TotalRow'}">
+
+                        <tr *ngIf="tableRow.isRowVisible">
+
+                            <td class="width-25" *ngFor="let tableCell of tableRow.tableCells;let i = index; let last=last;let first=first;" [ngClass]="{'padding-20-tab': i==0 && tableRow.rowGroupLevel==2,'padding-40-tab':i==0 && tableRow.rowGroupLevel==3,'padding-60-tab':i==0 && tableRow.rowGroupLevel==4}">
+                                <span *ngIf="i==0 && tableRow.rowType=='TotalRow'">Total</span>
+                                <a (click)="tableRow.isRowExpanded?collapseRow(tableRow):expandRow(tableRow)" *ngIf="i==0 && tableRow.rowType=='GroupRow'">
+                                    <img *ngIf="tableRow.isRowExpanded" alt="" class="img-responsive" height="20" width="20" src="./assets/images/icons8-subtract.svg">
+                                    <img *ngIf="!tableRow.isRowExpanded" alt="" class="img-responsive" height="20" width="20" src="./assets/images/icons8-plus-math.svg">
+                                </a>
+                                <!-- Condition for overall/oee -->
+                                <span *ngIf="(tableCell.name!='year'&& tableCell.name!='name') && reportType != 'Custom'" [ngClass]="{'left-align':checkValue(tableCell.value)== true,'right-align':checkValue(tableCell.value)== false}">
+                                    <a *ngIf="tableRow.rowType=='DetailRow' && showLink(tableCell,last); else templateName" href="javascript:void(0);" (click)="openLossDetails(tableRow.dataSource)">{{ tableCell.value | round | number }}</a>
+                                    <ng-template #templateName>
+                                        <span [ngClass]="{'left-align':checkValue(tableCell.value)== true,'right-align':checkValue(tableCell.value)== false}">{{ tableCell.value | round | number }}</span>
+                                    </ng-template>
+
+
+                                </span>
+
+                                <span *ngIf="(tableCell.name=='year' || tableCell.name=='name')  && reportType != 'Custom'">
+
+                                    <a *ngIf="tableRow.rowType=='DetailRow' && showLink(tableCell,last); else templateName " href="javascript:void(0);" (click)="openLossDetails(tableRow.dataSource)">{{ tableCell.value }}</a>
+                                    <ng-template #templateName>
+                                        <span>{{ tableCell.value}}</span>
+                                    </ng-template>
+
+                                </span>
+
+                                <!-- Condition for custom -->
+                                <!-- new logic -->
+                                <span *ngIf="reportType == 'Custom'" [ngClass]="{'left-align':checkValue(tableCell.value)== true,'right-align':checkValue(tableCell.value)== false}">
+                                    <a *ngIf="tableRow.rowType=='DetailRow' && first; else templateName" href="javascript:void(0);" (click)="openLossDetails(tableRow.dataSource)">
+                                        <span *ngIf="!checkNumber(tableCell.value)">
+                                            <ng-container *ngIf="tableCell.name =='year' || tableCell.name=='name';else second">
+                                                {{ tableCell.value }}
+                                            </ng-container>
+                                            <ng-template #second>
+                                                <ng-container>{{ tableCell.value | round | number }}</ng-container>
+                                            </ng-template>
+                                        </span>
+                                        <span *ngIf="checkNumber(tableCell.value) && tableCell.value != '{NULL}' && tableCell.value != null">{{ tableCell.value }}</span>
+                                        <span *ngIf="checkNumber(tableCell.value) && (tableCell.value == '{NULL}' || tableCell.value == null)">
+                                            <ng-container *ngIf="tableCell.name == 'ratingArea'; else nonRating">0</ng-container>
+                                            <ng-template #nonRating >N/A</ng-template>
+                                        </span>
+                                    </a>
+                                    <ng-template #templateName>
+                                        <span [ngClass]="{'left-align':checkValue(tableCell.value)== true,'right-align':checkValue(tableCell.value)== false}">
+                                            <span *ngIf="!checkNumber(tableCell.value) && tableCell.value">
+                                                <ng-container *ngIf="tableCell.name =='year' || tableCell.name=='name';else second">
+                                                    {{ tableCell.value }}
+                                                </ng-container>
+                                                <ng-template #second>
+                                                    <ng-container>{{ tableCell.value | round | number }}</ng-container>
+                                                </ng-template>
+                                            </span>
+                                            <span *ngIf="checkNumber(tableCell.value) && tableCell.value != '{NULL}'">{{ tableCell.value }}</span>
+                                        </span>
+                                    </ng-template>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </ng-template>
+
+                <tbody *ngIf="pageItems.tableRows==null || pageItems.tableRows==undefined || pageItems.tableRows.length==0">
+                    <tr>
+                        <td [attr.colspan]="pageItems.tableColumns.length">
+                            No results found, try changing your search.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <pager [allItems]="allVisibleItems" (onPageChange)="onPageChange($event)" [currentPageIndex]="currentPageIndex" (setCurrentPageIndex)="setCurrentPageIndex($event)"></pager>
+
+        <div *ngIf="sourceItems!=null && sourceItems!=undefined && sourceItems.length>0">
+            <export-report [selectedReport]="selectedReport" [sourceItems]="sourceItems" [allTableItems]='allTableItems' [reportType]="reportType"
+                [customReportName]="customReportName"></export-report>
+        </div>
+
+    </div>
+</div>

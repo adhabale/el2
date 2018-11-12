@@ -1,0 +1,348 @@
+<div class="row">
+    <div  id="summaryCollapse"  class="collapse summary top-margin divClass-margin"  role="tabpanel"  arialabelledby="summaryHeading">
+        <div  class="card-block max-height">
+            <div  class="row margin-bottom" id="yearoflossSummary" *ngIf="searchCriteria.selectedSearchCriteria.yearOfLoss.length !=0">
+                <div  class="col-md-2 col-sm-12">
+                    <div class="chip-category">
+                        Year of Loss
+                    </div>
+
+                </div>
+                <div  class="col-md-10 col-sm-12">
+                    <div class="tag tag-pill tag-info tag-margin-right" *ngFor="let year of searchCriteria.selectedSearchCriteria.yearOfLoss">
+                        {{year.value}}
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="searchCriteria !==undefined">
+                <div *ngIf="searchCriteria.selectedSearchCriteria !=undefined">
+                <div *ngIf="searchCriteria.selectedSearchCriteria.area !== undefined && searchCriteria.selectedSearchCriteria.country !== undefined &&
+                searchCriteria.selectedSearchCriteria.gomArea !== undefined && searchCriteria.selectedSearchCriteria.usLocationCode !== undefined &&
+                searchCriteria.selectedSearchCriteria.landOffShore !== undefined">
+                    <div *ngIf="searchCriteria.selectedSearchCriteria.area[0] !== undefined && searchCriteria.selectedSearchCriteria.country[0] !== undefined &&
+                searchCriteria.selectedSearchCriteria.gomArea[0] !== undefined && searchCriteria.selectedSearchCriteria.usLocationCode[0] !== undefined &&
+                searchCriteria.selectedSearchCriteria.landOffShore !== undefined">
+                        <div  class="row margin-bottom" id="locationSummary" *ngIf="searchCriteria.selectedSearchCriteria.area[0].displayName != 'All Areas' || searchCriteria.selectedSearchCriteria.country[0].displayName != 'All Countries' || 
+            searchCriteria.selectedSearchCriteria.gomArea[0].displayName != 'All GOM Areas' || searchCriteria.selectedSearchCriteria.usLocationCode[0].displayName != 'All US Location Codes' ||
+            searchCriteria.selectedSearchCriteria.landOffShore.displayName != 'Either' || searchCriteria.selectedSearchCriteria.location">
+                            <div  class="col-md-2 col-sm-12">
+                                <div class="chip-category">
+                                    Location
+                                </div>
+                            </div>
+                            <div  class="col-md-10 col-sm-12 ">
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.area[0].displayName != 'All Areas'">
+                                    <b class="summary-tag">Area</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let area of searchCriteria.selectedSearchCriteria.area">{{area.displayName}}
+                                    </span>
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.country[0].displayName != 'All Countries'">
+                                    <b class="summary-tag">Country</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let country of searchCriteria.selectedSearchCriteria.country">{{country.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class=" chip" *ngIf="searchCriteria.selectedSearchCriteria.location">
+                                    <b class="summary-tag">Location</b>
+                                    <span *ngIf="searchCriteria.selectedSearchCriteria.location" class="tag tag-pill tag-info tag-margin-right">{{searchCriteria.selectedSearchCriteria.location}}
+                                    </span>
+
+                                </div>
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.gomArea[0].displayName != 'All GOM Areas'">
+                                    <b class="summary-tag">GOM Area</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let gomArea of searchCriteria.selectedSearchCriteria.gomArea">{{gomArea.displayName}}
+                                    </span>
+                                </div>
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.usLocationCode[0].displayName != 'All US Location Codes'">
+                                    <b class="summary-tag">US Location Code</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let usLocationCode of searchCriteria.selectedSearchCriteria.usLocationCode">{{usLocationCode.displayName}}
+                                    </span>
+                                </div>
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.landOffShore.displayName != 'Either'">
+                                    <b class="summary-tag">Land/Offshore</b>
+                                    <span *ngIf="searchCriteria.selectedSearchCriteria.landOffShore" class="tag tag-pill tag-info tag-margin-right">{{searchCriteria.selectedSearchCriteria.landOffShore.displayName}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+
+            </div>
+            <div *ngIf="searchCriteria !==undefined">
+                <div *ngIf="searchCriteria.selectedSearchCriteria.category1 !== undefined && searchCriteria.selectedSearchCriteria.category2 !== undefined && 
+                    searchCriteria.selectedSearchCriteria.category3 !== undefined && searchCriteria.selectedSearchCriteria.car_op !== undefined &&
+                    searchCriteria.selectedSearchCriteria.lossType !== undefined && searchCriteria.selectedSearchCriteria.cause !== undefined &&
+                    searchCriteria.selectedSearchCriteria.upDownPower!== undefined && searchCriteria.selectedSearchCriteria.event !== undefined">
+                    <div *ngIf="searchCriteria.selectedSearchCriteria.category1[0] !== undefined && searchCriteria.selectedSearchCriteria.category2[0] !== undefined && 
+                    searchCriteria.selectedSearchCriteria.category3[0] !== undefined && searchCriteria.selectedSearchCriteria.car_op[0] !== undefined &&
+                    searchCriteria.selectedSearchCriteria.lossType[0] !== undefined && searchCriteria.selectedSearchCriteria.cause[0] !== undefined &&
+                    searchCriteria.selectedSearchCriteria.upDownPower[0]!== undefined && searchCriteria.selectedSearchCriteria.event[0] !== undefined">
+                        
+                    <div class="row margin-bottom" id="lossDetailsSummary" *ngIf="searchCriteria.selectedSearchCriteria.category1[0].displayName != 'All Categories' || searchCriteria.selectedSearchCriteria.category2[0].displayName != 'All Categories' || 
+                    searchCriteria.selectedSearchCriteria.category3[0].displayName != 'All Categories' || searchCriteria.selectedSearchCriteria.car_op[0].displayName != 'Either' ||
+                    searchCriteria.selectedSearchCriteria.lossType[0].displayName != 'All Types' || searchCriteria.selectedSearchCriteria.cause[0].displayName != 'All Causes' ||
+                    searchCriteria.selectedSearchCriteria.upDownPower[0].displayName != 'All Up/Down/Power' || searchCriteria.selectedSearchCriteria.event[0].displayName != 'All Events'">
+                            <div class="col-md-2">
+                                <div class="chip-category">
+                                    Loss Details
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class=" chip" *ngIf="searchCriteria.selectedSearchCriteria.category1[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">Category 1</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let category1 of searchCriteria.selectedSearchCriteria.category1">{{category1.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.category2[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">Category 2</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let category2 of searchCriteria.selectedSearchCriteria.category2">{{category2.displayName}}
+                                    </span>
+                                </div>
+
+                                <div class=" chip" *ngIf="searchCriteria.selectedSearchCriteria.category3[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">Category 3</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let category3 of searchCriteria.selectedSearchCriteria.category3">{{category3.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class=" chip" *ngIf="searchCriteria.selectedSearchCriteria.car_op[0].displayName != 'Either'">
+                                    <b class="summary-tag">CAR/OP</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let car_op of searchCriteria.selectedSearchCriteria.car_op">{{car_op.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.lossType[0].displayName != 'All Types'">
+                                    <b class="summary-tag">Loss Type</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let lossType of searchCriteria.selectedSearchCriteria.lossType">{{lossType.displayName}}
+                                    </span>
+
+                                </div>
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.cause[0].displayName != 'All Causes'">
+                                    <b class="summary-tag">Cause</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let cause of searchCriteria.selectedSearchCriteria.cause">{{cause.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.upDownPower[0].displayName != 'All Up/Down/Power'">
+                                    <b class="summary-tag">Up/Down/Power</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let upDownPower of searchCriteria.selectedSearchCriteria.upDownPower">{{upDownPower.displayName}}
+                                    </span>
+
+                                </div>
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.event[0].displayName != 'All Events'">
+                                    <b class="summary-tag">Event</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let event of searchCriteria.selectedSearchCriteria.event">{{event.displayName}}
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="searchCriteria !==undefined">
+                <div  class="row margin-bottom" id="claimsSummary" *ngIf="
+                searchCriteria.selectedSearchCriteria.pdClaim.max || searchCriteria.selectedSearchCriteria.pdClaim.min ||
+                searchCriteria.selectedSearchCriteria.oeeClaim.min ||searchCriteria.selectedSearchCriteria.oeeClaim.max || 
+                searchCriteria.selectedSearchCriteria.biClaim.min || searchCriteria.selectedSearchCriteria.biClaim.max ||
+                searchCriteria.selectedSearchCriteria.totalClaim.min || searchCriteria.selectedSearchCriteria.totalClaim.max ||
+                searchCriteria.selectedSearchCriteria.totalIndexedClaim.min || searchCriteria.selectedSearchCriteria.totalIndexedClaim.max">
+                    <div  class="col-md-2 col-sm-12">
+                        <div class="chip-category">
+                            Claim US$
+                        </div>
+                    </div>
+                    <div  class="col-md-10 col-sm-12">
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.pdClaim.max || searchCriteria.selectedSearchCriteria.pdClaim.min">
+                            <b class="summary-tag">PD</b>
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.pdClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.pdClaim.max|
+                                number}}
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.oeeClaim.min || searchCriteria.selectedSearchCriteria.oeeClaim.max">
+                            <b class="summary-tag">OEE</b>
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.oeeClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.oeeClaim.max|
+                                number}}
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.biClaim.min || searchCriteria.selectedSearchCriteria.biClaim.max">
+                            <b class="summary-tag">BI</b>
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.biClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.biClaim.max|
+                                number}}
+                            </span>
+
+                        </div>
+
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.totalClaim.min || searchCriteria.selectedSearchCriteria.totalClaim.max">
+                            <b class="summary-tag">Total</b>
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.totalClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.totalClaim.max|
+                                number}}
+                            </span>
+
+                        </div>
+                        <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.totalIndexedClaim.min || searchCriteria.selectedSearchCriteria.totalIndexedClaim.max">
+                            <b class="summary-tag">Total Indexed</b>
+                            <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.totalIndexedClaim.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.totalIndexedClaim.max|
+                                number}}
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div *ngIf="searchCriteria !==undefined">
+                <div *ngIf="searchCriteria.selectedSearchCriteria.ratingAreas !== undefined && searchCriteria.selectedSearchCriteria.wellTypes !== undefined &&
+                    searchCriteria.selectedSearchCriteria.drillingStatues!== undefined && searchCriteria.selectedSearchCriteria.ugbo !== undefined &&
+                    searchCriteria.selectedSearchCriteria.depthCategories!== undefined && searchCriteria.selectedSearchCriteria.ptd.min || searchCriteria.selectedSearchCriteria.ptd.max">
+                    <div *ngIf="searchCriteria.selectedSearchCriteria.ratingAreas[0] !== undefined && searchCriteria.selectedSearchCriteria.wellTypes[0] !== undefined &&
+                    searchCriteria.selectedSearchCriteria.drillingStatues[0] !== undefined && searchCriteria.selectedSearchCriteria.ugbo[0] !== undefined &&
+                    searchCriteria.selectedSearchCriteria.depthCategories[0] !== undefined && searchCriteria.selectedSearchCriteria.ptd.min || searchCriteria.selectedSearchCriteria.ptd.max">
+                        <div  class="row margin-bottom" id="wellDetailsSummary" *ngIf="searchCriteria.selectedSearchCriteria.ratingAreas[0].displayName != 'All Areas'|| searchCriteria.selectedSearchCriteria.wellTypes[0].displayName != 'All Types' ||
+                searchCriteria.selectedSearchCriteria.drillingStatues[0].displayName != 'All Status' || searchCriteria.selectedSearchCriteria.ugbo[0].displayName != 'Either' ||
+                searchCriteria.selectedSearchCriteria.depthCategories[0].displayName != 'All Categories'|| searchCriteria.selectedSearchCriteria.ptd.min || searchCriteria.selectedSearchCriteria.ptd.max">
+                            <div  class="col-md-2 col-sm-12">
+                                <div class="chip-category">
+                                    Well Details
+                                </div>
+
+                            </div>
+                            <div  class="col-md-10 col-sm-12 ">
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.ratingAreas[0].displayName != 'All Areas'">
+                                    <b class="summary-tag">Rating Area</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let ratingArea of searchCriteria.selectedSearchCriteria.ratingAreas">{{ratingArea.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.wellTypes[0].displayName != 'All Types'">
+                                    <b class="summary-tag">Well Type</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let wellType of searchCriteria.selectedSearchCriteria.wellTypes">{{wellType.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.drillingStatues[0].displayName != 'All Status'">
+                                    <b class="summary-tag">Drilling Status</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let drillingStatus of searchCriteria.selectedSearchCriteria.drillingStatues">{{drillingStatus.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.ugbo[0].displayName != 'Either'">
+                                    <b class="summary-tag">UGBO</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let ugbo of searchCriteria.selectedSearchCriteria.ugbo">{{ugbo.displayName}}
+                                    </span>
+
+                                </div>
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.depthCategories[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">Depth Category</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let depthCategory of searchCriteria.selectedSearchCriteria.depthCategories">{{depthCategory.displayName}}
+                                    </span>
+
+                                </div>
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.ptd.min || searchCriteria.selectedSearchCriteria.ptd.max">
+                                    <b class="summary-tag">PTD</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right">Min:{{searchCriteria.selectedSearchCriteria.ptd.min | number}},&nbsp;Max:{{searchCriteria.selectedSearchCriteria.ptd.max|
+                                        number}}
+                                    </span>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div *ngIf="searchCriteria !==undefined">
+                <div *ngIf="searchCriteria.selectedSearchCriteria.actualPDLiabCategory !== undefined && 
+                    searchCriteria.selectedSearchCriteria.indexedPDLiabCategory !== undefined &&
+                    searchCriteria.selectedSearchCriteria.actualOEECategory !== undefined && 
+                    searchCriteria.selectedSearchCriteria.indexedOEECategory !== undefined &&
+                    searchCriteria.selectedSearchCriteria.actualTotalCategory !== undefined && 
+                    searchCriteria.selectedSearchCriteria.indexedTotalCategory !== undefined">
+                    <div *ngIf="searchCriteria.selectedSearchCriteria.actualPDLiabCategory[0] !== undefined && 
+                    searchCriteria.selectedSearchCriteria.indexedPDLiabCategory[0] !== undefined &&
+                    searchCriteria.selectedSearchCriteria.actualOEECategory[0] !== undefined && 
+                    searchCriteria.selectedSearchCriteria.indexedOEECategory[0] !== undefined &&
+                    searchCriteria.selectedSearchCriteria.actualTotalCategory[0] !== undefined && 
+                    searchCriteria.selectedSearchCriteria.indexedTotalCategory[0] !== undefined">
+                        <div  class="row margin-bottom details" id="costCatSummary" *ngIf="searchCriteria.selectedSearchCriteria.actualPDLiabCategory[0].displayName != 'All Categories'|| 
+                searchCriteria.selectedSearchCriteria.indexedPDLiabCategory[0].displayName != 'All Categories'||
+                searchCriteria.selectedSearchCriteria.actualOEECategory[0].displayName != 'All Categories'|| 
+                searchCriteria.selectedSearchCriteria.indexedOEECategory[0].displayName != 'All Categories'||
+                searchCriteria.selectedSearchCriteria.actualTotalCategory[0].displayName != 'All Categories'|| 
+                searchCriteria.selectedSearchCriteria.indexedTotalCategory[0].displayName != 'All Categories'">
+                            <div  class="col-md-2 col-sm-12">
+                                <div class="chip-category">
+                                    Cost Categories
+                                </div>
+                            </div>
+                            <div  class="col-md-10 col-sm-12 ">
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.actualPDLiabCategory[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">PD Claim-Actual</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let actualPDLiabCategory of searchCriteria.selectedSearchCriteria.actualPDLiabCategory">{{actualPDLiabCategory.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.indexedPDLiabCategory[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">PD Claim-Indexed</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let indexedPDLiabCategory of searchCriteria.selectedSearchCriteria.indexedPDLiabCategory">{{indexedPDLiabCategory.displayName}}
+                                    </span>
+
+                                </div>
+
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.actualOEECategory[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">OEE Claim-Actual</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let actualOEECategory of searchCriteria.selectedSearchCriteria.actualOEECategory">{{actualOEECategory.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.indexedOEECategory[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">OEE Claim-Indexed</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let indexedOEECategory of searchCriteria.selectedSearchCriteria.indexedOEECategory">{{indexedOEECategory.displayName}}
+                                    </span>
+
+                                </div>
+
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.actualTotalCategory[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">Total Claim-Actual</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let actualTotalCategory of searchCriteria.selectedSearchCriteria.actualTotalCategory">{{actualTotalCategory.displayName}}
+                                    </span>
+
+                                </div>
+                                <div class="chip" *ngIf="searchCriteria.selectedSearchCriteria.indexedTotalCategory[0].displayName != 'All Categories'">
+                                    <b class="summary-tag">Total Claim-Indexed</b>
+                                    <span class="tag tag-pill tag-info tag-margin-right" *ngFor="let indexedTotalCategory of searchCriteria.selectedSearchCriteria.indexedTotalCategory">{{indexedTotalCategory.displayName}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
